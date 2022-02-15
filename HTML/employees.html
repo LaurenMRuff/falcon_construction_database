@@ -1,0 +1,217 @@
+<!-- Need to use NVM 10.18.0-->
+
+<head>
+    <meta charset="UTF-8">
+    <title> Falcon Construction Database Page </title>
+    <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap 5.1.3 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Falcon Construction DB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav Bar Options -->
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="jobs.html">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="employees.html">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="customers.html">Customers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="items.html">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="job_employees.html">Jobs and Employees</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="job_items.html">Jobs and Items</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Editable EMPLOYEES table -->
+    <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+            Employees Table
+        </h3>
+        <div class="card-body">
+            <div id="table_employee" class="table-editable">
+          <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x"
+                                                                                             aria-hidden="true"></i></a></span>
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Employee ID</th>
+                        <th class="text-center">Employee Code</th>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Job Title</th>
+                        <th class="text-center">Update</th>
+                        <th class="text-center">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="pt-3-half" contenteditable="true">1</td>
+                        <td class="pt-3-half" contenteditable="true">SUSW</td>
+                        <td class="pt-3-half" contenteditable="true">Susan</td>
+                        <td class="pt-3-half" contenteditable="true">Werner</td>
+                        <td class="pt-3-half" contenteditable="true">susw@falconconstruction.com</td>
+                        <td class="pt-3-half" contenteditable="true">Lead Foreman</td>
+                        <td>
+
+                  <span class="table-remove"><button type="button" class="btn btn-dark btn-sm my-0">
+                      Update
+                    </button></span>
+                        </td>
+                        <td>
+
+                  <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                      Remove
+                    </button></span>
+                        </td>
+                    </tr>
+                    <!-- clonable table line -->
+                    <tr>
+                        <td class="pt-3-half" contenteditable="true">10</td>
+                        <td class="pt-3-half" contenteditable="true">BARL</td>
+                        <td class="pt-3-half" contenteditable="true">Barbara</td>
+                        <td class="pt-3-half" contenteditable="true">Lamb</td>
+                        <td class="pt-3-half" contenteditable="true">blamb@falconconstruction.com</td>
+                        <td class="pt-3-half" contenteditable="true"> Foreman</td>
+                        <td>
+
+                  <span class="table-remove"><button type="button" class="btn btn-dark btn-sm my-0">
+                      Update
+                    </button></span>
+                        </td>
+                        <td>
+
+                  <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                      Remove
+                    </button></span>
+                        </td>
+                    </tr>
+                    <!-- Clonable table line -->
+                    <tr>
+                        <td class="pt-3-half" contenteditable="true">11</td>
+                        <td class="pt-3-half" contenteditable="true">JOAR</td>
+                        <td class="pt-3-half" contenteditable="true">Joan</td>
+                        <td class="pt-3-half" contenteditable="true">Rogers</td>
+                        <td class="pt-3-half" contenteditable="true">joar@falconconstruction.com</td>
+                        <td class="pt-3-half" contenteditable="true">Manager</td>
+                        <td>
+
+                  <span class="table-remove"><button type="button" class="btn btn-dark btn-sm my-0">
+                      Update
+                    </button></span>
+                        </td>
+                        <td>
+
+                  <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                      Remove
+                    </button></span>
+                        </td>
+                    </tr>
+                    <!-- This is our clonable table line -->
+                    <!-- Clonable table line -->
+                    <tr>
+                        <td class="pt-3-half" contenteditable="true">12</td>
+                        <td class="pt-3-half" contenteditable="true">DANH</td>
+                        <td class="pt-3-half" contenteditable="true">Danny</td>
+                        <td class="pt-3-half" contenteditable="true">Hamilton</td>
+                        <td class="pt-3-half" contenteditable="true">danh@falconconstruction.com</td>
+                        <td class="pt-3-half" contenteditable="true">Lead Foreman</td>
+                        <td>
+
+                  <span class="table-remove"><button type="button" class="btn btn-dark btn-sm my-0">
+                      Update
+                    </button></span>
+                        </td>
+                        <td>
+
+                  <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                      Remove
+                    </button></span>
+                        </td>
+                    </tr>
+                    <!-- This is our clonable table line -->
+
+                    <!-- Clonable table line -->
+                    <tr>
+                        <td class="pt-3-half" contenteditable="true">25</td>
+                        <td class="pt-3-half" contenteditable="true">KARJ</td>
+                        <td class="pt-3-half" contenteditable="true">Karen</td>
+                        <td class="pt-3-half" contenteditable="true">Jones</td>
+                        <td class="pt-3-half" contenteditable="true">karj@falconconstruction.com</td>
+                        <td class="pt-3-half" contenteditable="true"> Foreman</td>
+                        <td>
+
+                              <span class="table-remove"><button type="button" class="btn btn-dark btn-sm my-0">
+                                  Update
+                                </button></span>
+                        </td>
+                        <td>
+
+                              <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                                  Remove
+                                </button></span>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Employee -->
+    <div class="row align-items-center h-100">
+        <div class="container-sm">
+            <h5> Add an Employee </h5>
+            <div class="col-sm-9 mb-4">
+                <form class="form">
+                    <label for="empcode">Enter Employee Code</label><br>
+                    <input type="text" id="empcode" name="empcode"/><br>
+                    <label for="fname">Enter First name:</label><br>
+                    <input type="text" id="fname" name="fname"><br><br>
+                    <label for="lname">Enter Last name:</label><br>
+                    <input type="text" id="lname" name="lname"><br><br>
+                    <label for="email">Enter Email:</label><br>
+                    <input type="text" id="email" name="email"><br><br>
+                    <label for="title">Enter Job Title:</label><br>
+                    <input type="text" id="title" name="title"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Authors: Lauren Ruff and Kiara Gomez<br>
+        <p>Class: Intro to Databases CS 340<br>
+    </footer>
+
+</body>
