@@ -41,7 +41,6 @@
                             <th class="text-center">Description</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Update</th>
-                            <th class="text-center">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,7 +55,6 @@
                             <td class="pt-3-half" contenteditable="true">Complete</td>
 
                             <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
-                            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
                         </tr>
 
                         <!-- clonable table line -->
@@ -71,7 +69,6 @@
                             <td class="pt-3-half" contenteditable="true">Complete</td>
 
                             <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
-                            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
                         </tr>
                         <!-- Clonable table line -->
                         <tr>
@@ -85,13 +82,12 @@
                             <td class="pt-3-half" contenteditable="true">Complete</td>
 
                             <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
-                            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
                         </tr>
                         <!-- Clonable table line -->
                         <tr>
                             <td class="pt-3-half" contenteditable="true">4</td>
                             <td class="pt-3-half" contenteditable="true">4</td>
-                            <td class="pt-3-half" contenteditable="true">7</td>
+                            <td class="pt-3-half" contenteditable="true">8</td>
                             <td class="pt-3-half" contenteditable="true">RRR01</td>
                             <td class="pt-3-half" contenteditable="true">10/26/2020</td>
                             <td class="pt-3-half" contenteditable="true">4/12/2021</td>
@@ -99,7 +95,6 @@
                             <td class="pt-3-half" contenteditable="true">Complete</td>
 
                             <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
-                            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
 
                         <!-- Clonable table line -->
                         <tr>
@@ -113,7 +108,6 @@
                             <td class="pt-3-half" contenteditable="true">Complete</td>
 
                             <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
-                            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -131,15 +125,15 @@
                         <h4>Add a new Job</h4>
                         <label class="form-select" for="inlineFormCustomSelectPref"></label>
                         <select class="custom-select" id="inlineFormCustomSelectPref">
-                            <option selected>Select an existing customer </option>
-                            <option value="1">Laila Robertson</option>
-                            <option value="2">Ishaan Perkins</option>
-                            <option value="3">Lorena Roy</option>
-                            <option value="4">Carson Lowe</option>
-                            <option value="5">Eliza Moon</option>
-                            <option value="6">Mckayla Walker</option>
-                            <option value="7">Camron Rivera</option>
+                            <option selected>Select an existing Customer ID </option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
                         </select>
+                        <label for="c_name" ></label>
+                        <input type="text" class="form-control" id="c_name" name="c_name" placeholder="Selected customer name will appear here..." disabled>
+                        <br>
                         <label class="form-select my-1 mr-2" for="inlineFormCategorySelectPref"></label>
                         <select class="custom-select my-1 mr-sm-2" id="inlineFormCategorySelectPref">
                             <option selected>Select a category</option>
@@ -154,9 +148,9 @@
                             <option value="9">Restaurant</option>
                             <option value="10">Medical Facility</option>
                             <option value="11">Sports Facility</option>
-                        </select>
+                        </select><br><br>
                         <label for="job_code">Enter Job Code:</label><br>
-                        <input type="text" id="job_code" name="job_code"><br><br>
+                        <input type="text" class="form-control" id="job_code" name="job_code"><br>
                         <label for="start_date">Enter a Start Date:</label><br>
                         <input type="date" id="start_date" name="start_date"><br><br>
                         <label for="end_date">Enter an End Date (optional) :</label><br>
