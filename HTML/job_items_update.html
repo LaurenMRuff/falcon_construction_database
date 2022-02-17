@@ -18,7 +18,6 @@
 <body>
   <!--Navigation bar-->
   <div id="nav_bar"></div>
-
   <script>
     $(function(){
       $("#nav_bar").load("nav_bar.html");
@@ -33,161 +32,117 @@
     </h3>
   </div>
 
-  <!-- Form Search-->
-  <div class="container-sm">
-    <h5> Search for Job </h5>
-    <div class="col-sm-9 mb-4">
-      <form class="form">
-        <label class="my-1 mr-2" for="inlineFormCustomSelectPref"> Job Description</label>
-        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-          <option selected>Choose One </option>
-          <option value="1">Single Family Home Repair 3 burst Pipes</option>
-          <option value="2">Single Family Home Repair 2 Windows double pane</option>
-          <option value="3">Road Build - street 500 feet - 2 lane</option>
-          <option value="4">Townhome Build - 4 units</option>
-        </select>
-        <button type="submit" class="btn btn-primary my-2">Submit</button>
-      </form>
-      </form>
-    </div>
-  </div>
-  </div>
-
+  <!-- Editable table -->
+  <div class="container-fluid">
+    <div class="card text-center">
+      <h3 class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">
+        Search for all Items being used for a Job
+      </h3>
+      <div class="card-body row justify-content-md-center">
+        <div class="col-md-5 p-3 border">
+          <form class="form-horizontal">
+            <h5> Search for Job </h5>
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Job Description</label>
+            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+              <option selected>Choose One </option>
+              <option value="1">Single Family Home Repair 3 burst Pipes</option>
+              <option value="2">Single Family Home Repair 2 Windows double pane</option>
+              <option value="3">Road Build - street 500 feet - 2 lane</option>
+              <option value="4">Townhome Build - 4 units</option>
+            </select>
+          </form>
+          <div class="text-center">
+            <button type="button" class="btn btn-secondary" name="submit_item_search">Submit</button>
+          </div>
+        </div>
+      </div>
 
     <div class="card-body">
       <div id="table" class="table-editable">
-        <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x"
-              aria-hidden="true"></i></a></span>
         <table class="table table-bordered table-responsive-md table-striped text-center">
           <thead>
-            <tr>
-              <th class="text-center">Job Item ID</th>
-              <th class="text-center">Job ID</th>
-              <th class="text-center">Job Code</th>
-              <th class="text-center">Job Description</th>
-              <th class="text-center">Item ID</th>
-              <th class="text-center">Item Name</th>
-              <th class="text-center">Item Description</th>
-              <th class="text-center">Item Quantity</th>
-              <th class="text-center">Update</th>
-              <th class="text-center">Remove</th>
-            </tr>
+          <tr>
+            <th class="text-center">Job_Items ID</th>
+            <th class="text-center">Job ID</th>
+            <th class="text-center">Item ID</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Update</th>
+            <th class="text-center">Remove</th>
+          </tr>
           </thead>
+          <tbody>
+          <tr>
+            <td class="pt-3-half" contenteditable="true">1</td>
+            <td class="pt-3-half" contenteditable="true">8</td>
+            <td class="pt-3-half" contenteditable="true">100</td>
+            <td class="pt-3-half" contenteditable="true">4</td>
+
+            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
+            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
+          </tr>
           <!-- clonable table line -->
-          <tbody>
-            <tr>
-              <td class="pt-3-half" contenteditable="true">28</td>
-              <td class="pt-3-half" contenteditable="true">28</td>
-              <td class="pt-3-half" contenteditable="true">RD03 </td>
-              <td class="pt-3-half" contenteditable="true">Road Build - street 560 feet - 1 lane </td>
-              <td class="pt-3-half" contenteditable="true">1</td>
-              <td class="pt-3-half" contenteditable="true">Road Build - 1 lane</td>
-              <td class="pt-3-half" contenteditable="true">Cost for constructing a new 1-lane road - per foot</td>
-              <td class="pt-3-half" contenteditable="true">560</td>
-              <td>
+          <tr>
+            <td class="pt-3-half" contenteditable="true">2</td>
+            <td class="pt-3-half" contenteditable="true">1</td>
+            <td class="pt-3-half" contenteditable="true">102</td>
+            <td class="pt-3-half" contenteditable="true">7</td>
 
-                <span class="table-remove"><button type="button" class="btn btn-dark btn-sm my-0">
-                    Update
-                  </button></span>
-              </td>
-              <td>
+            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
+            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
+          </tr>
+          <!-- Clonable table line -->
+          <tr>
+            <td class="pt-3-half" contenteditable="true">3</td>
+            <td class="pt-3-half" contenteditable="true">22</td>
+            <td class="pt-3-half" contenteditable="true">105</td>
+            <td class="pt-3-half" contenteditable="true">4</td>
 
-                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                    Remove
-                  </button></span>
-              </td>
-            </tr>
-            <!-- clonable table line -->
-            <tr>
-              <td class="pt-3-half" contenteditable="true">33</td>
-              <td class="pt-3-half" contenteditable="true">33</td>
-              <td class="pt-3-half" contenteditable="true">SF04 </td>
-              <td class="pt-3-half" contenteditable="true">Modular Single Family Home Build - 4 bed/2ba </td>
-              <td class="pt-3-half" contenteditable="true">2</td>
-              <td class="pt-3-half" contenteditable="true">Modular SF Home - 4/2</td>
-              <td class="pt-3-half" contenteditable="true">Flat cost of modular single family home of 4bed 2 bath</td>
-              <td class="pt-3-half" contenteditable="true">1</td>
-              <td>
+            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
+            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
+          </tr>
+          <!-- This is our clonable table line -->
 
-                <span class="table-remove"><button type="button" class="btn btn-dark btn-sm my-0">
-                    Update
-                  </button></span>
-              </td>
-              <td>
+          <!-- Clonable table line -->
+          <tr>
+            <td class="pt-3-half" contenteditable="true">4</td>
+            <td class="pt-3-half" contenteditable="true">27</td>
+            <td class="pt-3-half" contenteditable="true">102</td>
+            <td class="pt-3-half" contenteditable="true">1</td>
 
-                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                    Remove
-                  </button></span>
-              </td>
-            </tr>
-            <!-- Clonable table line -->
-          <tbody>
-            <tr>
-              <td class="pt-3-half" contenteditable="true">41</td>
-              <td class="pt-3-half" contenteditable="true">41</td>
-              <td class="pt-3-half" contenteditable="true">SP01 </td>
-              <td class="pt-3-half" contenteditable="true">Sports Facility Repair - Bathrooms </td>
-              <td class="pt-3-half" contenteditable="true">5</td>
-              <td class="pt-3-half" contenteditable="true">Sports Facility Repair - Bathroom </td>
-              <td class="pt-3-half" contenteditable="true">Cost to repair a bathoroom</td>
-              <td class="pt-3-half" contenteditable="true">2</td>
-              <td>
+            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
+            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
+          </tr>
+          <!-- Clonable table line -->
+          <tr>
+            <td class="pt-3-half" contenteditable="true">5</td>
+            <td class="pt-3-half" contenteditable="true">2</td>
+            <td class="pt-3-half" contenteditable="true">106</td>
+            <td class="pt-3-half" contenteditable="true">13</td>
 
-                <span class="table-remove"><button type="button" class="btn btn-dark btn-sm my-0">
-                    Update
-                  </button></span>
-              </td>
-              <td>
-
-                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                    Remove
-                  </button></span>
-              </td>
-            </tr>
-            <!-- Clonable table line -->
-            <tr>
-              <td class="pt-3-half" contenteditable="true">38</td>
-              <td class="pt-3-half" contenteditable="true">38</td>
-              <td class="pt-3-half" contenteditable="true">HW01</td>
-              <td class="pt-3-half" contenteditable="true">Highway Build - 2 miles-4 lane</td>
-              <td class="pt-3-half" contenteditable="true">4</td>
-              <td class="pt-3-half" contenteditable="true">Highway Build</td>
-              <td class="pt-3-half" contenteditable="true">Standard cost for a 4 lane highway by mile</td>
-              <td class="pt-3-half" contenteditable="true">2</td>
-              <td>
-
-                <span class="table-remove"><button type="button" class="btn btn-dark btn-sm my-0">
-                    Update
-                  </button></span>
-              </td>
-              <td>
-
-                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                    Remove
-                  </button></span>
-              </td>
-            </tr>
-
+            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
+            <td><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete </button></td>
+          </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
+  </div>
   <!-- Editable table -->
 
-
   <!-- Button Row -->
-  <div class="container-button1">
-    <div class="col-sm-30 mb-11">
-      <div class="button-container">
-        <a href="job_items.html" class="btn btn-primary"> Back to Jobs and Items</a>
-      </div>
-    </div>
+  <div class="container text-center"  style="margin-top:25px;">
+    <a href = "job_items.html" class="btn btn-primary"> Back to Job_Items</a>
   </div>
   <!-- Button Row -->
 
-  <div class="pg-footer">Authors: Lauren Ruff and Kiara Gomez<br>Class: Intro to Databases CS 340</div>
-
+  <!-- FOOTER -->
+  <div class="container-fluid">
+    <footer id="footer" class="py-3 my-4 text-white flex-wrap">
+      <p class="text-center">Authors: Lauren Ruff and Kiara Gomez<br>Class: Intro to Databases CS 340</p>
+    </footer>
+  </div>
+  <!-- END FOOTER -->
 </body>
 
 </html>
