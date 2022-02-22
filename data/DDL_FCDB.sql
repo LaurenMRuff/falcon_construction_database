@@ -28,7 +28,8 @@ CREATE TABLE `Jobs` (
 --
 
 LOCK TABLES `Jobs` WRITE;
-INSERT INTO `Jobs` (`job_id`, `customer_id`, `category_id`, `job_code`, `job_start_date`, `job_end_date`, `job_description`, `job_status`)
+INSERT INTO `Jobs` (`job_id`, `customer_id`, `category_id`, `job_code`, `job_start_date`, `job_end_date`,
+                    `job_description`, `job_status`)
 VALUES
 (1,5,1,'SFR01', '2020-01-18','2020-03-18', 'Single Family Home Repair 2 Windows double pane', 'Complete'),
 (2,1,1,'SFR02','2020-01-24','2020-03-24', 'Single Family Home Repair 3 burst Pipes', 'Complete'),
@@ -154,7 +155,7 @@ CREATE TABLE `Categories` (
 --
 
 LOCK TABLES `Categories` WRITE;
-INSERT INTO `Categories` (`category_id`,`category_name`)
+INSERT INTO `Categories` (`category_id`, `category_name`)
 VALUES
 (1,'Single Family Home'),
 (2,'Condominium'),
