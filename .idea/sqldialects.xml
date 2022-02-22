@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/data/Falcon_Data_Definition_Starter.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/data/DDL_FCDB.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/data/DML_FCDB.sql" dialect="MariaDB" />
   </component>
 </project>
