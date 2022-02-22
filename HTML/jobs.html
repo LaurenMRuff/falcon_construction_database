@@ -24,6 +24,82 @@
     </script>
     <!--End Navigation bar-->
 
+    <!-- FORM -->
+    <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
+        <div class="card">
+            <div class="card-body">
+                <h4>Add a New Job</h4>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="customerSelect"></label>
+                        <select class="form-control" id="customerSelect">
+                            <option selected>Select an existing Customer ID</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="c_name"></label>
+                        <input class="form-control" type="text" id="c_name" name="c_name" placeholder="Selected customer name will appear here..." disabled>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="categorySelect"></label>
+                        <select class="form-control" id="categorySelect">
+                            <option selected>Select a category</option>
+                            <option value="1">Single Family Home</option>
+                            <option value="2">Condominium</option>
+                            <option value="3">Townhome</option>
+                            <option value="4">Multifamily</option>
+                            <option value="5">Highway</option>
+                            <option value="6">Pipeline</option>
+                            <option value="7">Road</option>
+                            <option value="8">Railroad</option>
+                            <option value="9">Restaurant</option>
+                            <option value="10">Medical Facility</option>
+                            <option value="11">Sports Facility</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="start_date">Job start date<sup>*</sup></label>
+                        <input type="date" class="form-control" id="start_date" name="start_date">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="end_date">Job end date (optional)</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="statusSelect">Job status<sup>*</sup></label>
+                        <select class="form-control" id="statusSelect">
+                            <option selected>Select a job status</option>
+                            <option value="1">New</option>
+                            <option value="2">In Progress</option>
+                            <option value="3">Complete</option>
+                            <option value="4">Abandoned</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="job_code">Job code<sup>*</sup></label>
+                        <input type="text" class="form-control" id="job_code" name="job_code">
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <label for="des">Job Description<sup>*</sup></label>
+                        <input type="text" class="form-control" id="des" name="des">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-secondary" name="submit_new_customer">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END FORM -->
+
     <!-- Editable JOBS table -->
     <div class="container-fluid">
         <div class="card text-center">
@@ -115,85 +191,6 @@
         </div>
     </div>
     <!-- Editable JOBS table -->
-
-    <!-- FORM -->
-    <div class="container" style="margin-top:25px;">
-        <div class="row">
-            <div class="col">
-                <div class="p-3 border">
-                    <form class="form-horizontal">
-                        <h4>Add a new Job</h4>
-                        <label class="form-select" for="inlineFormCustomSelectPref"></label>
-                        <select class="custom-select" id="inlineFormCustomSelectPref">
-                            <option selected>Select an existing Customer ID </option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                        <label for="c_name" ></label>
-                        <input type="text" class="form-control" id="c_name" name="c_name" placeholder="Selected customer name will appear here..." disabled>
-                        <br>
-                        <label class="form-select my-1 mr-2" for="inlineFormCategorySelectPref"></label>
-                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCategorySelectPref">
-                            <option selected>Select a category</option>
-                            <option value="1">Single Family Home</option>
-                            <option value="2">Condominium</option>
-                            <option value="3">Townhome</option>
-                            <option value="4">Multifamily</option>
-                            <option value="5">Highway</option>
-                            <option value="6">Pipeline</option>
-                            <option value="7">Road</option>
-                            <option value="8">Railroad</option>
-                            <option value="9">Restaurant</option>
-                            <option value="10">Medical Facility</option>
-                            <option value="11">Sports Facility</option>
-                        </select><br><br>
-                        <label for="job_code">Enter Job Code:</label><br>
-                        <input type="text" class="form-control" id="job_code" name="job_code"><br>
-                        <label for="start_date">Enter a Start Date:</label><br>
-                        <input type="date" id="start_date" name="start_date"><br><br>
-                        <label for="end_date">Enter an End Date (optional) :</label><br>
-                        <input type="date" id="end_date" name="end_date"><br><br>
-                        <label for="des">Enter Description:</label><br>
-                        <input type="text" id="des" name="des"><br><br>
-                        <label for="title">Enter Status:</label><br>
-                        <input type="text" id="title" name="title"><br><br>
-                    </form>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-secondary" name="submit_new_job">Submit</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="p-3 border">
-                    <form class="form-horizontal">
-                        <h4>Add a new Customer</h4>
-                        <label for="c_first_name">Enter First name:</label><br>
-                        <input type="text" id="c_first_name" name="c_first_name"><br><br>
-                        <label for="c_last_name">Enter Last name:</label><br>
-                        <input type="text" id="c_last_name" name="c_last_name"><br><br>
-                        <label for="c_email">Enter Email:</label><br>
-                        <input type="email" id="c_email" name="c_email"><br><br>
-                        <label for="c_phone">Enter Phone Number:</label><br>
-                        <input type="tel" id="c_phone" name="c_phone"><br><br>
-                        <label for="c_address">Enter Address:</label><br>
-                        <input type="text" id="c_address" name="c_address"><br><br>
-                        <label for="c_city">Enter City:</label><br>
-                        <input type="text" id="c_city" name="c_city"><br><br>
-                        <label for="c_zip">Enter Zip Code:</label><br>
-                        <input type="number" id="c_zip" name="c_zip"><br><br>
-                        <label for="c_company">Enter Company Name:</label><br>
-                        <input type="text" id="c_company" name="c_company"><br><br>
-                    </form>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-secondary" name="submit_new_customer">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END FORM -->
 
     <!-- FOOTER -->
     <div class="container-fluid">

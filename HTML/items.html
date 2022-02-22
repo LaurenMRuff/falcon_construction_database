@@ -24,6 +24,33 @@
   </script>
   <!--End Navigation bar-->
 
+  <!-- FORM -->
+  <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
+    <div class="card">
+      <div class="card-body">
+        <h4>Add a New Item</h4>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="item_name">Item name<sup>*</sup></label>
+            <input type="text" class="form-control" id="item_name" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="item_desc">Item description<sup>*</sup></label>
+            <input type="text" class="form-control" id="item_desc" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="cost_per_unit">Item cost per unit (USD)<sup>*</sup></label>
+            <input type="number" min="0.00" step="0.01" class="form-control" id="cost_per_unit" required>
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-secondary" name="submit_new_customer">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End FORM -->
+
   <!-- Editable ITEMS table -->
   <div class="container-fluid">
     <div class="card text-center">
@@ -35,7 +62,7 @@
               <th class="text-center">Item ID</th>
               <th class="text-center">Item Name</th>
               <th class="text-center">Item Description</th>
-              <th class="text-center">Item Cost Per Unit</th>
+              <th class="text-center">Item Cost Per Unit ($USD)</th>
               <th class="text-center">Update</th>
             </tr>
           </thead>
@@ -97,27 +124,6 @@
     </div>
   </div>
   <!-- End Editable ITEMS table -->
-
-  <!-- FORM -->
-  <div class="container" style="margin-top:25px;">
-    <div class="row justify-content-md-center">
-      <div class="col-md-5 p-3 border">
-        <form class="form-horizontal">
-          <h4>Add a new Item</h4>
-          <label for="item_name">Enter item name</label><br>
-          <input type="text" id="item_name" name="item_name"><br>
-          <label for="item_description">Enter item description:</label><br>
-          <input type="text" id="item_description" name="item_description"><br><br>
-          <label for="cost_per_unit">Enter item cost per unit (USD):</label><br>
-          <input type="text" id="cost_per_unit" name="cost_per_unit"><br><br>
-          </form>
-          <div class="text-center">
-            <button type="button" class="btn btn-secondary" name="submit_new_customer">Submit</button>
-          </div>
-      </div>
-    </div>
-  </div>
-  <!-- End FORM -->
 
   <!-- FOOTER -->
   <div class="container-fluid">
