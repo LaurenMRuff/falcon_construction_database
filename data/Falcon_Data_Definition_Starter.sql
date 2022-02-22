@@ -1,20 +1,21 @@
 -- ------------------------------------------------------
 -- Server version	10.1.37-MariaDB
+-- Host: localhost         Database: FCDB
+
+SET FOREIGN_KEY_CHECKS=0;
 
 --
 -- Table structure for table `Jobs`
 --
 
-SET FOREIGN_KEY_CHECKS=0;
-
-DROP TABLE IF EXISTS `Jobs`;
+DROP TABLE IF EXISTS Jobs;
 CREATE TABLE `Jobs` (
   `job_id` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
   `customer_id` int(10) NOT NULL,
   `category_id` int(10) NOT NULL,
   `job_code` varchar(255) NOT NULL,
-  `job_startdate` date NOT NULL,
-  `job_enddate` date,
+  `job_start_date` date NOT NULL,
+  `job_end_date` date,
   `job_description` varchar(255) NOT NULL,
   `job_status` varchar(255) NOT NULL,
   PRIMARY KEY (`job_id`),
@@ -27,9 +28,8 @@ CREATE TABLE `Jobs` (
 --
 
 LOCK TABLES `Jobs` WRITE;
-INSERT INTO `Jobs` 
-(`job_id`, `customer_id`, `category_id`, `job_code`, `job_startdate`, `job_enddate`, `job_description`, `job_status`)
-VALUES 
+INSERT INTO `Jobs` (`job_id`, `customer_id`, `category_id`, `job_code`, `job_start_date`, `job_end_date`, `job_description`, `job_status`)
+VALUES
 (1,5,1,'SFR01', '2020-01-18','2020-03-18', 'Single Family Home Repair 2 Windows double pane', 'Complete'),
 (2,1,1,'SFR02','2020-01-24','2020-03-24', 'Single Family Home Repair 3 burst Pipes', 'Complete'),
 (3,16,1, 'SF03', '2020-01-27', '2020-04-04','Modular Single Family Home Build on Lot - 3 bed/2ba', 'Complete'),
@@ -75,16 +75,11 @@ VALUES
 (43,13,2,'CN04', '2021-09-08','2021-10-18', 'Condo Build - 1 room/1 ba','Complete'),
 (44,25,7,'RD08','2021-09-12','2021-11-06', 'Road Build - 50 feet - 1 lane','Complete'),
 (45,21,7,'RD09', '2021-10-19', '2021-12-13','Road Build - 50 feet - 1 lane', 'Complete'),
-(46,19,7,'RD10','2021-11-04','2022-12-29', 'Road Build - 10 feet - 2 lane', 'Complete')
-ON DUPLICATE KEY UPDATE `category_id` = `category_id`;
-
-INSERT INTO `Jobs` 
-(`job_id`,`customer_id`, `category_id`, `job_code`, `job_startdate`, `job_description`, `job_status`)
-VALUES 
-(47,2,9,'RES01', '2021-11-19','Restaurant Repair - Full Wall repair', 'In Progress'),
-(48,4,9,'RES02', '2021-11-30', 'Restaurant Repair - Restoration of kitchen - 500 square feet', 'In Progress'),
-(49,2,10,'MED01','2022-01-04', 'Medical Facility Repair - Roof repair 2500 sq feet','In Progress'),
-(50,5,10,'MED02', '2022-01-15','Medical Facility Repair - Parking lot repair -  70,000 sq ft', 'In Progress')
+(46,19,7,'RD10','2021-11-04','2022-12-29', 'Road Build - 10 feet - 2 lane', 'Complete'),
+(47,2,9,'RES01', '2021-11-19', NULL, 'Restaurant Repair - Full Wall repair', 'In Progress'),
+(48,4,9,'RES02', '2021-11-30', NULL, 'Restaurant Repair - Restoration of kitchen - 500 square feet', 'In Progress'),
+(49,2,10,'MED01','2022-01-04', NULL, 'Medical Facility Repair - Roof repair 2500 sq feet','In Progress'),
+(50,5,10,'MED02', '2022-01-15', NULL, 'Medical Facility Repair - Parking lot repair -  70,000 sq ft', 'In Progress')
 ON DUPLICATE KEY UPDATE `category_id` = `category_id`;
 UNLOCK TABLES;
 
@@ -105,7 +100,7 @@ CREATE TABLE `Customers` (
   `customer_zip_code` int(10) NOT NULL,
   `customer_company` varchar(255) NOT NULL,
   PRIMARY KEY (`customer_id`),
-  UNIQUE KEY `full_name` (`customer_first_name`,`customer_last_name`)
+  KEY `full_name` (`customer_first_name`,`customer_last_name`)
   )ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
@@ -113,11 +108,9 @@ CREATE TABLE `Customers` (
 --
 
 LOCK TABLES `Customers` WRITE;
-INSERT INTO `Customers` 
-(`customer_id`, `customer_first_name`,`customer_last_name`,  `customer_email`, `customer_phone`, 
-`customer_address1`, `customer_city`, `customer_state`,`customer_zip_code`, `customer_company`)
-
-VALUES 
+INSERT INTO `Customers` (`customer_id`, `customer_first_name`,`customer_last_name`,  `customer_email`, `customer_phone`,
+                         `customer_address1`, `customer_city`, `customer_state`,`customer_zip_code`, `customer_company`)
+VALUES
 (1,'Laila','Robertson', 'lailarobertson@gmail.com','(581) 982-7934', '11 Brook St.', 'Hope Mills', 'NC', 23348,'Green-Lowe'),
 (2,'Cristina','Murray', 'cristinamurray@gmail.com','(995) 323-768', '148 Ridge Avenue', 'Dickson', 'TN', 37055,'Bradtke Group'),
 (3,'Hamza','Richards', 'hamzarichards@gmail.com','(276) 978-1218', '158 Corona Street', 'Millville', 'NJ', 83321,'Wisoky LLC'),
@@ -152,9 +145,8 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `Categories`;
 CREATE TABLE `Categories` (
   `category_id` int(10) NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(255) NOT NULL,
-  PRIMARY KEY (`category_id`),
-  KEY `category_name` (`category_name`)
+  `category_name` varchar(255) NOT NULL UNIQUE,
+  PRIMARY KEY (`category_id`)
   )ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
@@ -163,10 +155,9 @@ CREATE TABLE `Categories` (
 
 LOCK TABLES `Categories` WRITE;
 INSERT INTO `Categories` (`category_id`,`category_name`)
-
-VALUES 
+VALUES
 (1,'Single Family Home'),
-(2,'Condiminium'),
+(2,'Condominium'),
 (3,'Townhome'),
 (4,'Multifamily'),
 (5,'Highway'),
@@ -185,21 +176,21 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `Employees`;
 CREATE TABLE `Employees` (
   `employee_id` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
-  `employee_code` varchar(255) NOT NULL,
+  `employee_code` varchar(255) NOT NULL UNIQUE,
   `employee_first_name` varchar(255) NOT NULL,
   `employee_last_name` varchar(255) NOT NULL,
   `employee_email` varchar(255) NOT NULL,
   `employee_job_title` varchar(255) NOT NULL,
-  PRIMARY KEY (`employee_id`)
+  PRIMARY KEY (`employee_id`),
+  KEY `full_name` (`employee_first_name`,`employee_last_name`)
   ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Employees`
 --
 LOCK TABLES `Employees` WRITE;
-INSERT INTO `Employees` (`employee_id`, `employee_code`,`employee_first_name`, `employee_last_name`,
-`employee_email`, `employee_job_title`)
-
+INSERT INTO `Employees` (`employee_id`, `employee_code`,`employee_first_name`, `employee_last_name`, `employee_email`,
+                         `employee_job_title`)
 VALUES 
 (1,'SUSW','Susan','Werner','swerner@falconstruction.com','Foreman'),
 (2,'JESH','Jessica','Henry','jhenry@falconstruction.com','Foreman'),
@@ -227,12 +218,11 @@ VALUES
 (24,'MARH','Mariah','Hines','mhines@falconstruction.com','Foreman'),
 (25,'KARJ','Karen','Jones','kjones@falconstruction.com','Foreman'),
 (26,'ROBS','Robin','Schneider','rschneider@falconstruction.com','Foreman'),
-(27,'KEIB','Keith','Boyer',7'kboyer@falconstruction.com','Foreman'),
+(27,'KEIB','Keith','Boyer', '7kboyer@falconstruction.com','Foreman'),
 (28,'TYRW','Tyrone','Wright','twright@falconstruction.com','Foreman'),
-(29,'PAUB','Paul','Bauer','pbaur@falconstruction.com','Foreman',
+(29,'PAUB','Paul','Bauer','pbaur@falconstruction.com','Foreman'),
 (30,'VICC','Vicki','Carter','vcarter@falconstruction.com','Foreman');
 UNLOCK TABLES;
-
 
 --
 -- Table structure for table `Job_Employees`
@@ -244,10 +234,8 @@ CREATE TABLE `Job_Employees` (
   `employee_id` int(10) UNIQUE,
   `job_id` int(10) UNIQUE,
   PRIMARY KEY (`job_employee_id`),
-  KEY `employee_id` (`employee_id`),
-  KEY `job_id` (`job_id`),
-  CONSTRAINT `jobs_ibfk1` FOREIGN KEY (`customer_id`) REFERENCES `Customers` (`customer_id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `jobs_ibfk2` FOREIGN KEY (`category_id`) REFERENCES  `Categories` (`category_id`) ON DELETE SET NULL ON UPDATE CASCADE
+  FOREIGN KEY (`employee_id`) REFERENCES Employees (`employee_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  FOREIGN KEY (`job_id`) REFERENCES Jobs (`job_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
@@ -256,7 +244,6 @@ CREATE TABLE `Job_Employees` (
 
 LOCK TABLES `Job_Employees` WRITE;
 INSERT INTO `Job_Employees` (`job_employee_id`,`job_id`,`employee_id`)
-
 VALUES 
 (1,22,1),
 (2,23,2),
@@ -328,7 +315,6 @@ CREATE TABLE `Items` (
 --
 LOCK TABLES `Items` WRITE;
 INSERT INTO `Items` (`item_id`,`item_name`,`item_description`,`item_cost_per_unit`)
-
 VALUES
 (1,'Road Build - 1 lane','Cost for constructing a new 1-lane road - per foot',175),
 (2,'Modular SF Home - 4/2','Flat cost of modular single family home of 4bed 2 bath',575000),
@@ -368,7 +354,6 @@ VALUES
 (36,'Townhouse Build - 1 unit','Flat cost of a townhouse build with 4 bed/2.5 ba and 1,500 sqft',190000);
 UNLOCK TABLES;
 
-
 --
 -- Table structure for table `Job_Items`
 --
@@ -380,8 +365,8 @@ CREATE TABLE `Job_Items` (
   `job_id` int(10) UNIQUE,
   `quantity` int(10) NOT NULL,
   PRIMARY KEY (`job_item_id`),
-  FOREIGN KEY (`item_id`) REFERENCES `Items`(`item_id`),
-  FOREIGN KEY (`job_id`) REFERENCES  `Jobs`(`job_id`)
+  FOREIGN KEY (`item_id`) REFERENCES `Items`(`item_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  FOREIGN KEY (`job_id`) REFERENCES `Jobs`(`job_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
