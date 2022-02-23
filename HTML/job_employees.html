@@ -33,8 +33,8 @@
                 <h4>Add a new Job_Employee Relationship</h4>
                 <div class="form-row">
                     <div class="col-md-5 mb-3">
-                        <label for="empIDSelect"></label>
-                        <select class="form-control" id="empIDSelect">
+                        <label for="employee_id"></label>
+                        <select class="form-control" id="employee_id" name="employee_id" required>
                             <option selected>Select an existing employee</option>
                             <option value="1">1</option>
                             <option value="5">10</option>
@@ -43,15 +43,19 @@
                             <option value="9">25</option>
                         </select>
                     </div>
-                    <div class="col-md-7 mb-3">
-                        <label for="emp_name"></label>
-                        <input class="form-control" id="emp_name" name=emp_name" type="text" value="Employee name will be read-only" readonly>
+                    <div class="col-md-2 mb-3">
+                        <label for="employee_code"></label>
+                        <input class="form-control" id="employee_code" name=employee_code" type="text" value="Employee code will be read-only" readonly>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="employee_full_name"></label>
+                        <input class="form-control" id="employee_full_name" name=employee_full_name" type="text" value="Employee full name will be read-only" readonly>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-5 mb-3">
-                        <label for="jobIDSelect"></label>
-                        <select class="form-control" id="jobIDSelect">
+                        <label for="job_id"></label>
+                        <select class="form-control" id="job_id" name="job_id" required>
                         <option selected>Select an existing job </option>
                         <option value="1">22</option>
                         <option value="5">37</option>
@@ -60,9 +64,13 @@
                         <option value="9">2</option>
                     </select>
                     </div>
-                    <div class="col-md-7 mb-3">
-                        <label for="job_desc"></label>
-                        <input class="form-control" id="job_desc" name=job_desc" type="text" value="Job description will be read-only" readonly>
+                    <div class="col-md-2 mb-3">
+                        <label for="job_code"></label>
+                        <input class="form-control" id="job_code" name=job_code" type="text" value="Job code will be read-only" readonly>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="job_description"></label>
+                        <input class="form-control" id="job_description" name=job_description" type="text" value="Job description will be read-only" readonly>
                     </div>
                 </div>
                 <div class="text-center">
