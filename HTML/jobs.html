@@ -32,8 +32,8 @@
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="customerSelect"></label>
-                        <select class="form-control" id="customerSelect">
-                            <option selected>Select an existing Customer ID</option>
+                        <select class="form-control" id="customerSelect" required>
+                            <option selected>Select an existing Customer ID (required)</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -47,7 +47,7 @@
                     <div class="col-md-4 mb-3">
                         <label for="categorySelect"></label>
                         <select class="form-control" id="categorySelect">
-                            <option selected>Select a category</option>
+                            <option selected>Select a category (optional)</option>
                             <option value="1">Single Family Home</option>
                             <option value="2">Condominium</option>
                             <option value="3">Townhome</option>
@@ -64,16 +64,16 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
-                        <label for="start_date">Job start date<sup>*</sup></label>
-                        <input type="date" class="form-control" id="start_date" name="start_date">
+                        <label for="job_start_date">Job start date<sup>*</sup></label>
+                        <input type="date" class="form-control" id="job_start_date" name="job_start_date" required>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="end_date">Job end date (optional)</label>
-                        <input type="date" class="form-control" id="end_date" name="end_date">
+                        <label for="job_end_date">Job end date (optional)</label>
+                        <input type="date" class="form-control" id="job_end_date" name="job_end_date">
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="statusSelect">Job status<sup>*</sup></label>
-                        <select class="form-control" id="statusSelect">
+                        <label for="job_status">Job status<sup>*</sup></label>
+                        <select class="form-control" id="job_status" name="job_status" required>
                             <option selected>Select a job status</option>
                             <option value="1">New</option>
                             <option value="2">In Progress</option>
@@ -85,11 +85,11 @@
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="job_code">Job code<sup>*</sup></label>
-                        <input type="text" class="form-control" id="job_code" name="job_code">
+                        <input type="text" class="form-control" id="job_code" name="job_code" required>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <label for="des">Job Description<sup>*</sup></label>
-                        <input type="text" class="form-control" id="des" name="des">
+                        <label for="job_description">Job Description</label>
+                        <input type="text" class="form-control" id="job_description" name="job_description">
                     </div>
                 </div>
                 <div class="text-center">
