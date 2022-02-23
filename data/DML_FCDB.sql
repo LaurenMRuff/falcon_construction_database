@@ -59,17 +59,6 @@ WHERE employee_id=:employee_id;
 
 DELETE FROM Employees WHERE employee_id=:employee_id;
 
--- DML for Items
-SELECT * FROM Items;
-
-INSERT INTO Items(item_name, item_description, item_cost_per_unit)
-VALUES(:item_name, :item_description, :item_cost_per_unit);
-
-UPDATE Items SET item_name=:item_name, item_description=:item_description, item_cost_per_unit=:item_cost_per_unit
-WHERE item_id=:item_id;
-
-DELETE FROM Items WHERE item_id=:item_id;
-
 -- DML for Job_Employees
 SELECT J.job_id AS job_id, E.employee_id AS employee_id
 FROM Jobs J, Employees E
@@ -85,14 +74,3 @@ DELETE FROM Job_Items WHERE job_items_id=:job_items_id;
 -- DML for Job_Employee_Search
 
 -- need to add a SELECT
-
--- DML for Job_Items
-
--- need to add a SELECT
-
-INSERT INTO Job_Items(job_id, item_id, item_quantity)
-VALUES(job_id=:job_id, item_id=:item_id, item_quantity=:item_quantity);
-
-UPDATE Job_Items SET item_quantity=:item_quantity WHERE job_items_id=:job_items_id;
-
-DELETE FROM Job_Items WHERE job_items_id=:job_items_id;
