@@ -1,204 +1,217 @@
 <!-- Need to use NVM 10.18.0-->
 <!Doctype>
-<html lang="en">
+<html lang = "en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset = "UTF-8">
     <title> Falcon Construction Database Page </title>
-    <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "stylesheet" type = "text/css" href = "index.css" media = "screen" />
+    <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap 5.1.3 CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin = "anonymous">
     <!-- NEEDED FOR NAV BAR -->
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body>
-    <!--Navigation bar-->
-    <div id="nav_bar"></div>
-    <script>
-        $(function(){
-            $("#nav_bar").load("nav_bar.html");
-        });
-    </script>
-    <!--End Navigation bar-->
+<!--Navigation bar-->
+<div id = "nav_bar"></div>
+<script>
+    $(function () {
+        $("#nav_bar").load("nav_bar.html");
+    });
+</script>
+<!--End Navigation bar-->
 
-    <!-- FORM -->
-    <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
-        <div class="card">
-            <div class="card-body">
-                <h4>Add a New Job</h4>
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label for="customerSelect"></label>
-                        <select class="form-control" id="customerSelect" required>
-                            <option selected disabled>Select an existing Customer ID (required)</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="c_name"></label>
-                        <input class="form-control" type="text" id="c_name" name="c_name" placeholder="Selected customer name will appear here..." disabled>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="categorySelect"></label>
-                        <select class="form-control" id="categorySelect" required>
-                            <option selected disabled>Select a category (required)</option>
-                            <option value="1">Single Family Home</option>
-                            <option value="2">Condominium</option>
-                            <option value="3">Townhome</option>
-                            <option value="4">Multifamily</option>
-                            <option value="5">Highway</option>
-                            <option value="6">Pipeline</option>
-                            <option value="7">Road</option>
-                            <option value="8">Railroad</option>
-                            <option value="9">Restaurant</option>
-                            <option value="10">Medical Facility</option>
-                            <option value="11">Sports Facility</option>
-                        </select>
-                    </div>
+<!-- FORM -->
+<div class = "container-fluid" style = "margin-top:50px; margin-bottom: 50px;">
+    <div class = "card">
+        <div class = "card-body">
+            <h4>Add a New Job</h4>
+            <div class = "form-row">
+                <div class = "col-md-4 mb-3">
+                    <label for = "customerSelect"></label>
+                    <select class = "form-control" id = "customerSelect" required>
+                        <option selected disabled>Select an existing Customer ID (required)</option>
+                        <option value = "1">1</option>
+                        <option value = "2">2</option>
+                        <option value = "3">3</option>
+                        <option value = "4">4</option>
+                    </select>
                 </div>
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label for="job_start_date">Job start date<sup>*</sup></label>
-                        <input type="date" class="form-control" id="job_start_date" name="job_start_date" required>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="job_end_date">Job end date (optional)</label>
-                        <input type="date" class="form-control" id="job_end_date" name="job_end_date">
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="job_status">Job status<sup>*</sup></label>
-                        <select class="form-control" id="job_status" name="job_status" required>
-                            <option selected disabled>Select a job status</option>
-                            <option value="1">New</option>
-                            <option value="2">In Progress</option>
-                            <option value="3">Complete</option>
-                            <option value="4">Abandoned</option>
-                        </select>
-                    </div>
+                <div class = "col-md-4 mb-3">
+                    <label for = "c_name"></label>
+                    <input class = "form-control" type = "text" id = "c_name" name = "c_name"
+                           placeholder = "Selected customer name will appear here..." disabled>
                 </div>
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label for="job_code">Job code<sup>*</sup></label>
-                        <input type="text" class="form-control" id="job_code" name="job_code" required>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <label for="job_description">Job Description (optional)</label>
-                        <input type="text" class="form-control" id="job_description" name="job_description">
-                    </div>
+                <div class = "col-md-4 mb-3">
+                    <label for = "categorySelect"></label>
+                    <select class = "form-control" id = "categorySelect" required>
+                        <option selected disabled>Select a category (required)</option>
+                        <option value = "1">Single Family Home</option>
+                        <option value = "2">Condominium</option>
+                        <option value = "3">Townhome</option>
+                        <option value = "4">Multifamily</option>
+                        <option value = "5">Highway</option>
+                        <option value = "6">Pipeline</option>
+                        <option value = "7">Road</option>
+                        <option value = "8">Railroad</option>
+                        <option value = "9">Restaurant</option>
+                        <option value = "10">Medical Facility</option>
+                        <option value = "11">Sports Facility</option>
+                    </select>
                 </div>
-                <div class="text-center">
-                    <button type="button" class="btn btn-secondary" name="submit_new_customer">Submit</button>
+            </div>
+            <div class = "form-row">
+                <div class = "col-md-4 mb-3">
+                    <label for = "job_start_date">Job start date<sup>*</sup></label>
+                    <input type = "date" class = "form-control" id = "job_start_date" name = "job_start_date" required>
                 </div>
+                <div class = "col-md-4 mb-3">
+                    <label for = "job_end_date">Job end date (optional)</label>
+                    <input type = "date" class = "form-control" id = "job_end_date" name = "job_end_date">
+                </div>
+                <div class = "col-md-4 mb-3">
+                    <label for = "job_status">Job status<sup>*</sup></label>
+                    <select class = "form-control" id = "job_status" name = "job_status" required>
+                        <option selected disabled>Select a job status</option>
+                        <option value = "1">New</option>
+                        <option value = "2">In Progress</option>
+                        <option value = "3">Complete</option>
+                        <option value = "4">Abandoned</option>
+                    </select>
+                </div>
+            </div>
+            <div class = "form-row">
+                <div class = "col-md-4 mb-3">
+                    <label for = "job_code">Job code<sup>*</sup></label>
+                    <input type = "text" class = "form-control" id = "job_code" name = "job_code" required>
+                </div>
+                <div class = "col-md-8 mb-3">
+                    <label for = "job_description">Job Description (optional)</label>
+                    <input type = "text" class = "form-control" id = "job_description" name = "job_description">
+                </div>
+            </div>
+            <div class = "text-center">
+                <button type = "button" class = "btn btn-secondary" name = "submit_new_customer">Submit</button>
             </div>
         </div>
     </div>
-    <!-- END FORM -->
+</div>
+<!-- END FORM -->
 
-    <!-- Editable JOBS table -->
-    <div class="container-fluid">
-        <div class="card text-center">
-            <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">Jobs Table</div>
-            <div class="card-body">
-                <table class="table table-bordered table-responsive-md table-striped text-center">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Job ID</th>
-                            <th class="text-center">Customer ID</th>
-                            <th class="text-center">Category ID</th>
-                            <th class="text-center">Job Code</th>
-                            <th class="text-center">Start Date</th>
-                            <th class="text-center">End Date</th>
-                            <th class="text-center">Description</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Update</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="pt-3-half" contenteditable="true">1</td>
-                            <td class="pt-3-half" contenteditable="true">1</td>
-                            <td class="pt-3-half" contenteditable="true">1</td>
-                            <td class="pt-3-half" contenteditable="true">SFR02</td>
-                            <td class="pt-3-half" contenteditable="true">1/24/2020</td>
-                            <td class="pt-3-half" contenteditable="true">3/24/2020</td>
-                            <td class="pt-3-half" contenteditable="true">Single Family Home Repair 3 burst Pipes</td>
-                            <td class="pt-3-half" contenteditable="true">Complete</td>
+<!-- Editable JOBS table -->
+<div class = "container-fluid">
+    <div class = "card text-center">
+        <div class = "card-header font-weight-bold text-uppercase py-4" style = "font-size: 26px">Jobs Table</div>
+        <div class = "card-body">
+            <table class = "table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                <tr>
+                    <th class = "text-center">Job ID</th>
+                    <th class = "text-center">Customer ID</th>
+                    <th class = "text-center">Category ID</th>
+                    <th class = "text-center">Job Code</th>
+                    <th class = "text-center">Start Date</th>
+                    <th class = "text-center">End Date</th>
+                    <th class = "text-center">Description</th>
+                    <th class = "text-center">Status</th>
+                    <th class = "text-center">Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">1</td>
+                    <td class = "pt-3-half" contenteditable = "true">1</td>
+                    <td class = "pt-3-half" contenteditable = "true">1</td>
+                    <td class = "pt-3-half" contenteditable = "true">SFR02</td>
+                    <td class = "pt-3-half" contenteditable = "true">1/24/2020</td>
+                    <td class = "pt-3-half" contenteditable = "true">3/24/2020</td>
+                    <td class = "pt-3-half" contenteditable = "true">Single Family Home Repair 3 burst Pipes</td>
+                    <td class = "pt-3-half" contenteditable = "true">Complete</td>
 
-                            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
-                        </tr>
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
+                </tr>
 
-                        <!-- clonable table line -->
-                        <tr>
-                            <td class="pt-3-half" contenteditable="true">2</td>
-                            <td class="pt-3-half" contenteditable="true">2</td>
-                            <td class="pt-3-half" contenteditable="true">1</td>
-                            <td class="pt-3-half" contenteditable="true">SFR01</td>
-                            <td class="pt-3-half" contenteditable="true">1/18/2020</td>
-                            <td class="pt-3-half" contenteditable="true">3/18/2020</td>
-                            <td class="pt-3-half" contenteditable="true">Single Family Home Repair 2 Windows double pane</td>
-                            <td class="pt-3-half" contenteditable="true">Complete</td>
+                <!-- clonable table line -->
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">2</td>
+                    <td class = "pt-3-half" contenteditable = "true">2</td>
+                    <td class = "pt-3-half" contenteditable = "true">1</td>
+                    <td class = "pt-3-half" contenteditable = "true">SFR01</td>
+                    <td class = "pt-3-half" contenteditable = "true">1/18/2020</td>
+                    <td class = "pt-3-half" contenteditable = "true">3/18/2020</td>
+                    <td class = "pt-3-half" contenteditable = "true">Single Family Home Repair 2 Windows double pane
+                    </td>
+                    <td class = "pt-3-half" contenteditable = "true">Complete</td>
 
-                            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
-                        </tr>
-                        <!-- Clonable table line -->
-                        <tr>
-                            <td class="pt-3-half" contenteditable="true">3</td>
-                            <td class="pt-3-half" contenteditable="true">3</td>
-                            <td class="pt-3-half" contenteditable="true">7</td>
-                            <td class="pt-3-half" contenteditable="true">RD02</td>
-                            <td class="pt-3-half" contenteditable="true">12/30/2020</td>
-                            <td class="pt-3-half" contenteditable="true">2/8/2021</td>
-                            <td class="pt-3-half" contenteditable="true">Road Build - street 500 feet - 2 lane</td>
-                            <td class="pt-3-half" contenteditable="true">Complete</td>
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
+                </tr>
+                <!-- Clonable table line -->
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">3</td>
+                    <td class = "pt-3-half" contenteditable = "true">3</td>
+                    <td class = "pt-3-half" contenteditable = "true">7</td>
+                    <td class = "pt-3-half" contenteditable = "true">RD02</td>
+                    <td class = "pt-3-half" contenteditable = "true">12/30/2020</td>
+                    <td class = "pt-3-half" contenteditable = "true">2/8/2021</td>
+                    <td class = "pt-3-half" contenteditable = "true">Road Build - street 500 feet - 2 lane</td>
+                    <td class = "pt-3-half" contenteditable = "true">Complete</td>
 
-                            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
-                        </tr>
-                        <!-- Clonable table line -->
-                        <tr>
-                            <td class="pt-3-half" contenteditable="true">4</td>
-                            <td class="pt-3-half" contenteditable="true">4</td>
-                            <td class="pt-3-half" contenteditable="true">8</td>
-                            <td class="pt-3-half" contenteditable="true">RRR01</td>
-                            <td class="pt-3-half" contenteditable="true">10/26/2020</td>
-                            <td class="pt-3-half" contenteditable="true">4/12/2021</td>
-                            <td class="pt-3-half" contenteditable="true">Railway Maintenance - 10 miles </td>
-                            <td class="pt-3-half" contenteditable="true">Complete</td>
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
+                </tr>
+                <!-- Clonable table line -->
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">4</td>
+                    <td class = "pt-3-half" contenteditable = "true">4</td>
+                    <td class = "pt-3-half" contenteditable = "true">8</td>
+                    <td class = "pt-3-half" contenteditable = "true">RRR01</td>
+                    <td class = "pt-3-half" contenteditable = "true">10/26/2020</td>
+                    <td class = "pt-3-half" contenteditable = "true">4/12/2021</td>
+                    <td class = "pt-3-half" contenteditable = "true">Railway Maintenance - 10 miles</td>
+                    <td class = "pt-3-half" contenteditable = "true">Complete</td>
 
-                            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
 
-                        <!-- Clonable table line -->
-                        <tr>
-                            <td class="pt-3-half" contenteditable="true">5</td>
-                            <td class="pt-3-half" contenteditable="true">4</td>
-                            <td class="pt-3-half" contenteditable="true">3</td>
-                            <td class="pt-3-half" contenteditable="true">TH02</td>
-                            <td class="pt-3-half" contenteditable="true">5/20/2020</td>
-                            <td class="pt-3-half" contenteditable="true">7/19/2020</td>
-                            <td class="pt-3-half" contenteditable="true">Townhome Build - 4 units</td>
-                            <td class="pt-3-half" contenteditable="true">Complete</td>
+                    <!-- Clonable table line -->
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">5</td>
+                    <td class = "pt-3-half" contenteditable = "true">4</td>
+                    <td class = "pt-3-half" contenteditable = "true">3</td>
+                    <td class = "pt-3-half" contenteditable = "true">TH02</td>
+                    <td class = "pt-3-half" contenteditable = "true">5/20/2020</td>
+                    <td class = "pt-3-half" contenteditable = "true">7/19/2020</td>
+                    <td class = "pt-3-half" contenteditable = "true">Townhome Build - 4 units</td>
+                    <td class = "pt-3-half" contenteditable = "true">Complete</td>
 
-                            <td><button type="button" class="btn btn-dark btn-sm my-0"> Update </button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <!-- Editable JOBS table -->
+</div>
+<!-- Editable JOBS table -->
 
-    <!-- FOOTER -->
-    <div class="container-fluid">
-        <footer id="footer" class="py-3 my-4 text-white flex-wrap">
-            <p class="text-center">Authors: Lauren Ruff and Kiara Gomez<br>Class: Intro to Databases CS 340</p>
-        </footer>
-    </div>
-    <!-- END FOOTER -->
+<!-- FOOTER -->
+<div class = "container-fluid">
+    <footer id = "footer" class = "py-3 my-4 text-white flex-wrap">
+        <p class = "text-center">Authors: Lauren Ruff and Kiara Gomez<br>Class: Intro to Databases CS 340</p>
+    </footer>
+</div>
+<!-- END FOOTER -->
 
 </body>
 
