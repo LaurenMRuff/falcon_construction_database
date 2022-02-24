@@ -16,7 +16,7 @@ CREATE TABLE `Jobs` (
   `job_code` varchar(15) NOT NULL,
   `job_start_date` date NOT NULL,
   `job_end_date` date,
-  `job_description` varchar(255),
+  `job_description` varchar(255) NOT NULL,
   `job_status` varchar(25) NOT NULL,
   PRIMARY KEY (`job_id`),
   CONSTRAINT `Jobs_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `Customers`(`customer_id`),
