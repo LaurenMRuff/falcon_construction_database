@@ -1,76 +1,182 @@
 --
 -- DML Queries for Jobs
 --
-
 -- Query for add a new character functionality with colon : character being used to
 -- denote the variables that will have data from the backend programming language
 
--- DML for Jobs SELECT, INSERT, UPDATE, DELETE
-SELECT * FROM Jobs;
+-- Jobs DML-- 
+-- Jobs -- SELECT --
+SELECT *
+FROM Jobs;
 
-INSERT INTO Jobs (customer_id, category_id, job_code, job_start_date, job_end_date, job_description, job_status)
-VALUES(:customer_id, :category_id, :job_code, :job_start_date, :job_end_date, :job_description, :job_status);
+-- Jobs -- INSERT --
+INSERT INTO Jobs (
+                customer_id,
+                category_id,
+                job_code,
+                job_start_date,
+                job_end_date,
+                job_description,
+                job_status
+        )
+VALUES(
+                :customer_id,
+                :category_id,
+                :job_code,
+                :job_start_date,
+                :job_end_date,
+                :job_description,
+                :job_status
+        );
 
-UPDATE Jobs SET customer_id=:customer_id, category_id=:category_id, job_code=:job_code,
-                job_start_date=:job_start_date, job_end_date=:job_end_date, job_description=:job_description,
-                job_status=:job_status
+-- Jobs -- UPDATE --
+UPDATE Jobs
+SET customer_id = :customer_id,
+        category_id = :category_id,
+        job_code = :job_code,
+        job_start_date = :job_start_date,
+        job_end_date = :job_end_date,
+        job_description = :job_description,
+        job_status = :job_status
 WHERE job_id = :job_id;
 
-DELETE FROM Jobs WHERE job_id = :job_id;
+-- Jobs -- DELETE --
+DELETE FROM Jobs
+WHERE job_id = :job_id;
 
--- DML for Customers SELECT, INSERT, UPDATE, DELETE
-SELECT * FROM Customers;
+-- Customers DML-- 
+-- Customers -- SELECT --
+SELECT *
+FROM Customers;
 
-INSERT INTO Customers(customer_first_name, customer_last_name, customer_email, customer_phone,
-                      customer_address1, customer_city, customer_state, customer_zip_code, customer_company)
-VALUES(:customer_first_name, :customer_last_name, :customer_email, :customer_phone,
-        :customer_address1, :customer_city, :customer_state, :customer_zip_code, :customer_company);
+-- Customers -- INSERT --
+INSERT INTO Customers(
+                customer_first_name,
+                customer_last_name,
+                customer_email,
+                customer_phone,
+                customer_address1,
+                customer_city,
+                customer_state,
+                customer_zip_code,
+                customer_company
+        )
+VALUES(
+                :customer_first_name,
+                :customer_last_name,
+                :customer_email,
+                :customer_phone,
+                :customer_address1,
+                :customer_city,
+                :customer_state,
+                :customer_zip_code,
+                :customer_company
+        );
 
-UPDATE Customers SET customer_first_name=:customer_first_name, customer_last_name=:customer_last_name,
-                     customer_email=:customer_email, customer_phone=:customer_phone, customer_address1=:customer_address,
-                     customer_city=:customer_city, customer_state=:customer_state, customer_zip_code=:customer_zip_code,
-                     customer_company=:customer_company
-WHERE customer_id=:customer_id;
+-- Customers -- UPDATE --
+UPDATE Customers
+SET customer_first_name = :customer_first_name,
+        customer_last_name = :customer_last_name,
+        customer_email = :customer_email,
+        customer_phone = :customer_phone,
+        customer_address1 = :customer_address,
+        customer_city = :customer_city,
+        customer_state = :customer_state,
+        customer_zip_code = :customer_zip_code,
+        customer_company = :customer_company
+WHERE customer_id = :customer_id;
 
-DELETE FROM Customers WHERE customer_id=:customer_id;
+-- Customers -- DELETE --
+DELETE FROM Customers
+WHERE customer_id = :customer_id;
 
+-- Categories DML-- 
+-- Categories -- SELECT --
+SELECT *
+FROM Categories
+ORDER BY category_id;
 
--- DML for Categories SELECT, INSERT, UPDATE, DELETE
-SELECT * FROM Categories;
-
+-- Categories -- INSERT --
 INSERT INTO Categories (category_name)
 VALUES(:category_name);
 
-UPDATE Categories SET category_name=:category_name WHERE category_id=:category_id;
+-- Categories -- UPDATE --
+UPDATE Categories
+SET category_name = :category_name
+WHERE category_id = :category_id;
 
-DELETE FROM Categories WHERE category_id=:category_id;
+-- Categories -- DELETE --
+DELETE FROM Categories
+WHERE category_id = :category_id;
 
--- DML for Employees
-SELECT * FROM Employees;
+-- Employees DML-- 
+-- Employees -- SELECT --
+SELECT *
+FROM Employees;
 
-INSERT INTO Employees (employee_code, employee_first_name, employee_last_name, employee_email,
-                       employee_job_title)
-VALUES(:employee_code, :employee_first_name, :employee_last_name, :employee_email, :employee_job_title);
+-- Employees -- INSERT --
+INSERT INTO Employees (
+                employee_code,
+                employee_first_name,
+                employee_last_name,
+                employee_email,
+                employee_job_title
+        )
+VALUES(
+                :employee_code,
+                :employee_first_name,
+                :employee_last_name,
+                :employee_email,
+                :employee_job_title
+        );
 
-UPDATE Employees SET employee_code=:employee_code, employee_first_name=:employee_first_name,
-                     employee_last_name=:employee_last_name, employee_email=:employee_email,
-                     employee_job_title=:employee_job_title
-WHERE employee_id=:employee_id;
+-- Employees -- UPDATE --
+UPDATE Employees
+SET employee_code = :employee_code,
+        employee_first_name = :employee_first_name,
+        employee_last_name = :employee_last_name,
+        employee_email = :employee_email,
+        employee_job_title = :employee_job_title
+WHERE employee_id = :employee_id;
 
-DELETE FROM Employees WHERE employee_id=:employee_id;
+-- Employees -- DELETE --
+DELETE FROM Employees
+WHERE employee_id = :employee_id;
 
--- DML for Job_Employees
-SELECT J.job_id AS job_id, E.employee_id AS employee_id
-FROM Jobs J, Employees E
+-- Job_Employees DML-- 
+-- Job_Employees -- SELECT --
+SELECT job_employee_id,
+        job_id,
+        employee_id
+FROM Job_Employees
 ORDER BY job_employee_id;
 
+-- Job_Employees -- INSERT --
 INSERT INTO Job_Employee(job_id, employee_id)
-VALUES(job_id=:job_id, employee_id=:employee_id);
+VALUES(job_id = :job_id, employee_id = :employee_id);
 
-UPDATE Job_Items SET item_quantity=:item_quantity WHERE job_items_id=:job_items_id;
+-- Job_Employees -- UPDATE --
+UPDATE Job_Employees
+SET employee_id = :employee_id,
+        job_id = :job_id
+WHERE job_employee_id = :job_employee_id;
 
-DELETE FROM Job_Items WHERE job_items_id=:job_items_id;
+-- Job_Employees -- DELETE --
+DELETE FROM Job_Employees
+WHERE job_employee_id = :job_employee_id -- DML for Job_Employee_Search SELECT
 
--- DML for Job_Employee_Search
-
--- need to add a SELECT
+-- Job_Employee Relationship DML-- 
+-- Job_Employees Relationship -- SELECT --
+SELECT job_employee_id,
+        e.employee_id,
+        j.job_id,
+        CONCAT(employee_first_name, ' ', employee_last_name) AS name,
+        employee_job_title AS title,
+        job_description,
+        c.category_id,
+        c.category_name
+FROM Employees AS e
+        INNER JOIN Job_Employees AS je on e.employee_id = je.employee_id
+        INNER JOIN Jobs AS j ON j.job_id = je.job_id
+        INNER JOIN Categories AS c on c.category_id = j.category_id
+ORDER BY job_employee_id;

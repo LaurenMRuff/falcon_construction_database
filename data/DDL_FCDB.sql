@@ -19,8 +19,8 @@ CREATE TABLE `Jobs` (
   `job_description` varchar(255),
   `job_status` varchar(25) NOT NULL,
   PRIMARY KEY (`job_id`),
-  FOREIGN KEY (`customer_id`) REFERENCES `Customers`(`customer_id`),
-  FOREIGN KEY (`category_id`) REFERENCES  `Categories`(`category_id`)
+  CONSTRAINT `Jobs_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `Customers`(`customer_id`),
+  CONSTRAINT `Jobs_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES  `Categories`(`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
@@ -96,8 +96,7 @@ CREATE TABLE `Customers` (
   `customer_email` varchar(255) NOT NULL,
   `customer_phone` varchar(255) NOT NULL,
   `customer_company` varchar(255),
-  `customer_address1` varchar(255) NOT NULL,
-  `customer_address2` varchar(255),
+  `customer_address` varchar(255) NOT NULL,
   `customer_city` varchar(255) NOT NULL,
   `customer_state` varchar(2) NOT NULL,
   `customer_zipcode` int(5) NOT NULL,
@@ -111,33 +110,33 @@ CREATE TABLE `Customers` (
 
 LOCK TABLES `Customers` WRITE;
 INSERT INTO `Customers` (`customer_id`, `customer_first_name`,`customer_last_name`,  `customer_email`, `customer_phone`,
-                         `customer_company`, `customer_address1`, `customer_address2`, `customer_city`, `customer_state`,`customer_zipcode`)
+                         `customer_address`, `customer_city`, `customer_state`,`customer_zipcode`, `customer_company`)
 VALUES
-(1,'Laila','Robertson', 'lailarobertson@gmail.com','(581) 982-7934', 'Green-Lowe', '11 Brook St.', NULL, 'Hope Mills', 'NC', 23348),
-(2,'Cristina','Murray', 'cristinamurray@gmail.com','(995) 323-768', 'Bradtke Group', '148 Ridge Avenue', 'SUITE 220', 'Dickson', 'TN', 37055),
-(3,'Hamza','Richards', 'hamzarichards@gmail.com','(276) 978-1218', 'Wisoky LLC', '158 Corona Street', NULL, 'Millville', 'NJ', 83321),
-(4,'Mia','Shannon', 'miashannon@gmail.com','(522) 894-6880', 'Bartoletti and Sons', '2 Marlborough Rd.', 'APT 5', 'Sarasota', 'FL', 34231),
-(5,'Ishaan','Perkins', 'ishaanperkins@gmail.com','(817) 437-7014', 'Lind LLC', '21 Rock Creek Street', 'SUITE 1055', 'El Dorado', 'AR', 41730),
-(6,'Lorena','Roy', 'lroy@gmail.com','(318) 442-6235', 'Turcotte, Murray and Hayes', '3 Rockwell Ave.', 'SUITE 100', 'Royal Oak', 'MI', 48067),
-(7,'Brett','Barrera', 'bbarrera@gmail.com','(542) 259-0411', 'Morar, Bashirian and Nader', '36 Mayfield Court', 'SUITE 390', 'Fishers', 'IN', 46037),
-(8,'Carsen','Lowe', 'clowe@gmail.com','(432) 613-7627', 'Kohler, Goldner and Schaden', '36 N. Deerfield Ave.', NULL, 'Bethel Park', 'PA', 15102),
-(9,'Eliza','Moon', 'emoon@gmail.com','(809) 760-5081','Wisozk - Kassulke', '430 Old 8th Drive', NULL, 'Sidney', 'OH', 45365),
-(10,'McKayla','Walker', 'mwalker@gmail.com','(311) 515-1073','Ferry, Jakubowski and Hessel', '460 Roosevelt Ave.', 'APT 500', 'Boca Raton', 'FL', 33428),
-(11,'Camron','Rivera', 'crivera@gmail.com','(316) 251-2083', 'Conn and Sons', '52 W. North Court', 'SUITE 101', 'Owensboro', 'KY', 42301),
-(12,'Addisyn','Flynn', 'aflynn@gmail.com','(453) 400-0361','Veum, Dietrich and Erdman', '548 North Cedar Swamp Ave.', 'SUITE 102', 'South Windsor', 'CT', 60745),
-(13,'Ivan','Scott', 'iscott@gmail.com','(204) 397-3707','Jenkins - Reynolds', '692 Constitution Lane', 'APT 6', 'Bonita Springs', 'FL', 34135),
-(14,'Hector','Mack', 'hmack@gmail.com','(769) 723-4219','Legros - Schimmel', '7008 South Harrison St.', NULL, 'Elkridge', 'MD', 21075),
-(15,'Greta','Holden', 'gholden@gmail.com','(956) 967-8736','Austin Creative Solutions', '742 Spring Lane', 'SUITE 100', 'Downers Grove', 'IL', 60515),
-(16,'Amaris','Hoffman', 'amhof@gmail.com','(381) 283-9459', 'Smitham LLC', '7613 Pulaski Street', 'SUITE 1050', 'Coraopolis', 'PA', 15108),
-(17,'Bella','Huffman', 'behuf@gmail.com','(973) 682-0297','Greenfelder, Hudson and Kohler', '7866 E. Ashley Ave.', 'SUITE 450', 'Lake Mary', 'FL', 32746),
-(18,'Selena','Finley', 'sefin@gmail.com','(502) 454-7075', 'Harris Inc', '856 Randall Mill Road', 'APT 600', 'North Haven', 'CT', 64734),
-(19,'Cash','Lynn', 'calyn@gmail.com','(527) 509-8838','Bogan, Reilly and Runolfsdottir', '8577 College Ave.', NULL, 'Pensacola', 'MA', 32503),
-(20,'Keagan','Butler', 'kebut@gmail.com','(355) 959-2763', 'Krajcik LLC', '886 West St.', 'SUITE 500', 'Fitchburg', 'MD', 14205),
-(21,'Slade','Conrad', 'slcon@gmail.com','(936) 219-4685', 'Medhurst LLC', '89 Monroe St.', 'SUITE 350', 'Dundalk', 'MD', 21222),
-(22,'Kali','Hendricks', 'kalihendricks@gmail.com','(789) 756-7755','VonRueden - Kiehn', '90 Catherine Street', 'SUITE 320', 'Oakland Gardens', 'NY', 11364),
-(23,'Jordan','Pennington', 'jpennington@gmail.com','(525) 524-2074','Murphy, Lind and Jaskolski', '9113 Essex St.', NULL, 'Jackson', 'NJ', 85274),
-(24,'Mareli','Fuller', 'mfuller@gmail.com','(484) 334-6413', 'Johnston, Watsica and Hettinger', '9502 E. Paris Hill Ave.', 'SUITE 1000', 'Grayslake', 'IL', 60030),
-(25,'Francis','Ortiz', 'fortiz@gmail.com','(893) 524-1644','Hegmann, Hickle and Effertz', '964 Wilson Lane', 'APT 320', 'Holly Spring', 'NC', 27540);
+(1,'Laila','Robertson', 'lailarobertson@gmail.com','(581) 982-7934', '11 Brook St.', 'Hope Mills', 'NC', 23348,'Green-Lowe'),
+(2,'Cristina','Murray', 'cristinamurray@gmail.com','(995) 323-768', '148 Ridge Avenue', 'Dickson', 'TN', 37055,'Bradtke Group'),
+(3,'Hamza','Richards', 'hamzarichards@gmail.com','(276) 978-1218', '158 Corona Street', 'Millville', 'NJ', 83321,'Wisoky LLC'),
+(4,'Mia','Shannon', 'miashannon@gmail.com','(522) 894-6880', '2 Marlborough Rd.', 'Sarasota', 'FL', 34231,'Bartoletti and Sons'),
+(5,'Ishaan','Perkins', 'ishaanperkins@gmail.com','(817) 437-7014', '21 Rock Creek Street', 'El Dorado', 'AR', 41730,'Lind LLC'),
+(6,'Lorena','Roy', 'lroy@gmail.com','(318) 442-6235', '3 Rockwell Ave.', 'Royal Oak', 'MI', 48067,'Turcotte, Murray and Hayes'),
+(7,'Brett','Barrera', 'bbarrera@gmail.com','(542) 259-0411', '36 Mayfield Court', 'Fishers', 'IN', 46037,'Morar, Bashirian and Nader'),
+(8,'Carsen','Lowe', 'clowe@gmail.com','(432) 613-7627', '36 N. Deerfield Ave.', 'Bethel Park', 'PA', 15102,'Kohler, Goldner and Schaden'),
+(9,'Eliza','Moon', 'emoon@gmail.com','(809) 760-5081', '430 Old 8th Drive', 'Sidney', 'OH', 45365,'Wisozk - Kassulke'),
+(10,'McKayla','Walker', 'mwalker@gmail.com','(311) 515-1073', '460 Roosevelt Ave.', 'Boca Raton', 'FL', 33428,'Ferry, Jakubowski and Hessel'),
+(11,'Camron','Rivera', 'crivera@gmail.com','(316) 251-2083', '52 W. North Court', 'Owensboro', 'KY', 42301,'Conn and Sons'),
+(12,'Addisyn','Flynn', 'aflynn@gmail.com','(453) 400-0361', '548 North Cedar Swamp Ave.', 'South Windsor', 'CT', 60745,'Veum, Dietrich and Erdman'),
+(13,'Ivan','Scott', 'iscott@gmail.com','(204) 397-3707', '692 Constitution Lane', 'Bonita Springs', 'FL', 34135,'Jenkins - Reynolds'),
+(14,'Hector','Mack', 'hmack@gmail.com','(769) 723-4219', '7008 South Harrison St.', 'Elkridge', 'MD', 21075,'Legros - Schimmel'),
+(15,'Greta','Holden', 'gholden@gmail.com','(956) 967-8736', '742 Spring Lane', 'Downers Grove', 'IL', 60515,'Austin Creative Solutions'),
+(16,'Amaris','Hoffman', 'amhof@gmail.com','(381) 283-9459', '7613 Pulaski Street', 'Coraopolis', 'PA', 15108,'Smitham LLC'),
+(17,'Bella','Huffman', 'behuf@gmail.com','(973) 682-0297', '7866 E. Ashley Ave.', 'Lake Mary', 'FL', 32746,'Greenfelder, Hudson and Kohler'),
+(18,'Selena','Finley', 'sefin@gmail.com','(502) 454-7075', '856 Randall Mill Road', 'North Haven', 'CT', 64734,'Harris Inc'),
+(19,'Cash','Lynn', 'calyn@gmail.com','(527) 509-8838', '8577 College Ave.', 'Pensacola', 'MA', 32503,'Bogan, Reilly and Runolfsdottir'),
+(20,'Keagan','Butler', 'kebut@gmail.com','(355) 959-2763', '886 West St.', 'Fitchburg', 'MD', 14205,'Krajcik LLC'),
+(21,'Slade','Conrad', 'slcon@gmail.com','(936) 219-4685', '89 Monroe St.', 'Dundalk', 'MD', 21222,'Medhurst LLC'),
+(22,'Kali','Hendricks', 'kalihendricks@gmail.com','(789) 756-7755', '90 Catherine Street', 'Oakland Gardens', 'NY', 11364,'VonRueden - Kiehn'),
+(23,'Jordan','Pennington', 'jpennington@gmail.com','(525) 524-2074', '9113 Essex St.', 'Jackson', 'NJ', 85274,'Murphy, Lind and Jaskolski'),
+(24,'Mareli','Fuller', 'mfuller@gmail.com','(484) 334-6413', '9502 E. Paris Hill Ave.', 'Grayslake', 'IL', 60030,'Johnston, Watsica and Hettinger'),
+(25,'Francis','Ortiz', 'fortiz@gmail.com','(893) 524-1644', '964 Wilson Lane', 'Holly Spring', 'NC', 27540,'Hegmann, Hickle and Effertz');
 UNLOCK TABLES;
 
 --
@@ -178,7 +177,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `Employees`;
 CREATE TABLE `Employees` (
   `employee_id` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
-  `employee_code` varchar(10) NOT NULL UNIQUE,
+  `employee_code` varchar(10) NOT NULL,
   `employee_first_name` varchar(255) NOT NULL,
   `employee_last_name` varchar(255) NOT NULL,
   `employee_email` varchar(255) NOT NULL,
@@ -236,8 +235,10 @@ CREATE TABLE `Job_Employees` (
   `employee_id` int(10),
   `job_id` int(10),
   PRIMARY KEY (`job_employee_id`),
-  FOREIGN KEY (`employee_id`) REFERENCES Employees (`employee_id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  FOREIGN KEY (`job_id`) REFERENCES Jobs (`job_id`) ON DELETE SET NULL ON UPDATE CASCADE
+  KEY `employee_id` (`employee_id`),
+  KEY `job_id` (`job_id`),
+  CONSTRAINT `Job_Employees_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `Employees` (`employee_id`),
+  CONSTRAINT `Job_Employees_ibfk_2` FOREIGN KEY (`job_id`) REFERENCES `Jobs` (`job_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
