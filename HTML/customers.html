@@ -25,68 +25,6 @@
   </script>
   <!--End Navigation bar-->
 
-  <!-- FORM -->
-  <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
-    <div class="card">
-      <div class="card-body">
-        <h4>Add a new Customer</h4>
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <label for="customer_first_name">First name<sup>*</sup></label>
-            <input type="text" class="form-control" id="customer_first_name" name="customer_first_name" required>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="customer_last_name">Last name<sup>*</sup></label>
-            <input type="text" class="form-control" id="customer_last_name" name="customer_last_name" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="customer_phone">Phone number<sup>*</sup></label>
-            <input type="text" class="form-control" id="customer_phone" name="customer_phone" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="customer_email">Email<sup>*</sup></label>
-            <input type="text" class="form-control" id="customer_email" name="customer_email" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="customer_company">Company (optional)</label>
-            <input type="text" class="form-control" id="customer_company" name="customer_company">
-          </div>
-        </div>
-        <div class="form-row">Address Information</div><br>
-        <div class="form-row">
-          <div class="col-md-9 mb-3">
-            <label for="customer_address1">Address<sup>*</sup></label>
-            <input type="text" class="form-control" id="customer_address1" name="customer_address1" required>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="customer_address2">Suite/Apt (optional)</label>
-            <input type="text" class="form-control" id="customer_address2" name="customer_address2">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <label for="customer_city">City<sup>*</sup></label>
-            <input type="text" class="form-control" id="customer_city" name="customer_city" required>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="customer_state">State<sup>*</sup></label>
-            <input type="text" class="form-control" id="customer_state" name="customer_state" required>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="customer_zipcode">Zipcode<sup>*</sup></label>
-            <input type="text" class="form-control" id="customer_zipcode" name="customer_zipcode" required>
-          </div>
-        </div>
-        <div class="text-center">
-          <button type="button" class="btn btn-secondary" name="submit_new_customer">Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- END FORM -->
-
   <!-- Editable CUSTOMER table -->
   <div class="container-fluid">
     <div class="card text-center">
@@ -176,6 +114,39 @@
     </div>
   </div>
   <!-- Editable CUSTOMER table -->
+
+  <!-- FORM -->
+  <div class="container" style="margin-top:25px;">
+    <div class="row justify-content-md-center">
+      <div class="col-md-5 p-3 border">
+        <form class="form-horizontal">
+          <h4>Add a new Customer</h4>
+          <label for="c_first_name">Enter First name:</label><br>
+          <input type="text" id="c_first_name" name="c_first_name"><br><br>
+          <label for="c_last_name">Enter Last name:</label><br>
+          <input type="text" id="c_last_name" name="c_last_name"><br><br>
+          <label for="c_email">Enter Email:</label><br>
+          <input type="email" id="c_email" name="c_email"><br><br>
+          <label for="c_phone">Enter Phone Number:</label><br>
+          <input type="tel" id="c_phone" name="c_phone"><br><br>
+          <label for="c_address">Enter Address:</label><br>
+          <input type="text" id="c_address" name="c_address"><br><br>
+          <label for="c_city">Enter City:</label><br>
+          <input type="text" id="c_city" name="c_city"><br><br>
+          <label for="c_state">Enter City:</label><br>
+          <input type="text" id="c_state" name="c_state"><br><br>
+          <label for="c_zip">Enter Zip Code:</label><br>
+          <input type="number" id="c_zip" name="c_zip"><br><br>
+          <label for="c_company">Enter Company Name:</label><br>
+          <input type="text" id="c_company" name="c_company"><br><br>
+        </form>
+        <div class="text-center">
+          <button type="button" class="btn btn-secondary" name="submit_new_customer">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END FORM -->
 
   <!-- FOOTER -->
   <div class="container-fluid">

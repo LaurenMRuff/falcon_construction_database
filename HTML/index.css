@@ -6,3 +6,9 @@
   right: 0;
   width: 100%;
 }
+
+
+.nav-item>.active>a {
+  background-color: #912d2d;
+  color: rgb(11, 12, 11);
+}
