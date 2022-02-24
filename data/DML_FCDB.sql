@@ -5,9 +5,27 @@
 -- denote the variables that will have data from the backend programming language
 
 -- Jobs DML-- 
+
 -- Jobs -- SELECT --
+-- Get all information to populate Jobs table page
 SELECT *
 FROM Jobs;
+
+-- Get category names to populate Dropdown list within "Add new Job"
+SELECT category_name
+FROM Categories
+ORDER BY category_id;
+
+-- Get Customer ID-names to populate Dropdown list within "Add new Job"
+SELECT CONCAT(
+                customer_id,
+                '-',
+                customer_first_name,
+                ' ',
+                customer_last_name
+        ) as id_name
+FROM Customers
+ORDER BY customer_id;
 
 -- Jobs -- INSERT --
 INSERT INTO Jobs (
@@ -46,6 +64,7 @@ WHERE job_id = :job_id;
 
 -- Customers DML-- 
 -- Customers -- SELECT --
+-- Get all data to populate data tables within Customers Page
 SELECT *
 FROM Customers;
 
@@ -111,6 +130,7 @@ WHERE category_id = :category_id;
 
 -- Employees DML-- 
 -- Employees -- SELECT --
+-- Get all data to populate data tables within Employees Page
 SELECT *
 FROM Employees;
 
@@ -145,11 +165,37 @@ WHERE employee_id = :employee_id;
 
 -- Job_Employees DML-- 
 -- Job_Employees -- SELECT --
+-- Get all data to populate data tables within Job_Employees Page
 SELECT job_employee_id,
         job_id,
         employee_id
 FROM Job_Employees
 ORDER BY job_employee_id;
+
+-- Get category names to populate Dropdown list within "Add new Job"
+SELECT category_name
+FROM Categories
+ORDER BY category_id;
+
+-- Get Existing Employee ID-names to populate Dropdown list within "Add a New Job_Employee Relationship"
+SELECT CONCAT(
+                employee_id,
+                '-',
+                employee_first_name,
+                ' ',
+                employee_last_name
+        ) AS eid_name
+FROM Employees
+ORDER BY employee_id;
+
+-- Get Job ID-description to populate Dropdown list within "Add a New Job_Employee Relationship"
+SELECT CONCAT(
+                job_id,
+                '-',
+                job_description
+        ) AS jid_desc
+FROM Jobs
+ORDER BY job_id;
 
 -- Job_Employees -- INSERT --
 INSERT INTO Job_Employee(job_id, employee_id)
@@ -165,8 +211,9 @@ WHERE job_employee_id = :job_employee_id;
 DELETE FROM Job_Employees
 WHERE job_employee_id = :job_employee_id -- DML for Job_Employee_Search SELECT
 
+
 -- Job_Employee Relationship DML-- 
--- Job_Employees Relationship -- SELECT --
+-- Display available data to populate data tables within Job_Employees_Search.HTML landing Page
 SELECT job_employee_id,
         e.employee_id,
         j.job_id,
@@ -180,3 +227,27 @@ FROM Employees AS e
         INNER JOIN Jobs AS j ON j.job_id = je.job_id
         INNER JOIN Categories AS c on c.category_id = j.category_id
 ORDER BY job_employee_id;
+
+-- Display Employees working on specific jobs based on Job_ID selection
+SELECT job_employee_id,
+        e.employee_id,
+        j.job_id,
+        CONCAT(employee_first_name, ' ', employee_last_name) AS name,
+        employee_job_title AS title,
+        job_description,
+        c.category_id,
+        c.category_name
+FROM Employees AS e
+        INNER JOIN Job_Employees AS je on e.employee_id = je.employee_id
+        INNER JOIN Jobs AS j ON j.job_id = je.job_id
+        INNER JOIN Categories AS c on c.category_id = j.category_id
+WHERE j.job_id =:selected_job_id;
+
+-- Get Job ID-description to populate Dropdown list within "Search for Job"
+SELECT CONCAT(
+                job_id,
+                '-',
+                job_description
+        ) AS jid_desc
+FROM Jobs
+ORDER BY job_id;
