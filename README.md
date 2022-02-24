@@ -51,7 +51,7 @@ Falcon Construction company is a large heavy construction and residential constr
 - Relationship: As mentioned within Jobs, a Many:Many relationship between Jobs and Employees is implemented as two 1:M relationships with  Job_Employees. The two 1:M relationships are between: 1) Jobs and Job_Employees and between 2) Employees and Job_Employees. 
 
 ## **ER Diagram**
-![CS 340 ERD - Update for Project Step 4](https://user-images.githubusercontent.com/48524322/155587825-b59f7913-27d5-4b7b-bced-0eb9c05f8d40.png)
+![CS 340 ERD - Update for Project Step 4](https://user-images.githubusercontent.com/48524322/155588086-3c22d13d-db42-4ad3-8563-dcb61e8cba74.png)
 
 ## **Schema**
 ![CS 340 Schema  - Update for Project Step 4](https://user-images.githubusercontent.com/48524322/155587838-aa1ee09a-9cdf-41e2-aa50-4a3acead40ae.png)
