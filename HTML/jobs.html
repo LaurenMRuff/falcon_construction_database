@@ -46,8 +46,8 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="categorySelect"></label>
-                        <select class="form-control" id="categorySelect">
-                            <option selected disabled>Select a category (optional)</option>
+                        <select class="form-control" id="categorySelect" required>
+                            <option selected disabled>Select a category (required)</option>
                             <option value="1">Single Family Home</option>
                             <option value="2">Condominium</option>
                             <option value="3">Townhome</option>
@@ -88,7 +88,7 @@
                         <input type="text" class="form-control" id="job_code" name="job_code" required>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <label for="job_description">Job Description</label>
+                        <label for="job_description">Job Description (optional)</label>
                         <input type="text" class="form-control" id="job_description" name="job_description">
                     </div>
                 </div>

@@ -12,12 +12,12 @@ DROP TABLE IF EXISTS Jobs;
 CREATE TABLE `Jobs` (
   `job_id` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
   `customer_id` int(10) NOT NULL,
-  `category_id` int(10),
-  `job_code` varchar(255) NOT NULL,
+  `category_id` int(10) NOT NULL,
+  `job_code` varchar(15) NOT NULL,
   `job_start_date` date NOT NULL,
   `job_end_date` date,
   `job_description` varchar(255),
-  `job_status` varchar(255) NOT NULL,
+  `job_status` varchar(25) NOT NULL,
   PRIMARY KEY (`job_id`),
   FOREIGN KEY (`customer_id`) REFERENCES `Customers`(`customer_id`),
   FOREIGN KEY (`category_id`) REFERENCES  `Categories`(`category_id`)
@@ -95,7 +95,7 @@ CREATE TABLE `Customers` (
   `customer_last_name` varchar(255) NOT NULL,
   `customer_email` varchar(255) NOT NULL,
   `customer_phone` varchar(255) NOT NULL,
-  `customer_company` varchar(255) NOT NULL,
+  `customer_company` varchar(255),
   `customer_address1` varchar(255) NOT NULL,
   `customer_address2` varchar(255),
   `customer_city` varchar(255) NOT NULL,
@@ -178,11 +178,11 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `Employees`;
 CREATE TABLE `Employees` (
   `employee_id` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
-  `employee_code` varchar(255) NOT NULL UNIQUE,
+  `employee_code` varchar(10) NOT NULL UNIQUE,
   `employee_first_name` varchar(255) NOT NULL,
   `employee_last_name` varchar(255) NOT NULL,
   `employee_email` varchar(255) NOT NULL,
-  `employee_job_title` varchar(255) NOT NULL,
+  `employee_job_title` varchar(50) NOT NULL,
   PRIMARY KEY (`employee_id`),
   KEY `full_name` (`employee_first_name`,`employee_last_name`)
   ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -233,8 +233,8 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `Job_Employees`;
 CREATE TABLE `Job_Employees` (
   `job_employee_id` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
-  `employee_id` int(10) UNIQUE,
-  `job_id` int(10) UNIQUE,
+  `employee_id` int(10),
+  `job_id` int(10),
   PRIMARY KEY (`job_employee_id`),
   FOREIGN KEY (`employee_id`) REFERENCES Employees (`employee_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   FOREIGN KEY (`job_id`) REFERENCES Jobs (`job_id`) ON DELETE SET NULL ON UPDATE CASCADE
