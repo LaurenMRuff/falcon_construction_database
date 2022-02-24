@@ -1,9 +1,9 @@
-#Falcon Construction Database
+Falcon Construction Database
 
 Project Proposal
 Falcon Construction company is a large heavy construction and residential construction company with over 100 customers and more than 500 employees. Falcon Construction provides services to their customers, completing over 100 jobs per year. The company does a wide range of construction, including new builds and repairs. With all of this in mind, Falcon Construction would benefit from a central database containing information on jobs performed, more accurate employee tracking, and a central location for customer information. More specifically, the purpose of this database-driven website is to record and track the Jobs performed by Employees of different Categories for Falcon Construction Customers. The company aims to better understand their current customer base and log which employees worked on which jobs.
 
-Database Outline 
+Database Outline
     Jobs: table that records all of the details of Jobs that are carried out by Falcon Construction Company.
     job_id: int(10), PK, NOT NULL, AUTO_INCREMENT, UNIQUE
     customer_id: FK,  NOT NULL
@@ -51,7 +51,7 @@ Job_Employees: table that serves as a join table for Jobs and Employees tables.
     Relationship: As mentioned within Jobs, a Many:Many relationship between Jobs and Employees is implemented as two 1:M relationships with  Job_Employees. The two 1:M relationships are between: 1) Jobs and Job_Employees and between 2) Employees and Job_Employees. 
 
 ER Diagram
-![CS 340 ERD - Update for Project Step 4](https://user-images.githubusercontent.com/48524322/155455816-7deab7a9-ef09-4347-91d7-4c952b0bc4ca.png)
+![CS 340 ERD - Update for Project Step 4](https://user-images.githubusercontent.com/48524322/155455963-f48aa165-ff82-4500-b951-fc421e61c0c5.png)
 
 Schema
 ![CS 340 Schema  - Update for Project Step 4](https://user-images.githubusercontent.com/48524322/155455823-e6f06b95-eb7a-48b2-8702-e937182a28c1.png)
