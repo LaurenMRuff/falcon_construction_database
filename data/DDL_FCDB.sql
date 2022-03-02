@@ -19,8 +19,8 @@ CREATE TABLE `Jobs` (
   `job_description` varchar(255) NOT NULL,
   `job_status` varchar(25) NOT NULL,
   PRIMARY KEY (`job_id`),
-  CONSTRAINT `Jobs_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `Customers`(`customer_id`),
-  CONSTRAINT `Jobs_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES  `Categories`(`category_id`)
+  CONSTRAINT `FK_JobsCustomerID` FOREIGN KEY (`customer_id`) REFERENCES `Customers`(`customer_id`),
+  CONSTRAINT `FK_JobsCategoryID` FOREIGN KEY (`category_id`) REFERENCES  `Categories`(`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `Customers` (
   `customer_address` varchar(255) NOT NULL,
   `customer_city` varchar(255) NOT NULL,
   `customer_state` varchar(2) NOT NULL,
-  `customer_zipcode` int(5) NOT NULL,
+  `customer_zip_code` varchar(10) NOT NULL,
   PRIMARY KEY (`customer_id`),
   KEY `full_name` (`customer_first_name`,`customer_last_name`)
   )ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -110,7 +110,7 @@ CREATE TABLE `Customers` (
 
 LOCK TABLES `Customers` WRITE;
 INSERT INTO `Customers` (`customer_id`, `customer_first_name`,`customer_last_name`,  `customer_email`, `customer_phone`,
-                         `customer_address`, `customer_city`, `customer_state`,`customer_zipcode`, `customer_company`)
+                         `customer_address`, `customer_city`, `customer_state`,`customer_zip_code`, `customer_company`)
 VALUES
 (1,'Laila','Robertson', 'lailarobertson@gmail.com','(581) 982-7934', '11 Brook St.', 'Hope Mills', 'NC', 23348,'Green-Lowe'),
 (2,'Cristina','Murray', 'cristinamurray@gmail.com','(995) 323-768', '148 Ridge Avenue', 'Dickson', 'TN', 37055,'Bradtke Group'),
