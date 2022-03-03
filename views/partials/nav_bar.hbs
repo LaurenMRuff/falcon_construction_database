@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang = "en">
+<!-- Nav Bar -->
+<nav class = "navbar navbar-expand-lg navbar-light bg-light" style="background-color: #912d2d; color: rgb(11, 12, 11);">
+    <a class = "navbar-brand" href = "/">Falcon Construction DB</a>
+    <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbarTogglerDemo02"
+            aria-controls = "navbarTogglerDemo02" aria-expanded = "false" aria-label = "Toggle navigation">
+        <span class = "navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Bar Options -->
+    <div class = "collapse navbar-collapse" id = "navbarTogglerDemo02">
+        <ul class = "navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class = "nav-item">
+                {{#each data.links}}
+                    <a class="nav-link {{#if this.active}}active{{/if}}" href="/views/{{this.link}}">{{this.fileName}}</a>
+                {{/each}}
+            </li>
+            <li class = "nav-item">
+                <a class = "nav-link" href = "/jobs">Jobs</a>
+            </li>
+            <li class = "nav-item">
+                <a class = "nav-link" href = "/employees">Employees</a>
+            </li>
+            <li class = "nav-item">
+                <a class = "nav-link" href = "/customers">Customers</a>
+            </li>
+            <li class = "nav-item">
+                <a class = "nav-link" href = "/categories">Categories</a>
+            </li>
+            <li class = "nav-item">
+                <a class = "nav-link" href = "/job_employees">Job_Employees</a>
+            </li>
+        </ul>
+    </div>
+    <!-- End Nav Bar Options -->
+</nav>
+<!-- End Nav Bar -->
+
+</html>

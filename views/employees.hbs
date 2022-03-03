@@ -1,0 +1,168 @@
+<!-- Need to use NVM 10.18.0-->
+
+<head>
+    <meta charset = "UTF-8">
+    <title> Falcon Construction Database Page </title>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap 5.1.3 CSS -->
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin = "anonymous">
+
+    <!-- NEEDED FOR NAV BAR -->
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+<!--Navigation bar-->
+<div id = "nav_bar"></div>
+<script>
+    $(function () {
+        $("#nav_bar").load("nav_bar.html");
+    });
+</script>
+<!--End Navigation bar-->
+
+<!-- FORM -->
+<div class = "container-fluid" style = "margin-top:50px; margin-bottom: 50px;">
+    <div class = "card">
+        <div class = "card-body">
+            <h4>Add a new Employee</h4>
+            <div class = "form-row">
+                <div class = "col-md-5 mb-3">
+                    <label for = "employee_first_name">First name<sup>*</sup></label>
+                    <input type = "text" class = "form-control" id = "employee_first_name" name = "employee_first_name"
+                           required>
+                </div>
+                <div class = "col-md-5 mb-3">
+                    <label for = "employee_last_name">Last name<sup>*</sup></label>
+                    <input type = "text" class = "form-control" id = "employee_last_name" name = "employee_last_name"
+                           required>
+                </div>
+                <div class = "col-md-2 mb-3">
+                    <label for = "employee_code">Employee Code<sup>*</sup></label>
+                    <input type = "text" class = "form-control" id = "employee_code" name = "employee_code" required>
+                </div>
+            </div>
+            <div class = "form-row">
+                <div class = "col-md-8 mb-3">
+                    <label for = "employee_email">Email<sup>*</sup></label>
+                    <input type = "text" class = "form-control" id = "employee_email" name = "employee_email" required>
+                </div>
+                <div class = "col-md-4 mb-3">
+                    <!-- Possibly make employee title a dropdown selection? -->
+                    <label for = "employee_title">Title<sup>*</sup></label>
+                    <input type = "text" class = "form-control" id = "employee_title" name = "employee_title" required>
+                </div>
+            </div>
+            <div class = "text-center">
+                <button type = "button" class = "btn btn-secondary" name = "submit_new_customer">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End FORM -->
+
+<!-- Editable EMPLOYEES table -->
+<div class = "container-fluid">
+    <div class = "card text-center">
+        <div class = "card-header font-weight-bold text-uppercase py-4" style = "font-size: 26px">Employees Table</div>
+        <div class = "card-body">
+            <table class = "table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                <tr>
+                    <th class = "text-center">Employee ID</th>
+                    <th class = "text-center">Employee Code</th>
+                    <th class = "text-center">First Name</th>
+                    <th class = "text-center">Last Name</th>
+                    <th class = "text-center">Email</th>
+                    <th class = "text-center">Job Title</th>
+                    <th class = "text-center">Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">1</td>
+                    <td class = "pt-3-half" contenteditable = "true">SUSW</td>
+                    <td class = "pt-3-half" contenteditable = "true">Susan</td>
+                    <td class = "pt-3-half" contenteditable = "true">Werner</td>
+                    <td class = "pt-3-half" contenteditable = "true">susw@falconconstruction.com</td>
+                    <td class = "pt-3-half" contenteditable = "true">Lead Foreman</td>
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
+                </tr>
+                <!-- Cloneable table line -->
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">10</td>
+                    <td class = "pt-3-half" contenteditable = "true">BARL</td>
+                    <td class = "pt-3-half" contenteditable = "true">Barbara</td>
+                    <td class = "pt-3-half" contenteditable = "true">Lamb</td>
+                    <td class = "pt-3-half" contenteditable = "true">blamb@falconconstruction.com</td>
+                    <td class = "pt-3-half" contenteditable = "true">Foreman</td>
+
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
+                </tr>
+                <!-- Cloneable table line -->
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">11</td>
+                    <td class = "pt-3-half" contenteditable = "true">JOAR</td>
+                    <td class = "pt-3-half" contenteditable = "true">Joan</td>
+                    <td class = "pt-3-half" contenteditable = "true">Rogers</td>
+                    <td class = "pt-3-half" contenteditable = "true">joar@falconconstruction.com</td>
+                    <td class = "pt-3-half" contenteditable = "true">Manager</td>
+
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
+                    <!-- This is our Cloneable table line -->
+                    <!-- Cloneable table line -->
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">12</td>
+                    <td class = "pt-3-half" contenteditable = "true">DANH</td>
+                    <td class = "pt-3-half" contenteditable = "true">Danny</td>
+                    <td class = "pt-3-half" contenteditable = "true">Hamilton</td>
+                    <td class = "pt-3-half" contenteditable = "true">danh@falconconstruction.com</td>
+                    <td class = "pt-3-half" contenteditable = "true">Lead Foreman</td>
+
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
+
+                    <!-- Cloneable table line -->
+                <tr>
+                    <td class = "pt-3-half" contenteditable = "true">25</td>
+                    <td class = "pt-3-half" contenteditable = "true">KARJ</td>
+                    <td class = "pt-3-half" contenteditable = "true">Karen</td>
+                    <td class = "pt-3-half" contenteditable = "true">Jones</td>
+                    <td class = "pt-3-half" contenteditable = "true">karj@falconconstruction.com</td>
+                    <td class = "pt-3-half" contenteditable = "true">Foreman</td>
+
+                    <td>
+                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- End Editable EMPLOYEES table -->
+
+<!-- FOOTER -->
+<div id = "footer"></div>
+<script>
+    $(function () {
+        $("#footer").load("footer.html");
+    });
+
+    $(document).ready(function () {
+        $("a[href='" + window.location.href + "']").addClass("active");
+    });
+</script>
+<!-- END FOOTER -->
+
+</body>

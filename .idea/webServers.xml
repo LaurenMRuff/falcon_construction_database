@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="71a53b6d-e00b-49df-861c-747b2a02e324" name="OSU" url="http://os1.engr.oregonstate.edu">
+        <fileTransfer accessType="FTPS" host="os1.engr.oregonstate.edu" port="22">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
