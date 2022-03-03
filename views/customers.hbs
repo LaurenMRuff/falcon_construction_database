@@ -1,152 +1,158 @@
 <!-- Need to use NVM 10.18.0-->
-<!Doctype>
-<html lang = "en">
 
 <head>
-    <meta charset = "UTF-8">
+    <meta charset="UTF-8">
     <title> Falcon Construction Database Page </title>
-    <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap 5.1.3 CSS -->
-    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin = "anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- NEEDED FOR NAV BAR -->
-    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body>
-<!--Navigation bar-->
-<div id = "nav_bar"></div>
-<script>
-    $(function () {
-        $("#nav_bar").load("nav_bar.html");
-    });
-</script>
-<!--End Navigation bar-->
+    <!--Navigation bar-->
+    <div id="nav_bar"></div>
+    <script>
+        $(function () {
+            $("#nav_bar").load("nav_bar.html");
+        });
+    </script>
+    <!--End Navigation bar-->
 
-<!-- FORM -->
-<div class = "container-fluid" style = "margin-top:50px; margin-bottom: 50px;">
-    <div class = "card">
-        <div class = "card-body">
-            <h4>Add a new Customer</h4>
-            <div class = "form-row">
-                <div class = "col-md-6 mb-3">
-                    <label for = "customer_first_name">First name<sup>*</sup></label>
-                    <input type = "text" class = "form-control" id = "customer_first_name" name = "customer_first_name"
-                           required>
-                </div>
-                <div class = "col-md-6 mb-3">
-                    <label for = "customer_last_name">Last name<sup>*</sup></label>
-                    <input type = "text" class = "form-control" id = "customer_last_name" name = "customer_last_name"
-                           required>
-                </div>
-            </div>
-            <div class = "form-row">
-                <div class = "col-md-4 mb-3">
-                    <label for = "customer_phone">Phone number<sup>*</sup></label>
-                    <input type = "text" class = "form-control" id = "customer_phone" name = "customer_phone" required>
-                </div>
-                <div class = "col-md-4 mb-3">
-                    <label for = "customer_email">Email<sup>*</sup></label>
-                    <input type = "text" class = "form-control" id = "customer_email" name = "customer_email" required>
-                </div>
-                <div class = "col-md-4 mb-3">
-                    <label for = "customer_company">Company (optional)</label>
-                    <input type = "text" class = "form-control" id = "customer_company" name = "customer_company">
-                </div>
-            </div>
-            <div class = "form-row">Address Information</div>
-            <br>
-            <div class = "form-row">
-                <div class = "col-md-12 mb-3">
-                    <label for = "customer_address1">Address<sup>*</sup></label>
-                    <input type = "text" class = "form-control" id = "customer_address1" name = "customer_address1"
-                           required>
-                </div>
-            </div>
-            <div class = "form-row">
-                <div class = "col-md-6 mb-3">
-                    <label for = "customer_city">City<sup>*</sup></label>
-                    <input type = "text" class = "form-control" id = "customer_city" name = "customer_city" required>
-                </div>
-                <div class = "col-md-3 mb-3">
-                    <label for = "customer_state">State<sup>*</sup></label>
-                    <input type = "text" class = "form-control" id = "customer_state" name = "customer_state" required>
-                </div>
-                <div class = "col-md-3 mb-3">
-                    <label for = "customer_zip_code">Zip code<sup>*</sup></label>
-                    <input type = "text" class = "form-control" id = "customer_zip_code" name = "customer_zip_code"
-                           required>
-                </div>
-            </div>
-            <div class = "text-center">
-                <button type = "button" class = "btn btn-secondary" name = "submit_new_customer">Submit</button>
+    <!-- FORM -->
+    <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
+        <div class="card">
+            <div class="card-body">
+                <h4>Add a new Customer</h4>
+                <form id="add-new-customer">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="customer_first_name">First name<sup>*</sup></label>
+                            <input type="text" class="form-control" id="customer_first_name" name="customer_first_name"
+                                required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="customer_last_name">Last name<sup>*</sup></label>
+                            <input type="text" class="form-control" id="customer_last_name" name="customer_last_name"
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="customer_phone">Phone number<sup>*</sup></label>
+                            <input type="text" class="form-control" id="customer_phone" name="customer_phone" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="customer_email">Email<sup>*</sup></label>
+                            <input type="text" class="form-control" id="customer_email" name="customer_email" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="customer_company">Company (optional)</label>
+                            <input type="text" class="form-control" id="customer_company" name="customer_company">
+                        </div>
+                    </div>
+                    <div class="form-row">Address Information</div>
+                    <br>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="customer_address1">Address<sup>*</sup></label>
+                            <input type="text" class="form-control" id="customer_address1" name="customer_address1"
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="customer_city">City<sup>*</sup></label>
+                            <input type="text" class="form-control" id="customer_city" name="customer_city" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="customer_state_Select">State</label>
+                            <select class="form-control"  id="customer_state_Select" name="customer_state_Select" required>
+                                <option selected disabled>Select State</option>
+                                {{#each cusStates}}
+                                <option>{{this}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="customer_zip_code">Zip code<sup>*</sup></label>
+                            <input type="text" class="form-control" id="customer_zip_code" name="customer_zip_code"
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-row text-center justify-content-center">
+                        <button type="submit" class="btn btn-secondary" form="add-new-customer" formmethod="post"
+                            formaction="/add-customer">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
-<!-- END FORM -->
+    <!-- END FORM -->
 
-<!-- Editable CUSTOMER table -->
-<div class = "container-fluid">
-    <div class = "card text-center">
-        <div class = "card-header font-weight-bold text-uppercase py-4" style = "font-size: 26px">Customers Table</div>
-        <div class = "card-body">
-            <table class = "table table-bordered table-responsive-md table-striped text-center">
-                <thead>
-                <tr>
-                    <th class = "text-center">Customer ID</th>
-                    <th class = "text-center">First Name</th>
-                    <th class = "text-center">Last Name</th>
-                    <th class = "text-center">Email</th>
-                    <th class = "text-center">Phone</th>
-                    <th class = "text-center">Company</th>
-                    <th class = "text-center">Address</th>
-                    <th class = "text-center">City</th>
-                    <th class = "text-center">State</th>
-                    <th class = "text-center">Zip Code</th>
-                    <th class = "text-center">Update</th>
-                </tr>
-                </thead>
-                <tbody>
-                {{#each data}}
-                    <tr>
-                        <td class = "pt-3-half">{{this.customer_id}}</td>
-                        <td class = "pt-3-half">{{this.customer_first_name}}</td>
-                        <td class = "pt-3-half">{{this.customer_last_name}}</td>
-                        <td class = "pt-3-half">{{this.customer_email}}</td>
-                        <td class = "pt-3-half">{{this.customer_phone}}</td>
-                        <td class = "pt-3-half">{{this.customer_company}}</td>
-                        <td class = "pt-3-half">{{this.customer_address}}</td>
-                        <td class = "pt-3-half">{{this.customer_city}}</td>
-                        <td class = "pt-3-half">{{this.customer_state}}</td>
-                        <td class = "pt-3-half">{{this.customer_zip_code}}</td>
+    <!-- Editable CUSTOMER table -->
+    <div class="container-fluid">
+        <div class="card text-center">
+            <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">Customers Table</div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Customer ID</th>
+                            <th class="text-center">First Name</th>
+                            <th class="text-center">Last Name</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Phone</th>
+                            <th class="text-center">Company</th>
+                            <th class="text-center">Address</th>
+                            <th class="text-center">City</th>
+                            <th class="text-center">State</th>
+                            <th class="text-center">Zip Code</th>
+                            <th class="text-center">Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each data}}
+                        <tr>
+                            <td class="pt-3-half">{{this.customer_id}}</td>
+                            <td class="pt-3-half">{{this.customer_first_name}}</td>
+                            <td class="pt-3-half">{{this.customer_last_name}}</td>
+                            <td class="pt-3-half">{{this.customer_email}}</td>
+                            <td class="pt-3-half">{{this.customer_phone}}</td>
+                            <td class="pt-3-half">{{this.customer_company}}</td>
+                            <td class="pt-3-half">{{this.customer_address}}</td>
+                            <td class="pt-3-half">{{this.customer_city}}</td>
+                            <td class="pt-3-half">{{this.customer_state}}</td>
+                            <td class="pt-3-half">{{this.customer_zip_code}}</td>
 
-                        <td>
-                            <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                        </td>
-                    </tr>
-                {{/each}}
-                </tbody>
-            </table>
+                            <td>
+                                <button type="button" class="btn btn-dark btn-sm my-0"> Update</button>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-<!-- Editable CUSTOMER table -->
+    <!-- Editable CUSTOMER table -->
 
-<!-- FOOTER -->
-<div id = "footer"></div>
-<script>
-    $(function () {
-        $("#footer").load("footer.html");
-    });
+    <!-- FOOTER -->
+    <div id="footer"></div>
+    <script>
+        $(function () {
+            $("#footer").load("footer.html");
+        });
 
-    $(document).ready(function () {
-        $("a[href='" + window.location.href + "']").addClass("active");
-    });
-</script>
-<!-- END FOOTER -->
+        $(document).ready(function () {
+            $("a[href='" + window.location.href + "']").addClass("active");
+        });
+    </script>
+    <!-- END FOOTER -->
 
 </body>
+
 </html>
