@@ -274,8 +274,8 @@ app.get('/job_employees', function (req, res) {
     let employee_id = [];
     let job_id = [];
 
-    let queryEmployeeID = `SELECT employee_id FROM Employees ORDER BY employee_id`;
-    let queryJobID = `SELECT category_id FROM Jobs ORDER BY category_id`;
+    let queryEmployeeID = `SELECT employee_id FROM Employees`;
+    let queryJobID = `SELECT job_id FROM Jobs`;
 
     db.pool.query(queryEmployeeID, function (err, rows, fields) {
         for (let i = 0; i < rows.length; i++) {
@@ -291,7 +291,7 @@ app.get('/job_employees', function (req, res) {
 
 
     //SELECTS ALL JOB_EMPLOYEES FROM JOB_EMPLOYEES TABLE AND ADDS THEM TO HTML TABLE
-    let queryJobEmployees = "SELECT * FROM Job_Employees ORDER BY job_employee_id;";
+    let queryJobEmployees = `SELECT * FROM Job_Employees ORDER BY job_employee_id;`;
     db.pool.query(queryJobEmployees, function (err, rows, fields) {
         res.render('job_employees', { title: "Job_Employees Page", active: { Register: true }, data: rows,
             employee_id : employee_id, job_id : job_id}
@@ -325,7 +325,7 @@ app.post('/add-job-employee', function (req, res) {
             // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
         // presents it on the screen
         else {
-            res.redirect('/employees');
+            res.redirect('/job_employees');
         }
     })
 });
@@ -347,7 +347,7 @@ app.get('/job_employees_search', function (req, res) {
         `SELECT Job_Employees.job_employee_id AS job_employee_id, 
                 Jobs.job_id AS job_id, 
                 Jobs.job_description AS job_description, 
-                Job_Employees.fk_employee_id AS employee_id, 
+                Employees.employee_id AS employee_id, 
                 CONCAT(Employees.employee_first_name, ' ', Employees.employee_last_name) AS name, 
                 Employees.employee_job_title AS title, 
                 Categories.category_id AS category_id, 
@@ -355,7 +355,7 @@ app.get('/job_employees_search', function (req, res) {
         FROM Employees 
             INNER JOIN Job_Employees ON Employees.employee_id = Job_Employees.fk_employee_id 
             INNER JOIN Jobs ON Jobs.job_id = Job_Employees.fk_job_id 
-            INNER JOIN Categories ON Categories.category_id = Jobs.category_id 
+            INNER JOIN Categories ON Categories.category_id = Jobs.fk_category_id 
         ORDER BY Job_Employees.job_employee_id;`;
     
     db.pool.query(queryJobEmployeesSearch, function (err, rows, fields) {
