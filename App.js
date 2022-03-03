@@ -277,7 +277,8 @@ app.get('/job_employees', function (req, res) {
     //SELECTS ALL JOB_EMPLOYEES FROM JOB_EMPLOYEES TABLE AND ADDS THEM TO HTML TABLE
     let queryJobEmployees = "SELECT * FROM Job_Employees ORDER BY job_employee_id;";
     db.pool.query(queryJobEmployees, function (err, rows, fields) {
-        res.render('job_employees', { title: "Job_Employees Page", active: { Register: true }, data: rows });
+        res.render('job_employees', { title: "Job_Employees Page", active: { Register: true }, data: rows }
+        );
     })
 });
 
@@ -294,10 +295,8 @@ app.get('/job_employees_search', function (req, res) {
         }
     })
 
-
-    let queryJobEmployeesSearch = 
-    "SELECT je.job_employee_id AS job_employee_id, e.employee_id AS employee_id, CONCAT(e.employee_first_name, ' ', e.employee_last_name) AS name, e.employee_job_title AS title, j.job_id AS job_id, j.job_description AS job_description, c.category_id AS category_id, c.category_name AS category_name FROM Employees AS e INNER JOIN Job_Employees AS je ON e.employee_id = je.employee_id INNER JOIN Jobs AS j ON j.job_id = je.job_id INNER JOIN Categories AS c ON c.category_id = j.category_id ORDER BY je.job_employee_id;";
-
+    let queryJobEmployeesSearch = "SELECT Job_Employees.job_employee_id, Job_Employees.fk_job_id AS job_id, Jobs.job_description, Job_Employees.fk_employee_id AS employee_id, CONCAT(Employees.employee_first_name, ' ', Employees.employee_last_name) AS name, Employees.employee_job_title AS title, Categories.category_id, Categories.category_name FROM Employees INNER JOIN Job_Employees ON Employees.employee_id = Job_Employees.fk_employee_id INNER JOIN Jobs ON Jobs.job_id = Job_Employees.fk_job_id INNER JOIN Categories ON Categories.category_id = Jobs.category_id ORDER BY Job_Employees.job_employee_id;";
+    
     db.pool.query(queryJobEmployeesSearch, function (err, rows, fields) {
         //console.log(rows);
         res.render('job_employees_search', { title: "Job_Employees Search Page", active: { Register: true }, data: rows, job_id: job_id });
