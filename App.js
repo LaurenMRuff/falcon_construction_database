@@ -28,7 +28,7 @@ app.get('/', function(req, res)
 
 app.get('/jobs', function(req, res)
 {
-    let queryAllJobs = "SELECT * FROM Jobs;";
+    let queryAllJobs = "SELECT * FROM Jobs ORDER BY job_id;";
 
     db.pool.query(queryAllJobs, function(err, rows, fields){
         res.render('jobs', {title: "Jobs Page", active: {Register: true}, data:rows});
@@ -37,27 +37,47 @@ app.get('/jobs', function(req, res)
 
 app.get('/customers', function(req, res)
 {
-    let queryAllCustomers = "SELECT * FROM Customers;";
+    let queryAllCustomers = "SELECT * FROM Customers ORDER BY customer_id;";
 
     db.pool.query(queryAllCustomers, function(err, rows, fields) {
         res.render('customers', {title: "Customers Page", active: {Register: true}, data:rows});
     })
 });
+
 app.get('/categories', function(req, res)
 {
-    res.render('categories', {title: "Categories Page", active: {Register: true}});
+    let queryAllCategories = "SELECT * FROM Categories ORDER BY category_id;";
+
+    db.pool.query(queryAllCategories, function(err, rows, fields) {
+        res.render('categories', {title: "Categories Page", active: {Register: true}, data:rows});
+    })
 });
+
 app.get('/employees', function(req, res)
 {
-    res.render('employees', {title: "Employees Page", active: {Register: true}});
+    let queryAllEmployees = "SELECT * FROM Employees ORDER BY employee_id;";
+
+    db.pool.query(queryAllEmployees, function(err, rows, fields) {
+        res.render('employees', {title: "Employees Page", active: {Register: true}, data:rows});
+    })
 });
+
 app.get('/job_employees', function(req, res)
 {
-    res.render('job_employees', {title: "Job_Employees Page", active: {Register: true}});
+    let queryJobEmployees = "SELECT * FROM Job_Employees ORDER BY job_employee_id;";
+
+    db.pool.query(queryJobEmployees, function(err, rows, fields){
+        res.render('job_employees', {title: "Job_Employees Page", active: {Register: true}, data:rows});
+    })
 });
+
 app.get('/job_employees_search', function(req, res)
 {
-    res.render('job_employees_search', {title: "Job_Employees Search Page", active: {Register: true}});
+    // let queryJobEmployeesSearch = "SELECT je.job_employee_id, e.employee_id, CONCAT(e.employee_first_name, ' ', e.employee_last_name) AS name, e.employee_job_title AS title, j.job_id, j.job_description, c.category_id, c.category_name FROM Employees AS e INNER JOIN Job_Employees AS je ON e.employee_id = je.employee_id INNER JOIN Jobs AS j ON j.job_id = je.job_id INNER JOIN Categories AS c ON c.category_id = j.category_id ORDER BY je.job_employee_id;";
+
+    // db.pool.query(queryJobEmployeesSearch, function(err, rows, fields) {
+        res.render('job_employees_search', {title: "Job_Employees Search Page", active: {Register: true}});
+    // })
 });
 
 /*

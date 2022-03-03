@@ -233,7 +233,7 @@ SELECT je.job_employee_id,
         CONCAT(e.employee_first_name, ' ', e.employee_last_name) AS name,
         e.employee_job_title AS title,
         j.job_id,
-        e.job_description,
+        j.job_description,
         c.category_id,
         c.category_name
 FROM Employees AS e

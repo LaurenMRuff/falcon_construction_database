@@ -58,107 +58,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">1</td>
-                    <td class = "pt-3-half" contenteditable = "true">Single Family Home</td>
+                {{#each data}}
+                    <tr>
+                        <td class = "pt-3-half">{{this.category_id}}</td>
+                        <td class = "pt-3-half">{{this.category_name}}</td>
 
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-                <!-- clonable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">2</td>
-                    <td class = "pt-3-half" contenteditable = "true">Condominium</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-                <!-- Clonable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">3</td>
-                    <td class = "pt-3-half" contenteditable = "true">Townhome</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-                <!-- Cloneable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">4</td>
-                    <td class = "pt-3-half" contenteditable = "true">Multifamily</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-                <!-- Clonable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">5</td>
-                    <td class = "pt-3-half" contenteditable = "true">Highway</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-
-                <!-- Clonable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">6</td>
-                    <td class = "pt-3-half" contenteditable = "true">Pipeline</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-
-                <!-- Clonable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">7</td>
-                    <td class = "pt-3-half" contenteditable = "true">Road</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-
-                <!-- Clonable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">8</td>
-                    <td class = "pt-3-half" contenteditable = "true">Railroad</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">9</td>
-                    <td class = "pt-3-half" contenteditable = "true">Restaurant</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">10</td>
-                    <td class = "pt-3-half" contenteditable = "true">Medical Facility</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">11</td>
-                    <td class = "pt-3-half" contenteditable = "true">Sports Facility</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
+                        <td>
+                            <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                        </td>
+                    </tr>
+                {{/each}}
                 </tbody>
             </table>
         </div>

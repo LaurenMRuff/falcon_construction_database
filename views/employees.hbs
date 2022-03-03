@@ -82,69 +82,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">1</td>
-                    <td class = "pt-3-half" contenteditable = "true">SUSW</td>
-                    <td class = "pt-3-half" contenteditable = "true">Susan</td>
-                    <td class = "pt-3-half" contenteditable = "true">Werner</td>
-                    <td class = "pt-3-half" contenteditable = "true">susw@falconconstruction.com</td>
-                    <td class = "pt-3-half" contenteditable = "true">Lead Foreman</td>
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-                <!-- Cloneable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">10</td>
-                    <td class = "pt-3-half" contenteditable = "true">BARL</td>
-                    <td class = "pt-3-half" contenteditable = "true">Barbara</td>
-                    <td class = "pt-3-half" contenteditable = "true">Lamb</td>
-                    <td class = "pt-3-half" contenteditable = "true">blamb@falconconstruction.com</td>
-                    <td class = "pt-3-half" contenteditable = "true">Foreman</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
-                <!-- Cloneable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">11</td>
-                    <td class = "pt-3-half" contenteditable = "true">JOAR</td>
-                    <td class = "pt-3-half" contenteditable = "true">Joan</td>
-                    <td class = "pt-3-half" contenteditable = "true">Rogers</td>
-                    <td class = "pt-3-half" contenteditable = "true">joar@falconconstruction.com</td>
-                    <td class = "pt-3-half" contenteditable = "true">Manager</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                    <!-- This is our Cloneable table line -->
-                    <!-- Cloneable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">12</td>
-                    <td class = "pt-3-half" contenteditable = "true">DANH</td>
-                    <td class = "pt-3-half" contenteditable = "true">Danny</td>
-                    <td class = "pt-3-half" contenteditable = "true">Hamilton</td>
-                    <td class = "pt-3-half" contenteditable = "true">danh@falconconstruction.com</td>
-                    <td class = "pt-3-half" contenteditable = "true">Lead Foreman</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-
-                    <!-- Cloneable table line -->
-                <tr>
-                    <td class = "pt-3-half" contenteditable = "true">25</td>
-                    <td class = "pt-3-half" contenteditable = "true">KARJ</td>
-                    <td class = "pt-3-half" contenteditable = "true">Karen</td>
-                    <td class = "pt-3-half" contenteditable = "true">Jones</td>
-                    <td class = "pt-3-half" contenteditable = "true">karj@falconconstruction.com</td>
-                    <td class = "pt-3-half" contenteditable = "true">Foreman</td>
-
-                    <td>
-                        <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
-                    </td>
-                </tr>
+                {{#each data}}
+                    <tr>
+                        <td class = "pt-3-half">{{this.employee_id}}</td>
+                        <td class = "pt-3-half">{{this.employee_code}}</td>
+                        <td class = "pt-3-half">{{this.employee_first_name}}</td>
+                        <td class = "pt-3-half">{{this.employee_last_name}}</td>
+                        <td class = "pt-3-half">{{this.employee_email}}</td>
+                        <td class = "pt-3-half">{{this.employee_job_title}}</td>
+                        <td>
+                            <button type = "button" class = "btn btn-dark btn-sm my-0"> Update</button>
+                        </td>
+                    </tr>
+                {{/each}}
                 </tbody>
             </table>
         </div>
