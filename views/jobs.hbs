@@ -35,28 +35,28 @@
                             <select class="form-control" name="customer_ID_Select" id="customer_ID_Select" onchange="document.add_new_job.customer_name.value=this.options[this.selectedIndex].value" required>
                                 <option selected disabled>Select Customer ID</option>
                                 {{#each customers}}
-                                <option value='{{this.[1]}}'>{{this.[0]}}</option>
+                                <option value='{{this.[0]}}'>{{this.[1]}}</option>
                                 {{/each}}
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="customer_name"></label>
                             <input class="form-control" type="text" id="customer_name" name="customer_name" value=""
-                                placeholder="Selected customer name will appear here..." disabled>
+                                placeholder="Selected customer id for selected name will appear here..." disabled>
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="category_ID_Select"></label>
                             <select class="form-control" name="category_ID_Select" id="category_ID_Select" onchange="document.add_new_job.category_name.value=this.options[this.selectedIndex].value" required>
                                 <option selected disabled>Select Category ID</option>
                                 {{#each categories}}
-                                <option value='{{this.[1]}}'>{{this.[0]}}</option>
+                                <option value='{{this.[0]}}'>{{this.[1]}}</option>
                                 {{/each}}
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="category_name"></label>
                             <input class="form-control" type="text" id="category_name" name="category_name" value=""
-                                placeholder="Selected category name will appear here..." disabled>
+                                placeholder="Selected category id for selected name will appear here..." disabled>
                         </div>
                     </div>
                     <div class="form-row">
