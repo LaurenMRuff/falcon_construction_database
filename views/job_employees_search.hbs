@@ -27,26 +27,24 @@
     <!-- FORM -->
     <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
         <div class="card">
-            <div class="card-header font-weight-bold text-uppercase py-4 text-center" style="font-size: 26px"> Search
-                for Employees Working on Jobs </div>
+            <div class="card-header font-weight-bold text-uppercase py-4 text-center" style="font-size: 26px"> Search for Employees Working on Jobs </div>
             <div class="card-body">
                 <form id="search-for-relationship" name="search_for_relationship">
                     <div class="form-row">
                         <div class="col-md-5 mb-3">
                             <label for="job_id"></label>
-                            <select class="form-control" id="job_id" name="job_id"
-                                onchange="document.search_for_relationship.job_info.value=this.options[this.selectedIndex].value"
-                                required>
+                            <select class="form-control" id="job_id" name="job_id" required> <!--onchange="document.search_for_relationship.job_info.value=this.options[this.selectedIndex].value"-->
                                 <option selected>Select an existing job</option>
                                 {{#each job_id}}
-                                <option value='{{this.[0]}}'>{{this.[1]}}</option>
+                                    <option>{{this}}</option>
+                                    <!--<option value='{{this.[1]}}'>{{this.[0]}}</option>-->
                                 {{/each}}
                             </select>
                         </div>
                         <div class="col-md-7 mb-3">
                             <label for="job_info"></label>
                             <input class="form-control" id="job_info" name="job_info" type="text"
-                                value="Job code - Job description will be read-only" readonly>
+                                   value="Job code - Job description will be read-only" readonly>
                         </div>
                     </div>
 
@@ -56,22 +54,22 @@
                 </form>
             </div>
             <div class="card-body">
-                <h3 class="text-center" style="margin-top: 40px;">Search Results</h3>
+                <h3 class="text-center"style="margin-top: 40px;">Search Results</h3>
                 <table class="table table-bordered table-responsive-md table-striped text-center">
                     <thead>
-                        <tr>
-                            <th class="text-center">Job_Employee ID</th>
-                            <th class="text-center">Job ID</th>
-                            <th class="text-center">Job Description</th>
-                            <th class="text-center">Employee ID</th>
-                            <th class="text-center">Employee Name</th>
-                            <th class="text-center">Employee Title</th>
-                            <th class="text-center">Category ID</th>
-                            <th class="text-center">Category Name</th>
-                        </tr>
+                    <tr>
+                        <th class="text-center">Job_Employee ID</th>
+                        <th class="text-center">Job ID</th>
+                        <th class="text-center">Job Description</th>
+                        <th class="text-center">Employee ID</th>
+                        <th class="text-center">Employee Name</th>
+                        <th class="text-center">Employee Title</th>
+                        <th class="text-center">Category ID</th>
+                        <th class="text-center">Category Name</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        {{#each data}}
+                    {{#each data}}
                         <tr>
                             <td class="pt-3-half">{{this.job_employee_id}}</td>
                             <td class="pt-3-half">{{this.job_id}}</td>
@@ -82,7 +80,7 @@
                             <td class="pt-3-half">{{this.category_id}}</td>
                             <td class="pt-3-half">{{this.category_name}}</td>
                         </tr>
-                        {{/each}}
+                    {{/each}}
                     </tbody>
                 </table>
             </div>
@@ -90,7 +88,7 @@
     </div>
     <!-- END FORM -->
 
-    <!-- <div class="container-fluid">
+   <!-- <div class="container-fluid">
         <div class="card text-center">
             <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">Search Results</div>
             <div class="card-body">

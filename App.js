@@ -34,17 +34,19 @@ app.get('/jobs', function (req, res) {
 
     // queries
     let queryAllJobs = `SELECT * FROM Jobs ORDER BY job_id;`;
-    let queryCustomerID = `SELECT customer_id, CONCAT(customer_first_name, ' ', customer_last_name) AS name FROM Customers ORDER BY customer_id`;
-    let queryCategoryID = `SELECT category_id, category_name FROM Categories ORDER BY category_id`;
+    let queryCustomerID = `SELECT customer_id/*, CONCAT(customer_first_name, ' ', customer_last_name) AS name*/ FROM Customers ORDER BY customer_id`;
+    let queryCategoryID = `SELECT category_id/*, category_name*/ FROM Categories ORDER BY category_id`;
 
     db.pool.query(queryCustomerID, function (err, rows, fields) {
         for (let i = 0; i < rows.length; i++) {
-            customers.push([rows[i]["customer_id"], rows[i]["name"]]);
+            customers.push(rows[i]["customer_id"]);
+            /*customers.push([rows[i]["customer_id"], rows[i]["name"]]);*/
         }
     })
     db.pool.query(queryCategoryID, function (err, rows, fields) {
         for (let i = 0; i < rows.length; i++) {
-            categories.push([rows[i]["category_id"], rows[i]["category_name"]]);
+            categories.push(rows[i]["category_id"]);
+            /*categories.push([rows[i]["category_id"], rows[i]["category_name"]]);*/
         }
     })
 
@@ -271,18 +273,20 @@ app.get('/job_employees', function (req, res) {
     let employee_id = [];
     let job_id = [];
 
-    let queryEmployeeID = `SELECT employee_id, CONCAT(employee_first_name, ' ', employee_last_name) AS employee_name FROM Employees ORDER BY employee_id`;
-    let queryJobID = `SELECT job_id, CONCAT(job_code, ' - ', job_description) AS job_info FROM Jobs ORDER BY job_id`;
+    let queryEmployeeID = `SELECT employee_id/*, CONCAT(employee_first_name, ' ', employee_last_name) AS employee_name*/ FROM Employees ORDER BY employee_id`;
+    let queryJobID = `SELECT job_id/*, CONCAT(job_code, ' - ', job_description) AS job_info*/ FROM Jobs ORDER BY job_id`;
 
     db.pool.query(queryEmployeeID, function (err, rows, fields) {
         for (let i = 0; i < rows.length; i++) {
-            employee_id.push([rows[i]["employee_id"], rows[i]["employee_name"]]);
+            employee_id.push(rows[i]["employee_id"]);
+           /* employee_id.push([rows[i]["employee_id"], rows[i]["employee_name"]]);*/
         }
     })
 
     db.pool.query(queryJobID, function (err, rows, fields) {
         for (let i = 0; i < rows.length; i++) {
-            job_id.push([rows[i]["job_id"], rows[i]["job_info"]]);
+            job_id.push(rows[i]["job_id"]);
+            /*job_id.push([rows[i]["job_id"], rows[i]["job_info"]]);*/
         }
     })
 
@@ -299,6 +303,8 @@ app.get('/job_employees', function (req, res) {
 //  WORKS - CREATE/INSERT Job_Employee
 app.post('/add-job-employee', function (req, res) {
     let data = req.body;
+
+    console.log(data);
 
     let queryAddJobEmployee =
         `INSERT INTO Job_Employees (
@@ -332,7 +338,7 @@ app.get('/job_employees_search', function (req, res) {
 
     let job_id = []
 
-    let queryJobID = `SELECT job_id, CONCAT(job_code, ' - ', job_description) AS job_info FROM Jobs ORDER BY job_id`;
+    let queryJobID = `SELECT job_id/*, CONCAT(job_code, ' - ', job_description) AS job_info*/ FROM Jobs ORDER BY job_id`;
 
     db.pool.query(queryJobID, function (err, rows, fields) {
         for (let i = 0; i < rows.length; i++) {
@@ -340,11 +346,11 @@ app.get('/job_employees_search', function (req, res) {
         }
     })
 
-    db.pool.query(queryJobID, function (err, rows, fields) {
+/*    db.pool.query(queryJobID, function (err, rows, fields) {
         for (let i = 0; i < rows.length; i++) {
             job_id.push([rows[i]["job_id"], rows[i]["job_info"]]);
         }
-    })
+    })*/
 
     let queryJobEmployeesSearch =
         `SELECT Job_Employees.job_employee_id AS job_employee_id, 
