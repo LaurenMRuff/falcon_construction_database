@@ -31,36 +31,36 @@
         <div class="card">
             <div class="card-body">
                 <h4>Add a new Job_Employee Relationship</h4>
-                <form id="add-job-employee">
+                <form id="add-job-employee" name="add_job_employee">
                 <div class="form-row">
                     <div class="col-md-5 mb-3">
                         <label for="employee_id"></label>
-                        <select class="form-control" id="employee_id" name="employee_id" required>
+                        <select class="form-control" id="employee_id" name="employee_id" onchange="document.add_job_employee.employee_name.value=this.options[this.selectedIndex].value" required>
                             <option selected>Select an existing employee</option>
                             {{#each employee_id}}
-                                <option>{{this}}</option>
+                                <option value='{{this.[1]}}'>{{this.[0]}}</option>
                             {{/each}}
                         </select>
                     </div>
                     <div class="col-md-7 mb-3">
-                        <label for="eid_name"></label>
-                        <input class="form-control" id="eid_name" name=eid_name" type="text"
+                        <label for="employee_name"></label>
+                        <input class="form-control" id="employee_name" name="employee_name" type="text"
                             value="Employee code - F_name L_name will be read-only" readonly>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-5 mb-3">
                         <label for="job_id"></label>
-                        <select class="form-control" id="job_id" name="job_id" required>
+                        <select class="form-control" id="job_id" name="job_id" onchange="document.add_job_employee.job_info.value=this.options[this.selectedIndex].value" required>
                             <option selected>Select an existing job</option>
                             {{#each job_id}}
-                                <option>{{this}}</option>
+                                <option value='{{this.[1]}}'>{{this.[0]}}</option>
                             {{/each}}
                         </select>
                     </div>
                     <div class="col-md-7 mb-3">
-                        <label for="jid_desc"></label>
-                        <input class="form-control" id="jid_desc" name=jid_desc" type="text"
+                        <label for="job_info"></label>
+                        <input class="form-control" id="job_info" name="job_info" type="text"
                             value="Job code - Job description will be read-only" readonly>
                     </div>
                 </div>
