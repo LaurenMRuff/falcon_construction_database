@@ -36,8 +36,8 @@
                                 onchange="document.add_new_job.customer_name.value=this.options[this.selectedIndex].value"
                                 required>
                                 <option selected disabled>Select Customer ID</option>
-                                {{#each customers}}
-                                <option value='{{this.[0]}}'>{{this.[1]}}</option>
+                                {{#each customer_data}}
+                                <option value="{{this.customer_id}}">{{this.customer_name}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -52,8 +52,8 @@
                                 onchange="document.add_new_job.category_name.value=this.options[this.selectedIndex].value"
                                 required>
                                 <option selected disabled>Select Category ID</option>
-                                {{#each categories}}
-                                <option value='{{this.[0]}}'>{{this.[1]}}</option>
+                                {{#each category_data}}
+                                <option value={{this.category_id}}>{{this.category_name}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -77,7 +77,7 @@
                             <label for="job_status">Job status<sup>*</sup></label>
                             <select class="form-control" id="job_status" name="job_status" required>
                                 <option selected disabled>Select a job status</option>
-                                {{#each jobStatus}}
+                                {{#each job_status}}
                                 <option>{{this}}</option>
                                 {{/each}}
                             </select>
@@ -104,7 +104,7 @@
     </div>
     <!-- END FORM -->
 
-    <!-- Editable JOBS table -->
+    <!-- JOBS table -->
     <div class="container-fluid">
         <div class="card text-center">
             <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">Jobs Table</div>
@@ -124,7 +124,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each data}}
+                        {{#each all_job_data}}
                         <tr>
                             <td class="pt-3-half" style="word-break:break-all;">{{this.job_id}}</td>
                             <td class="pt-3-half" style="word-break:break-all;">{{this.fk_customer_id}}</td>
@@ -145,7 +145,7 @@
             </div>
         </div>
     </div>
-    <!-- Editable JOBS table -->
+    <!-- JOBS table -->
 
     <!-- FOOTER -->
     <div id="footer"></div>

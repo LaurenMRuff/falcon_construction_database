@@ -12,6 +12,10 @@
 
     <!-- NEEDED FOR NAV BAR -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="./javascript/delete_job_employee.js"></script>
 </head>
 
 <body>
@@ -37,8 +41,8 @@
                         <label for="employee_id"></label>
                         <select class="form-control" id="employee_id" name="employee_id" onchange="document.add_job_employee.employee_name.value=this.options[this.selectedIndex].value" required>
                             <option selected>Select an existing employee</option>
-                            {{#each employee_id}}
-                                <option value='{{this.[0]}}'>{{this.[1]}}</option>
+                            {{#each employee_data}}
+                                <option value="{{this.employee_id}}">{{this.employee_name}}</option>
                             {{/each}}
                         </select>
                     </div>
@@ -53,8 +57,8 @@
                         <label for="job_id"></label>
                         <select class="form-control" id="job_id" name="job_id" onchange="document.add_job_employee.job_info.value=this.options[this.selectedIndex].value" required>
                             <option selected>Select an existing job</option>
-                            {{#each job_id}}
-                                <option value='{{this.[0]}}'>{{this.[1]}}</option>
+                            {{#each job_data}}
+                                <option value="{{this.job_id}}">{{this.job_info}}</option>
                             {{/each}}
                         </select>
                     </div>
@@ -80,29 +84,26 @@
             <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">Job_Employees Table
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-responsive-md table-striped text-center">
+                <table class="table table-bordered table-responsive-md table-striped text-center" id="job-employee-table">
                     <thead>
                         <tr>
                             <th class="text-center">Job_Employee ID</th>
                             <th class="text-center">Employee ID</th>
                             <th class="text-center">Job ID</th>
                             <th class="text-center">Update</th>
-                            <th class="text-center">Remove</th>
+                            <th class="text-center">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each data}}
-                        <tr>
-                            <td class="pt-3-half">{{this.job_employee_id}}</td>
-                            <td class="pt-3-half">{{this.fk_employee_id}}</td>
-                            <td class="pt-3-half">{{this.fk_job_id}}</td>
-
-                            <td>
-                                <button type="button" class="btn btn-dark btn-sm my-0"> Update</button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"> Delete</button>
-                            </td>
+                        {{#each all_job_employee_data}}
+                            <tr data-value={{this.job_employee_id}}>
+                                <td class="pt-3-half">{{this.job_employee_id}}</td>
+                                <td class="pt-3-half">{{this.fk_employee_id}}</td>
+                                <td class="pt-3-half">{{this.fk_job_id}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-dark btn-sm my-0"> Update</button>
+                                </td>
+                                <td><button onclick="deleteJobEmployee({{this.job_employee_id}})">Delete</button></td>
                         </tr>
                         {{/each}}
                     </tbody>

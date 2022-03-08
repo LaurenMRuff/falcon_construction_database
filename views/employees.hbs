@@ -53,7 +53,7 @@
                             <label for="employee_title">Title<sup>*</sup></label>
                              <select class="form-control" id="employee_title" name="employee_title" required>
                                 <option selected disabled>Select an employee title</option>
-                                {{#each employeeTitles}}
+                                {{#each employee_titles}}
                                 <option>{{this}}</option>
                                 {{/each}}
                             </select>
@@ -87,7 +87,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each data}}
+                        {{#each all_employee_data}}
                         <tr>
                             <td class="pt-3-half">{{this.employee_id}}</td>
                             <td class="pt-3-half">{{this.employee_code}}</td>

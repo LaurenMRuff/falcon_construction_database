@@ -32,26 +32,24 @@
             <div class="card-body">
                 <form id="search-for-relationship" name="search_for_relationship">
                     <div class="form-row">
-                        <div class="col-md-5 mb-3">
+                        <div class="col-md-8 mb-3">
                             <label for="job_id"></label>
-                            <select class="form-control" id="job_id" name="job_id"
-                                onchange="document.search_for_relationship.job_info.value=this.options[this.selectedIndex].value"
-                                required>
-                                <option selected>Select an existing job</option>
-                                {{#each job_id}}
-                                <option value='{{this.[0]}}'>{{this.[1]}}</option>
+                            <select class="form-control" id="job_info" name="job_info" onchange="document.search_for_relationship.job_id.value=this.options[this.selectedIndex].value" required>
+                                <option selected disabled>Select an existing job</option>
+                                <option value="ALL">View All</option>
+                                {{#each job_data}}
+                                    <option value={{this.job_id}}>{{this.job_info}}</option>
                                 {{/each}}
                             </select>
                         </div>
-                        <div class="col-md-7 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="job_info"></label>
-                            <input class="form-control" id="job_info" name="job_info" type="text"
-                                value="Job code - Job description will be read-only" readonly>
+                            <input class="form-control" id="job_id" name="job_id" type="text"
+                                   value="Job ID read-only" readonly>
                         </div>
                     </div>
-
-                    <div class="text-center">
-                        <button type="button" class="btn btn-secondary" name="submit_new_customer">Submit</button>
+                    <div class="form-row text-center justify-content-center">
+                        <a href="/"><button type="submit" class="btn btn-secondary" form="search-for-relationship">Submit</button></a>
                     </div>
                 </form>
             </div>
@@ -71,7 +69,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each data}}
+                        {{#each job_employee_search_data}}
                         <tr>
                             <td class="pt-3-half">{{this.job_employee_id}}</td>
                             <td class="pt-3-half">{{this.job_id}}</td>
@@ -89,42 +87,6 @@
         </div>
     </div>
     <!-- END FORM -->
-
-    <!-- <div class="container-fluid">
-        <div class="card text-center">
-            <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">Search Results</div>
-            <div class="card-body">
-                <table class="table table-bordered table-responsive-md table-striped text-center">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Job_Employee ID</th>
-                            <th class="text-center">Job ID</th>
-                            <th class="text-center">Job Description</th>
-                            <th class="text-center">Employee ID</th>
-                            <th class="text-center">Employee Name</th>
-                            <th class="text-center">Employee Title</th>
-                            <th class="text-center">Category ID</th>
-                            <th class="text-center">Category Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each data}}
-                        <tr>
-                            <td class="pt-3-half">{{this.job_employee_id}}</td>
-                            <td class="pt-3-half">{{this.job_id}}</td>
-                            <td class="pt-3-half">{{this.job_description}}</td>
-                            <td class="pt-3-half">{{this.employee_id}}</td>
-                            <td class="pt-3-half">{{this.name}}</td>
-                            <td class="pt-3-half">{{this.title}}</td>
-                            <td class="pt-3-half">{{this.category_id}}</td>
-                            <td class="pt-3-half">{{this.category_name}}</td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>-->
 
     <!-- Button Row -->
     <div class="container text-center" style="margin-top:25px;">
@@ -146,5 +108,4 @@
     <!-- END FOOTER -->
 
 </body>
-
 </html>
