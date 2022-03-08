@@ -1,5 +1,5 @@
 <!-- Need to use NVM 10.18.0-->
-<!Doctype>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -32,7 +32,9 @@
                     <div class="form-row">
                         <div class="col-md-2 mb-3">
                             <label for="customer_ID_Select"></label>
-                            <select class="form-control" name="customer_ID_Select" id="customer_ID_Select" onchange="document.add_new_job.customer_name.value=this.options[this.selectedIndex].value" required>
+                            <select class="form-control" name="customer_ID_Select" id="customer_ID_Select"
+                                onchange="document.add_new_job.customer_name.value=this.options[this.selectedIndex].value"
+                                required>
                                 <option selected disabled>Select Customer ID</option>
                                 {{#each customers}}
                                 <option value='{{this.[0]}}'>{{this.[1]}}</option>
@@ -46,7 +48,9 @@
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="category_ID_Select"></label>
-                            <select class="form-control" name="category_ID_Select" id="category_ID_Select" onchange="document.add_new_job.category_name.value=this.options[this.selectedIndex].value" required>
+                            <select class="form-control" name="category_ID_Select" id="category_ID_Select"
+                                onchange="document.add_new_job.category_name.value=this.options[this.selectedIndex].value"
+                                required>
                                 <option selected disabled>Select Category ID</option>
                                 {{#each categories}}
                                 <option value='{{this.[0]}}'>{{this.[1]}}</option>
@@ -62,11 +66,12 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="job_start_date">Job start date<sup>*</sup></label>
-                            <input type="date" class="form-control" id="job_start_date" name="job_start_date" required>
+                            <input type="datetime-local" class="form-control" id="job_start_date" name="job_start_date"
+                                required>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="job_end_date">Job end date (optional)</label>
-                            <input type="date" class="form-control" id="job_end_date" name="job_end_date">
+                            <input type="datetime-local" class="form-control" id="job_end_date" name="job_end_date">
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="job_status">Job status<sup>*</sup></label>
@@ -83,7 +88,7 @@
                             <label for="job_code">Job code<sup>*</sup></label>
                             <input type="text" class="form-control" id="job_code" name="job_code" required>
                         </div>
-                        <div class="col-md-8 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="job_description">Job Description<sup>*</sup></label>
                             <input type="text" class="form-control" id="job_description" name="job_description"
                                 required>
@@ -121,17 +126,17 @@
                     <tbody>
                         {{#each data}}
                         <tr>
-                            <td class="pt-3-half">{{this.job_id}}</td>
-                            <td class="pt-3-half">{{this.fk_customer_id}}</td>
-                            <td class="pt-3-half">{{this.fk_category_id}}</td>
-                            <td class="pt-3-half">{{this.job_code}}</td>
-                            <td class="pt-3-half">{{this.job_start_date}}</td>
-                            <td class="pt-3-half">{{this.job_end_date}}</td>
-                            <td class="pt-3-half">{{this.job_description}}</td>
+                            <td class="pt-3-half" style="word-break:break-all;">{{this.job_id}}</td>
+                            <td class="pt-3-half" style="word-break:break-all;">{{this.fk_customer_id}}</td>
+                            <td class="pt-3-half" style="word-break:break-all;">{{this.fk_category_id}}</td>
+                            <td class="pt-3-half" style="word-break:break-all;">{{this.job_code}}</td>
+                            <td class="pt-3-half" style="word-break:break-word;">{{this.job_start_date}}</td>
+                            <td class="pt-3-half" style="word-break:break-word;">{{this.job_end_date}}</td>
+                            <td class="pt-3-half" style="word-break:break-all;">{{this.job_description}}</td>
                             <td class="pt-3-half">{{this.job_status}}</td>
-
                             <td>
-                                <button type="button" class="btn btn-dark btn-sm my-0"> Update</button>
+                                <button class="btn btn-dark btn-sm my-0"
+                                    onclick="window.location.href='/jobs/{{job_id}}'">Update</button>
                             </td>
                         </tr>
                         {{/each}}
