@@ -1,5 +1,5 @@
 <!-- Need to use NVM 10.18.0-->
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -66,12 +66,17 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="job_start_date">Job start date<sup>*</sup></label>
-                            <input type="datetime-local" class="form-control" id="job_start_date" name="job_start_date"
+                            <input type="datetime-local" placeholder="mm-dd-yyyy" 
+                            class="form-control" 
+                            id="job_start_date" name="job_start_date"
+                            min = "2015-01-01" max="2030-01-01"
                                 required>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="job_end_date">Job end date (optional)</label>
-                            <input type="datetime-local" class="form-control" id="job_end_date" name="job_end_date">
+                            <input type="datetime-local" placeholder="mm-dd-yyyy" 
+                            class="form-control" id="job_end_date" 
+                            min = "2015-01-01" max="2030-01-01"name="job_end_date">
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="job_status">Job status<sup>*</sup></label>
@@ -137,6 +142,12 @@
                             <td>
                                 <button class="btn btn-dark btn-sm my-0"
                                     onclick="window.location.href='/jobs/{{job_id}}'">Update</button>
+                            </td>
+                            <td>
+                                <form id='edit-job-form' method='POST' action='/edit-job-form'>
+                                    <button class="btn btn-dark btn-sm my-0" name="edit_job_id_selected"
+                                        id="edit_job_id_selected" value="{{this.job_id}}">Update Use</button>
+                                </form>
                             </td>
                         </tr>
                         {{/each}}

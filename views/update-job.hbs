@@ -1,4 +1,5 @@
-<!DOCTYPE>
+<!-- Need to use NVM 10.18.0-->
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,45 +10,74 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- NEEDED FOR NAV BAR -->
-
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body>
-    <br>
+    <!--Navigation bar-->
+    <div id="nav_bar"></div>
+    <script>
+        $(function () {
+            $("#nav_bar").load("nav_bar.html");
+        });
+    </script>
+    <!--End Navigation bar-->
 
-    <div class="card">
-        <div class="card-body">
 
-            <h4>Update Job# {{job.id}}</h4>
-            <form id="update-job" action="/jobs" method="post">
-                <div class="col-md-5 mb-3">
-                    Customer ID: <input type="text" name="customer_id" value="{{job.fk_customer_id}}">
-                    {{job.customer_name}}
-                </div>
-                <div class="col-md-5 mb-3">
-                    Category ID: <input type="text" name="category_id" value="{{job.fk_category_id}}">
-                    {{job.category_name}}
-                </div>
-                <div class="col-md-5 mb-3">
-                    Job Code: <input type="text" name="job_code" value="{{job.job_code}}">
-                </div>
-                <div class="col-md-10 mb-3">
-                    Start Date: <input type="text" name="job_start_date" value="{{job.job_start_date}}"><br>
-                </div>
-                <div class="col-md-10 mb-3">
-                    End Date: <input type="text" name="job_end_date" value="{{job.job_end_date}}"><br>
-                </div>
-                <div class="col-md-10 mb-3">
-                    Job Description: <input type="text" name="job_description" value="{{job.job_description}}"><br>
-                </div>
-                <div class="col-md-10 mb-3">
-                    Job Status: <input type="text" name="job_status" value="{{job.job_status}}"><br>
-                </div>
+    <body>
+        <br>
 
-                <button class="btn btn-dark btn-sm my-0" onclick="updateJob({{job.id}})">Update</button>
-            </form>
+        <div class="card">
+            <div class="card-body">
+
+               
+              
+                <form id='update-job-form' method='POST' action='/update-job-form'>
+              
+                  {{#each data}}
+                     <h4>Update Job# {{this.job_id}}</h4>
+                    <div class="col-md-5 mb-3">
+                        <label for="fk_customer_id"> Customer ID:</label>
+                        <input type="text" name="customer_id_update" value="{{this.fk_customer_id}}">
+                        {{this.customer_name}}
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="fk_category_id"> Category ID:</label>
+                        <input type="text" name="category_id_update" value="{{this.fk_category_id}}">
+                        {{this.category_name}}
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="job_code"> Job Code:</label>
+                        <input type="text" name="job_code_update" value="{{this.job_code}}">
+                    </div>
+                    <div class="col-md-10 mb-3">
+                        <label for="job_start_date"> Job Start Date:</label>
+                        <input type="datetime-local" placeholder="mm-dd-yyyy" 
+                        name="job_start_date_update" 
+                        value="{{this.job_start_date}}" min = "2015-01-01" max="2030-01-01"> Current: {{this.job_start_date}}
+                    </div>
+                    <div class="col-md-10 mb-3">
+                        <label for="job_end_date"> Job End Date</label>
+                        <input type="datetime-local" placeholder="mm-dd-yyyy" 
+                        name="job_end_date_update" 
+                        value="{{this.job_end_date}}" min = "2015-01-01" max="2030-01-01"> Current: {{this.job_end_date}}
+                    </div>
+                    <div class="col-md-10 mb-3">
+                        <label for="job_description"> Job Description:</label>
+                        <input type="text" name="job_description_update" value="{{this.job_description}}"><br>
+                    </div>
+                    <div class="col-md-10 mb-3">
+                        <label for="job_status"> Job Status:</label>
+                        <input type="text" name="job_status_update" value="{{this.job_status}}"><br>
+                    </div>
+                    <button value="{{this.job_id}}" name="job_id_update" id="job_id_update">Submit changes</button>
+
+                    <button class="btn btn-dark btn-sm my-0" onclick="updateJob({{this.job_id}})">Update</button>
+                        {{/each}}
+                </form>
+            
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 
 </html>
