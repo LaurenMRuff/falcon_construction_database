@@ -2,11 +2,11 @@
 // Express
 var express = require('express');
 var app = express();
-var router = express.Router();
 var mysql = require('./database/db-connector.js');
 var db = require('./database/db-connector.js');
+
 //PORT = 5975;
-PORT = 5979;
+PORT = 5980;
 
 // Handlebars
 const { engine } = require('express-handlebars');
@@ -14,11 +14,13 @@ var exphbs = require('express-handlebars');     // Import express-handlebars
 app.engine('.hbs', engine({ extname: ".hbs" }));  // Create an instance of the handlebars engine to process templates
 app.set('view engine', '.hbs');                  // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 const hbs = require('hbs');
-app.set('mysql', mysql);
 hbs.registerPartials(__dirname + '/partials');
 
+
+app.set('mysql', mysql);
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // ---------- END SETUP ----------
 
 // ---------- ROUTES ----------
@@ -97,9 +99,16 @@ app.post('/add-job', function (req, res) {
 
 // NOT WORKING - UPDATE Jobs
 // Get Job to Update
-function getJob(res, mysql, context, job_id, complete) {
-    var sql = `SELECT job_id as job_id, fk_customer_id, fk_category_id, job_code, job_start_date, job_end_date, job_description, job_status FROM Jobs WHERE Jobs.job_id = ?;`;
-    var inserts = [job_id];
+function getJob(res, mysql, context, id, complete) {
+    var sql = `SELECT job_id as id, 
+    fk_customer_id, fk_category_id, job_code, job_start_date, 
+    job_end_date, job_description, job_status, c.category_name,
+    CONCAT(ct.customer_first_name, ' ', ct.customer_last_name) AS customer_name
+    FROM Jobs 
+    JOIN Categories c ON Jobs.fk_category_id = c.category_id
+    JOIN Customers ct ON  ct.customer_id = Jobs.fk_customer_id
+    WHERE Jobs.job_id = ?`;
+    var inserts = [id];
     mysql.pool.query(sql, inserts, function (error, results, fields) {
         if (error) {
             res.write(JSON.stringify(error));
@@ -112,7 +121,7 @@ function getJob(res, mysql, context, job_id, complete) {
 
 /* Defines the sql that diplays the category id */
 function getCategory_ID(res, mysql, context, complete) {
-    mysql.pool.query("SELECT category_id from Categories",
+    mysql.pool.query("SELECT category_id as id, category_name as name from Categories",
         function (error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
@@ -124,7 +133,7 @@ function getCategory_ID(res, mysql, context, complete) {
 }
 
 function getCustomer_ID(res, mysql, context, complete) {
-    mysql.pool.query("SELECT customer_id from Customers",
+    mysql.pool.query("SELECT customer_id as id, CONCAT(customer_first_name, ' ', customer_last_name) AS name from Customers",
         function (error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
@@ -134,49 +143,52 @@ function getCustomer_ID(res, mysql, context, complete) {
             complete();
         });
 }
-router.get('/jobs/:id', function (req, res) {
+app.get('/jobs/:id', function (req, res) {
     callbackCount = 0;
     var context = {};
-    context.jsscripts = ["update_tbr.js"];
+    //context.jsscripts = ["update_tbr.js"];
     var mysql = req.app.get('mysql');
-    getJob(res, mysql, context, req.params.job_id, complete);
+    getJob(res, mysql, context, req.params.id, complete);
     getCategory_ID(res, mysql, context, complete);
-    //getCustomer_ID(res, mysql, context, complete);
+    getCustomer_ID(res, mysql, context, complete);
     function complete() {
         callbackCount++;
-        if (callbackCount >= 2) {
+        if (callbackCount >= 3) {
             res.render('update-job', context);
         }
     }
 });
 
 app.put('/jobs/:id', function (req, res) {
-    let queryUpdateJob =
-        `UPDATE Jobs SET fk_customer_id = ?, fk_category_id = ?, job_code = ?, job_start_date = ?, job_end_date = ?, job_description = ?,  job_status = ?, WHERE Jobs.job_id = ?;`;
+    var mysql = req.app.get('mysql');
+    console.log(req.body)
+    console.log(req.params.id)
+    var sql =
+        `UPDATE Jobs SET fk_customer_id = ?, 
+        fk_category_id = ?, job_code = ?, 
+        job_start_date = ?, job_end_date = ?, 
+        job_description = ?,  job_status = ?, 
+        WHERE job_id = ?`;
 
     var inserts =
-    {
-        fk_customer_id: req.body.fk_customer_id,
-        fk_category_id: req.body.fk_category_id,
-        job_code: req.body.job_code,
-        job_start_date: req.body.job_start_date,
-        job_end_date: req.body.job_end_date,
-        job_description: req.body.job_description,
-    }
-
-    db.pool.query(queryUpdateJob, inserts, function (error, rows, fields) {
-        //if(err) throw err
+        [req.body.fk_customer_id,
+        req.body.fk_category_id,
+        req.body.job_code,
+        req.body.job_start_date,
+        req.body.job_end_date,
+        req.body.job_description,
+        req.body.job_status,
+        req.params.id];
+    sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
         if (error) {
             console.log(error)
-            res.sendStatus(400);
+            res.write(JSON.stringify(error));
+            res.end();
+        } else {
+            res.status(200);
+            res.end();
         }
-
-        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
-        // presents it on the screen
-        else {
-            res.send(rows);
-        }
-    })
+    });
 });
 
 
@@ -344,8 +356,8 @@ app.get('/job_employees', function (req, res) {
             let queryJobEmployees = `SELECT * FROM Job_Employees ORDER BY job_employee_id;`;
             db.pool.query(queryJobEmployees, function (err, rows, fields) {
                 res.render('job_employees', {
-                        title: "Job_Employees Page", active: { Register: true }, all_job_employee_data: rows,
-                        employee_data: employee_data, job_data: job_data
+                    title: "Job_Employees Page", active: { Register: true }, all_job_employee_data: rows,
+                    employee_data: employee_data, job_data: job_data
                 });
             })
         })
@@ -380,14 +392,14 @@ app.post('/add-job-employee', function (req, res) {
     })
 });
 
-// WORKS
+// WORKS - CREATE/INSERT Job_Employee SEARCH
 app.get('/job_employees_search', function (req, res) {
 
     let queryJobID = `SELECT job_id, CONCAT(job_code, ' - ', job_description) AS job_info FROM Jobs ORDER BY job_id`;
 
     let queryJobEmployeesSearch;
 
-    if(req.query.job_id === undefined || req.query.job_id === "ALL"){
+    if (req.query.job_id === undefined || req.query.job_id === "ALL") {
         queryJobEmployeesSearch = `SELECT Job_Employees.job_employee_id AS job_employee_id, 
             Jobs.job_id AS job_id, 
             Jobs.job_description AS job_description, 
@@ -402,7 +414,7 @@ app.get('/job_employees_search', function (req, res) {
             INNER JOIN Categories ON Categories.category_id = Jobs.fk_category_id 
         ORDER BY Job_Employees.job_employee_id;`;
     }
-    else{
+    else {
         queryJobEmployeesSearch = `SELECT Job_Employees.job_employee_id AS job_employee_id, 
             Jobs.job_id AS job_id, 
             Jobs.job_description AS job_description, 
@@ -422,8 +434,10 @@ app.get('/job_employees_search', function (req, res) {
     db.pool.query(queryJobID, function (err, rows, fields) {
         let job_data = rows;
         db.pool.query(queryJobEmployeesSearch, function (err, rows, fields) {
-            res.render('job_employees_search', { title: "Job_Employees Search Page", active: { Register: true },
-                job_employee_search_data: rows, job_data: job_data });
+            res.render('job_employees_search', {
+                title: "Job_Employees Search Page", active: { Register: true },
+                job_employee_search_data: rows, job_data: job_data
+            });
         })
     })
 

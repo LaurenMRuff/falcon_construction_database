@@ -9,48 +9,45 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- NEEDED FOR NAV BAR -->
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 </head>
 
 <body>
-    <!--Navigation bar-->
-    <div id="nav_bar"></div>
-    <script>
-        $(function () {
-            $("#nav_bar").load("nav_bar.html");
-        });
-    </script>
-    <!--End Navigation bar-->
+    <br>
 
+    <div class="card">
+        <div class="card-body">
 
-    <h1>Update {{job_id}} {{job.job_description}}:</h1>
-    <form id="update-job" action="/jobs" method="post">
-        Customer ID: <select class="form-control" name="customer_ID_Select" id="customer_ID_Select"
-            onchange="document.add_new_job.customer_name.value=this.options[this.selectedIndex].value" required>
-            <option selected disabled>Update Customer ID</option>
-            {{#each customer_id}}
-            <option value='{{this.[0]}}'>{{this.[1]}}</option>
-            {{/each}}
-        </select><br>
-        Category ID:
-        <select class="form-control" name="category_ID_Select" id="category_ID_Select"
-            onchange="document.add_new_job.category_name.value=this.options[this.selectedIndex].value" required>
-            <option selected disabled>Update Category ID</option>
-            {{#each category_id}}
-            <option value='{{this.[0]}}'>{{this.[1]}}</option>
-            {{/each}}
-        </select><br>
-        Job Code: <input type="text" name="job_code" value="{{Jobs.job_code}}"><br>
-        Start Date: <input type="datetime-local" name="job_start_date" value="{{Jobs.job_start_date}}"><br>
-        End Date: <input type="datetime-local" name="job_end_date" value="{{Jobs.job_end_date}}"><br>
-        Job Description: <input type="text" name="job_description" value="{{Jobs.job_description}}"><br>
-        Job Status:
-        <select class="form-control" id="job_status" name="job_status" required>
-            <option selected disabled>Update Job Status</option>
-            {{#each jobStatus}}
-            <option>{{this}}</option>
-            {{/each}}
-        </select><br>
-    </form>
-    <button onclick="updateJob({{Jobs.job_id}})">Update</button>
+            <h4>Update Job# {{job.id}}</h4>
+            <form id="update-job" action="/jobs" method="post">
+                <div class="col-md-5 mb-3">
+                    Customer ID: <input type="text" name="customer_id" value="{{job.fk_customer_id}}">
+                    {{job.customer_name}}
+                </div>
+                <div class="col-md-5 mb-3">
+                    Category ID: <input type="text" name="category_id" value="{{job.fk_category_id}}">
+                    {{job.category_name}}
+                </div>
+                <div class="col-md-5 mb-3">
+                    Job Code: <input type="text" name="job_code" value="{{job.job_code}}">
+                </div>
+                <div class="col-md-10 mb-3">
+                    Start Date: <input type="text" name="job_start_date" value="{{job.job_start_date}}"><br>
+                </div>
+                <div class="col-md-10 mb-3">
+                    End Date: <input type="text" name="job_end_date" value="{{job.job_end_date}}"><br>
+                </div>
+                <div class="col-md-10 mb-3">
+                    Job Description: <input type="text" name="job_description" value="{{job.job_description}}"><br>
+                </div>
+                <div class="col-md-10 mb-3">
+                    Job Status: <input type="text" name="job_status" value="{{job.job_status}}"><br>
+                </div>
+
+                <button class="btn btn-dark btn-sm my-0" onclick="updateJob({{job.id}})">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
+
 </html>
