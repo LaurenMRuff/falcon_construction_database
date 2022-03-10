@@ -11,6 +11,18 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- NEEDED FOR NAV BAR -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script type='text/javascript'>
+        const moment = require("moment");
+
+        function formatDate(someDate){
+            alert("Hi!");
+            console.log(someDate);
+            let formattedDate = moment(someDate).format("LL");
+            console.log(formattedDate);
+            return formattedDate;
+        }
+    </script>
 </head>
 
 <body>
@@ -23,60 +35,42 @@
     </script>
     <!--End Navigation bar-->
 
-    <!-- FORM -->
+    <!-- ADD A NEW JOB FORM -->
     <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
         <div class="card">
             <div class="card-body">
                 <h4>Add a New Job</h4>
                 <form id="add-new-job" name="add_new_job">
                     <div class="form-row">
-                        <div class="col-md-2 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="customer_ID_Select"></label>
-                            <select class="form-control" name="customer_ID_Select" id="customer_ID_Select"
-                                onchange="document.add_new_job.customer_name.value=this.options[this.selectedIndex].value"
-                                required>
-                                <option selected disabled>Select Customer ID</option>
+                            <select class="form-control" name="customer_ID_Select" id="customer_ID_Select" required>
+                                <option selected disabled>Select a Customer</option>
                                 {{#each customer_data}}
-                                <option value="{{this.customer_id}}">{{this.customer_name}}</option>
+                                <option value="{{this.customer_id}}">{{this.customer_id}} - {{this.customer_name}}</option>
                                 {{/each}}
                             </select>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="customer_name"></label>
-                            <input class="form-control" type="text" id="customer_name" name="customer_name" value=""
-                                placeholder="Selected customer id for selected name will appear here..." disabled>
-                        </div>
-                        <div class="col-md-2 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="category_ID_Select"></label>
-                            <select class="form-control" name="category_ID_Select" id="category_ID_Select"
-                                onchange="document.add_new_job.category_name.value=this.options[this.selectedIndex].value"
-                                required>
-                                <option selected disabled>Select Category ID</option>
+                            <select class="form-control" name="category_ID_Select" id="category_ID_Select" required>
+                                <option selected disabled>Select a Category</option>
                                 {{#each category_data}}
-                                <option value={{this.category_id}}>{{this.category_name}}</option>
+                                <option value={{this.category_id}}>{{this.category_id}} - {{this.category_name}}</option>
                                 {{/each}}
                             </select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="category_name"></label>
-                            <input class="form-control" type="text" id="category_name" name="category_name" value=""
-                                placeholder="Selected category id for selected name will appear here..." disabled>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="job_start_date">Job start date<sup>*</sup></label>
-                            <input type="datetime-local" placeholder="mm-dd-yyyy" 
-                            class="form-control" 
-                            id="job_start_date" name="job_start_date"
-                            min = "2015-01-01" max="2030-01-01"
-                                required>
+                            <input type="date" class="form-control" id="job_start_date" name="job_start_date"
+                                   min = "2015-01-01" max="2030-01-01" value="{{todayDefault}}" required>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="job_end_date">Job end date (optional)</label>
-                            <input type="datetime-local" placeholder="mm-dd-yyyy" 
-                            class="form-control" id="job_end_date" 
-                            min = "2015-01-01" max="2030-01-01"name="job_end_date">
+                            <input type="date" class="form-control"id="job_end_date" name="job_end_date"
+                                   min = "2015-01-01" max="2030-01-01">
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="job_status">Job status<sup>*</sup></label>
@@ -89,11 +83,11 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-2 mb-3">
                             <label for="job_code">Job code<sup>*</sup></label>
                             <input type="text" class="form-control" id="job_code" name="job_code" required>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-10 mb-3">
                             <label for="job_description">Job Description<sup>*</sup></label>
                             <input type="text" class="form-control" id="job_description" name="job_description"
                                 required>
@@ -107,7 +101,7 @@
             </div>
         </div>
     </div>
-    <!-- END FORM -->
+    <!-- ADD A NEW JOB FORM -->
 
     <!-- JOBS table -->
     <div class="container-fluid">
@@ -135,18 +129,14 @@
                             <td class="pt-3-half" style="word-break:break-all;">{{this.fk_customer_id}}</td>
                             <td class="pt-3-half" style="word-break:break-all;">{{this.fk_category_id}}</td>
                             <td class="pt-3-half" style="word-break:break-all;">{{this.job_code}}</td>
-                            <td class="pt-3-half" style="word-break:break-word;">{{this.job_start_date}}</td>
-                            <td class="pt-3-half" style="word-break:break-word;">{{this.job_end_date}}</td>
+                            <td class="pt-3-half" style="word-break:break-all;">{{this.job_start_date}}</td>
+                            <td class="pt-3-half" style="word-break:break-all;">{{this.job_end_date}}</td>
                             <td class="pt-3-half" style="word-break:break-all;">{{this.job_description}}</td>
                             <td class="pt-3-half">{{this.job_status}}</td>
                             <td>
-                                <button class="btn btn-dark btn-sm my-0"
-                                    onclick="window.location.href='/jobs/{{job_id}}'">Update</button>
-                            </td>
-                            <td>
                                 <form id='edit-job-form' method='POST' action='/edit-job-form'>
                                     <button class="btn btn-dark btn-sm my-0" name="edit_job_id_selected"
-                                        id="edit_job_id_selected" value="{{this.job_id}}">Update Use</button>
+                                        id="edit_job_id_selected" value="{{this.job_id}}">Update</button>
                                 </form>
                             </td>
                         </tr>

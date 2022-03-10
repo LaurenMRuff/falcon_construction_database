@@ -30,42 +30,40 @@
     </script>
     <!--End Navigation bar-->
 
-    <!-- FORM -->
+    <!-- ADD JOB_EMPLOYEES FORM -->
     <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
         <div class="card">
             <div class="card-body">
                 <h4>Add a new Job_Employee Relationship</h4>
                 <form id="add-job-employee" name="add_job_employee">
                 <div class="form-row">
-                    <div class="col-md-5 mb-3">
-                        <label for="employee_id"></label>
-                        <select class="form-control" id="employee_id" name="employee_id" onchange="document.add_job_employee.employee_name.value=this.options[this.selectedIndex].value" required>
+                    <div class="col-md-4 mb-3">
+                        <label for="employee_name"></label>
+                        <select class="form-control" id="employee_name" name="employee_name" onchange="document.add_job_employee.employee_id.value=this.options[this.selectedIndex].value" required>
                             <option selected>Select an existing employee</option>
                             {{#each employee_data}}
                                 <option value="{{this.employee_id}}">{{this.employee_name}}</option>
                             {{/each}}
                         </select>
                     </div>
-                    <div class="col-md-7 mb-3">
-                        <label for="employee_name"></label>
-                        <input class="form-control" id="employee_name" name="employee_name" type="text"
-                            value="Employee code - F_name L_name will be read-only" readonly>
+                    <div class="col-md-2 mb-3">
+                        <label for="employee_id"></label>
+                        <input class="form-control" id="employee_id" name="employee_id" type="text"
+                            value="employee_id will be read only" readonly>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-5 mb-3">
-                        <label for="job_id"></label>
-                        <select class="form-control" id="job_id" name="job_id" onchange="document.add_job_employee.job_info.value=this.options[this.selectedIndex].value" required>
+                    <div class="col-md-4 mb-3">
+                        <label for="job_info"></label>
+                        <select class="form-control" id="job_info" name="job_info" onchange="document.add_job_employee.job_id.value=this.options[this.selectedIndex].value" required>
                             <option selected>Select an existing job</option>
                             {{#each job_data}}
                                 <option value="{{this.job_id}}">{{this.job_info}}</option>
                             {{/each}}
                         </select>
                     </div>
-                    <div class="col-md-7 mb-3">
-                        <label for="job_info"></label>
-                        <input class="form-control" id="job_info" name="job_info" type="text"
-                            value="Job code - Job description will be read-only" readonly>
+                    <div class="col-md-2 mb-3">
+                        <label for="job_id"></label>
+                        <input class="form-control" id="job_id" name="job_id" type="text"
+                               value="job_id will be read-only" readonly>
                     </div>
                 </div>
                 <div class="text-center">
@@ -76,9 +74,9 @@
             </div>
         </div>
     </div>
-    <!-- End FORM -->
+    <!-- END ADD JOB_EMPLOYEES FORM -->
 
-    <!-- Editable JOB_EMPLOYEES table -->
+    <!-- JOB_EMPLOYEES table -->
     <div class="container-fluid">
         <div class="card text-center">
             <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">Job_Employees Table
@@ -90,7 +88,6 @@
                             <th class="text-center">Job_Employee ID</th>
                             <th class="text-center">Employee ID</th>
                             <th class="text-center">Job ID</th>
-                            <th class="text-center">Update</th>
                             <th class="text-center">Delete</th>
                         </tr>
                     </thead>
@@ -100,9 +97,6 @@
                                 <td class="pt-3-half">{{this.job_employee_id}}</td>
                                 <td class="pt-3-half">{{this.fk_employee_id}}</td>
                                 <td class="pt-3-half">{{this.fk_job_id}}</td>
-                                <td>
-                                    <button type="button" class="btn btn-dark btn-sm my-0"> Update</button>
-                                </td>
                                 <td><button onclick="deleteJobEmployee({{this.job_employee_id}})">Delete</button></td>
                         </tr>
                         {{/each}}
@@ -111,7 +105,7 @@
             </div>
         </div>
     </div>
-    <!-- End Editable JOB_EMPLOYEES table -->
+    <!-- END JOB_EMPLOYEES table -->
 
     <!-- Button Row -->
     <div class="container text-center" style="margin-top:25px;">

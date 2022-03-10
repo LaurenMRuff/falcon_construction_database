@@ -2,25 +2,27 @@
 // Express
 var express = require('express');
 var app = express();
-var mysql = require('./database/db-connector.js');
-var db = require('./database/db-connector.js');
 
-//PORT = 5975;
-PORT = 5981;
+PORT = 5975;
+//PORT = 5981;
 
 // Handlebars
 const { engine } = require('express-handlebars');
-var exphbs = require('express-handlebars');     // Import express-handlebars
 app.engine('.hbs', engine({ extname: ".hbs" }));  // Create an instance of the handlebars engine to process templates
-app.set('view engine', '.hbs');                  // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 const hbs = require('hbs');
+const helpers = require('handlebars-helpers')();
+const moment = require("moment");
+
 hbs.registerPartials(__dirname + '/partials');
 
+app.set('view engine', 'hbs'); // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
+var mysql = require('./database/db-connector.js');
+var db = require('./database/db-connector.js');
 app.set('mysql', mysql);
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
-
 // ---------- END SETUP ----------
 
 // ---------- ROUTES ----------
@@ -39,20 +41,37 @@ app.get('/jobs', function (req, res) {
     let queryCustomerID = `SELECT customer_id, CONCAT(customer_first_name, ' ', customer_last_name) AS customer_name FROM Customers ORDER BY customer_id`;
     let queryCategoryID = `SELECT category_id, category_name FROM Categories ORDER BY category_id`;
 
+    let today = new Date();
+    let todayDefault = moment(today).format("YYYY-MM-DD");
+
     db.pool.query(queryCustomerID, function (err, rows, fields) {
         let customer_data = rows;
         db.pool.query(queryCategoryID, function (err, rows, fields) {
             let category_data = rows;
             db.pool.query(queryAllJobs, function (err, rows, fields) {
+                for(let i = 0; i < rows.length; i++){
+                    if(rows[i].job_start_date === 'NULL' || rows[i].job_start_date === '0000-00-00'){
+                        rows[i].job_start_date = "";
+                    }
+                    else{
+                        rows[i].job_start_date = moment(rows[i].job_start_date).format("ll");
+                    }
+
+                    if(rows[i].job_end_date === 'NULL' || rows[i].job_end_date === '0000-00-00'){
+                        rows[i].job_end_date = "";
+                    }
+                    else{
+                        rows[i].job_end_date = moment(rows[i].job_end_date).format("ll");
+                    }
+                }
                 res.render('jobs', {
                     title: "Jobs Page", active: { Register: true }, all_job_data: rows,
-                    customer_data: customer_data, category_data: category_data, job_status: job_status
+                    customer_data: customer_data, category_data: category_data, job_status: job_status, todayDefault:todayDefault
                 });
             })
         })
     })
 });
-
 
 // WORKS - CREATE/INSERT Jobs
 app.post('/add-job', function (req, res) {
@@ -97,7 +116,6 @@ app.post('/add-job', function (req, res) {
         }
     })
 });
-
 
 /*
 
@@ -199,7 +217,8 @@ app.put('/jobs/:id', function (req, res) {
 app.post('/edit-job-form', function (req, res) {
     let data = req.body;
     let update_job = parseInt(data.edit_job_id_selected)
-    let query1 =
+
+    let getJobToUpdateQuery =
         `SELECT job_id, 
     fk_customer_id, fk_category_id, job_code, job_start_date, 
     job_end_date, job_description, job_status, c.category_name,
@@ -209,8 +228,28 @@ app.post('/edit-job-form', function (req, res) {
     JOIN Customers ct ON  ct.customer_id = Jobs.fk_customer_id
     WHERE Jobs.job_id = ${update_job};`;
 
-    db.pool.query(query1, function (error, rows, fields) {
-        res.render('update-job', { data: rows });
+    let job_status = ['New', 'In Progress', 'Complete', 'Abandoned'];
+
+    db.pool.query(getJobToUpdateQuery, function (err, rows, fields) {
+
+        if(rows[0].job_start_date === 'NULL' || rows[0].job_start_date === '0000-00-00'){
+            rows[0].job_start_date = "";
+        }
+        else{
+            rows[0].job_start_date = moment(rows[0].job_start_date).format("YYYY-MM-DD");
+        }
+
+        if(rows[0].job_end_date === 'NULL' || rows[0].job_end_date === '0000-00-00'){
+            rows[0].job_end_date = "";
+        }
+        else{
+            rows[0].job_end_date = moment(rows[0].job_end_date).format("YYYY-MM-DD");
+        }
+
+
+        res.render('update-job', {
+            title: "Update a Job Page", active: { Register: true }, job_to_update: rows, job_status: job_status
+        });
     })
 });
 
