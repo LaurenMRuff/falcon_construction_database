@@ -29,9 +29,10 @@
             {{#each job_to_update}}
             <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 30px">Update Job # {{this.job_id}}</div>
             <div class="card-body">
-                <form id='update-job-form' method='POST' action='/update-job-form'>
+                <form id='update-job-form' onsubmit="event.preventDefault();">
                     <div class="form-row">
-                        <div class="col-md-">
+                        <input type="hidden" name="job_id" value="{{this.job_id}}"/>
+                        <div class="col-md-4">
                                 <label for="fk_customer_id"></label>
                                 <input class="form-control" type="text" id="fk_customer_id" name="fk_customer_id" value="Customer: {{this.fk_customer_id}} - {{this.customer_name}}" disabled>
                         </div>
@@ -43,18 +44,18 @@
                     <div class="form-row" style="margin-top:20px; margin-bottom: 20px;">
                         <div class="col-md-4">
                             <label for="job_code">Job Code: </label>
-                            <input class="form-control" type="text" name="job_code_update" value="{{this.job_code}}">
+                            <input class="form-control" type="text" name="job_code_update" value="{{this.job_code}}" required>
                         </div>
                         <div class="col-md-8">
                             <label for="job_description">Job Description: </label>
-                            <input class="form-control" type="text" name="job_description_update" value="{{this.job_description}}">
+                            <input class="form-control" type="text" name="job_description_update" value="{{this.job_description}}" required>
                         </div>
                     </div>
                     <div class="form-row" style="margin-top:20px; margin-bottom: 20px;">
                         <div class="col-md-4">
                             <label for="job_start_date">Job Start Date: </label>
                             <input class="form-control" type="date" id="job_start_date_update" name="job_start_date_update"
-                                   min="2015-01-01" max="2030-01-01" value="{{this.job_start_date}}">
+                                   min="2015-01-01" max="2030-01-01" value="{{this.job_start_date}}" required>
                         </div>
                         <div class="col-md-4">
                             <label for="job_end_date">Job End Date (optional): </label>
@@ -63,19 +64,19 @@
                         </div>
                         <div class="col-md-4">
                             <label for="job_status">Job Status: </label>
-                            <select class="form-control" id="job_status" name="job_status" required>
-                                <option selected disabled>Current Status: {{this.job_status}}</option>
+                            <select class="form-control" id="job_status_update" name="job_status_update" required>
+                                <option hidden disabled selected value="">Current Status: {{this.job_status}}</option>
                                 {{/each}}
-                                {{#each status}}
+                                {{#each job_status}}
                                     <option>{{this}}</option>
                                 {{/each}}
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-row text-center justify-content-center">
                         {{#each job_to_update}}
-                        <button value="{{this.job_id}}" name="job_id_update" id="job_id_update">Submit changes</button>
-                        <button class="btn btn-dark btn-sm my-0" onclick="updateJob({{this.job_id}})">Update</button>
+                        <button  type="submit" class="btn btn-dark btn-sm my-0" form="update-job-form" formmethod="post"
+                                 formaction="/update-job" value="{{this.job_id}}">Submit Changes</button>
                         {{/each}}
                     </div>
                 </form>

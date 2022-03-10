@@ -11,18 +11,6 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- NEEDED FOR NAV BAR -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-    <script type='text/javascript'>
-        const moment = require("moment");
-
-        function formatDate(someDate){
-            alert("Hi!");
-            console.log(someDate);
-            let formattedDate = moment(someDate).format("LL");
-            console.log(formattedDate);
-            return formattedDate;
-        }
-    </script>
 </head>
 
 <body>
@@ -45,7 +33,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="customer_ID_Select"></label>
                             <select class="form-control" name="customer_ID_Select" id="customer_ID_Select" required>
-                                <option selected disabled>Select a Customer</option>
+                                <option hidden disabled selected value="">Select a Customer</option>
                                 {{#each customer_data}}
                                 <option value="{{this.customer_id}}">{{this.customer_id}} - {{this.customer_name}}</option>
                                 {{/each}}
@@ -54,7 +42,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="category_ID_Select"></label>
                             <select class="form-control" name="category_ID_Select" id="category_ID_Select" required>
-                                <option selected disabled>Select a Category</option>
+                                <option hidden disabled selected value="">Select a Category</option>
                                 {{#each category_data}}
                                 <option value={{this.category_id}}>{{this.category_id}} - {{this.category_name}}</option>
                                 {{/each}}
@@ -75,7 +63,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="job_status">Job status<sup>*</sup></label>
                             <select class="form-control" id="job_status" name="job_status" required>
-                                <option selected disabled>Select a job status</option>
+                                <option hidden disabled selected value=""->Select a job status</option>
                                 {{#each job_status}}
                                 <option>{{this}}</option>
                                 {{/each}}
