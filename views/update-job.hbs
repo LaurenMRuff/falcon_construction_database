@@ -29,7 +29,7 @@
             {{#each job_to_update}}
             <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 30px">Update Job # {{this.job_id}}</div>
             <div class="card-body">
-                <form id='update-job-form' onsubmit="event.preventDefault();">
+                <form id="update-job-form">
                     <div class="form-row">
                         <input type="hidden" name="job_id" value="{{this.job_id}}"/>
                         <div class="col-md-4">

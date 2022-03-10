@@ -159,8 +159,6 @@ app.post('/edit-job-form', function (req, res) {
 app.post('/update-job', function (req, res) {
     let data = req.body;
 
-    console.log(data)
-
     let end_date = data.job_end_date_update;
     if (end_date === "" || typeof (end_date) == "undefined") {
         end_date = 'NULL';
