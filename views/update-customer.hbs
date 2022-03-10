@@ -1,0 +1,106 @@
+<!-- Need to use NVM 10.18.0-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Falcon Construction Database Page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap 5.1.3 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- NEEDED FOR NAV BAR -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+<!--Navigation bar-->
+<div id="nav_bar"></div>
+<script>
+    $(function () {
+        $("#nav_bar").load("nav_bar.html");
+    });
+</script>
+<!--End Navigation bar-->
+
+<!-- UPDATE JOB FORM -->
+    <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
+        <div class="card">
+            {{#each customer_to_update}}
+            <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 30px">Update Customer # {{this.customer_id}}</div>
+            <div class="card-body">
+            <form id="update-customer-form">
+                <div class="form-row">
+                    <input type="hidden" name="customer_id" value="{{this.customer_id}}"/>
+                    <div class="col-md-6 mb-3">
+                        <label for="customer_fname_update">First name<sup>*</sup></label>
+                        <input type="text" class="form-control" id="customer_fname_update" name="customer_fname_update"
+                               value="{{this.customer_first_name}}" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="customer_lname_update">Last name<sup>*</sup></label>
+                        <input type="text" class="form-control" id="customer_lname_update" name="customer_lname_update"
+                               value="{{this.customer_last_name}}" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="customer_phone_update">Phone number<sup>*</sup></label>
+                        <input type="text" class="form-control" id="customer_phone_update" name="customer_phone_update"
+                               value="{{this.customer_phone}}" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="customer_email_update">Email<sup>*</sup></label>
+                        <input type="text" class="form-control" id="customer_email_update" name="customer_email_update"
+                               value="{{this.customer_email}}" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="customer_company_update">Company (optional)</label>
+                        <input type="text" class="form-control" id="customer_company_update" name="customer_company_update"
+                               value="{{this.customer_company}}">
+                    </div>
+                </div>
+                <div class="form-row">Address Information</div>
+                <br>
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label for="customer_address_update">Address<sup>*</sup></label>
+                        <input type="text" class="form-control" id="customer_address_update" name="customer_address_update"
+                               value="{{this.customer_address}}" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="customer_city_update">City<sup>*</sup></label>
+                        <input type="text" class="form-control" id="customer_city_update" name="customer_city_update"
+                               value="{{this.customer_city}}" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="customer_state_update">State</label>
+                        <select class="form-control"  id="customer_state_update" name="customer_state_update" required>
+                            <option value="{{this.customer_state}}">{{this.customer_state}}</option>
+            {{/each}}
+                            {{#each states}}
+                                <option>{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="customer_zcode_update">Zip code<sup>*</sup></label>
+                        {{#each customer_to_update}}
+                        <input type="text" class="form-control" id="customer_zcode_update" name="customer_zcode_update"
+                               value="{{this.customer_zip_code}}" required>
+
+                    </div>
+                </div>
+                <div class="form-row text-center justify-content-center">
+                    <button type="submit" class="btn btn-secondary" form="update-customer-form" formmethod="post"
+                            formaction="/update-customer">Submit Changes</button>
+                        {{/each}}
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

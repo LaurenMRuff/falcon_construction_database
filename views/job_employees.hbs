@@ -37,33 +37,23 @@
                 <h4>Add a new Job_Employee Relationship</h4>
                 <form id="add-job-employee" name="add_job_employee">
                 <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label for="employee_name"></label>
-                        <select class="form-control" id="employee_name" name="employee_name" onchange="document.add_job_employee.employee_id.value=this.options[this.selectedIndex].value" required>
-                            <option selected>Select an existing employee</option>
-                            {{#each employee_data}}
-                                <option value="{{this.employee_id}}">{{this.employee_name}}</option>
-                            {{/each}}
-                        </select>
-                    </div>
-                    <div class="col-md-2 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="employee_id"></label>
-                        <input class="form-control" id="employee_id" name="employee_id" type="text"
-                            value="employee_id will be read only" readonly>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="job_info"></label>
-                        <select class="form-control" id="job_info" name="job_info" onchange="document.add_job_employee.job_id.value=this.options[this.selectedIndex].value" required>
-                            <option selected>Select an existing job</option>
-                            {{#each job_data}}
-                                <option value="{{this.job_id}}">{{this.job_info}}</option>
+                        <select class="form-control" id="employee_id" name="employee_id" required>
+                            <option hidden disabled selected value="">Select an existing employee</option>
+                            {{#each employee_data}}
+                                <option value="{{this.employee_id}}">{{this.employee_id}} - {{this.employee_name}}</option>
                             {{/each}}
                         </select>
                     </div>
-                    <div class="col-md-2 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="job_id"></label>
-                        <input class="form-control" id="job_id" name="job_id" type="text"
-                               value="job_id will be read-only" readonly>
+                        <select class="form-control" id="job_id" name="job_id" required>
+                            <option hidden disabled selected value="">Select an existing job</option>
+                            {{#each job_data}}
+                                <option value="{{this.job_id}}">{{this.job_id}} - {{this.job_info}}</option>
+                            {{/each}}
+                        </select>
                     </div>
                 </div>
                 <div class="text-center">
@@ -93,11 +83,16 @@
                     </thead>
                     <tbody>
                         {{#each all_job_employee_data}}
-                            <tr data-value={{this.job_employee_id}}>
-                                <td class="pt-3-half">{{this.job_employee_id}}</td>
-                                <td class="pt-3-half">{{this.fk_employee_id}}</td>
-                                <td class="pt-3-half">{{this.fk_job_id}}</td>
-                                <td><button onclick="deleteJobEmployee({{this.job_employee_id}})">Delete</button></td>
+                        <tr>
+                            <td class="pt-3-half">{{this.job_employee_id}}</td>
+                            <td class="pt-3-half">{{this.fk_employee_id}}</td>
+                            <td class="pt-3-half">{{this.fk_job_id}}</td>
+                            <td>
+                                <form id='delete-job-employee' method='POST' action='/delete-job-employee'>
+                                    <button class="btn btn-dark btn-sm my-0" name="delete_job_employee_id"
+                                            id="delete_job_employee_id" value="{{this.job_employee_id}}">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                         {{/each}}
                     </tbody>

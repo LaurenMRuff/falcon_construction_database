@@ -258,6 +258,61 @@ app.post('/add-customer', function (req, res) {
     })
 });
 
+// WORKING! - UPDATE Customers
+app.post('/edit-customer-form', function (req, res) {
+    let data = req.body;
+    let update_customer = parseInt(data.edit_customer_id)
+
+    let states =
+        ['AL', 'AK', 'AL', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'ME',
+            'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR',
+            'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
+
+    let customerToUpdateQuery = `SELECT * FROM Customers WHERE customer_id = ${update_customer};`;
+
+    db.pool.query(customerToUpdateQuery, function (err, rows, fields) {
+        res.render('update-customer', {
+            title: "Update a Customer Page", active: { Register: true }, customer_to_update: rows, states: states
+        });
+    })
+});
+app.post('/update-customer', function (req, res) {
+    let data = req.body;
+
+    let customer_company = data.customer_company_update;
+    if (customer_company === '' || customer_company === 'undefined') {
+        customer_company = 'NULL';
+    }
+
+    let updateCustomerQuery =
+        `UPDATE Customers
+         SET 
+            customer_first_name = '${data['customer_fname_update']}',
+            customer_last_name = '${data['customer_lname_update']}',
+            customer_email = '${data['customer_email_update']}',
+            customer_phone = '${data['customer_phone_update']}',
+            customer_company = '${customer_company}',
+            customer_address= '${data['customer_address_update']}',
+            customer_city = '${data['customer_city_update']}',
+            customer_state = '${data['customer_state_update']}',
+            customer_zip_code = '${data['customer_zcode_update']}'
+        WHERE customer_id = ${data['customer_id']};`;
+
+    db.pool.query(updateCustomerQuery, function (error, rows, fields) {
+        // Check to see if there was an error
+        if (error) {
+            // Log the error to the terminal, so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else {
+            res.redirect('/customers');
+        }
+    });
+});
+
 // WORKS - READ Categories
 app.get('/categories', function (req, res) {
     //NEED TO ADD DROPDOWN FORM INFO
@@ -365,6 +420,8 @@ app.get('/job_employees', function (req, res) {
 app.post('/add-job-employee', function (req, res) {
     let data = req.body;
 
+    console.log(data);
+
     let queryAddJobEmployee =
         `INSERT INTO Job_Employees (
         fk_employee_id,
@@ -389,9 +446,25 @@ app.post('/add-job-employee', function (req, res) {
     })
 });
 
-// DELETE Job_Employee
+// WORKS! DELETE Job_Employee
 app.post('/delete-job-employee', function (req, res, next){
+    let data = req.body;
 
+    let deleteJobEmployeeQuery = `DELETE FROM Job_Employees WHERE job_employee_id = '${data['delete_job_employee_id']}';`
+
+    db.pool.query(deleteJobEmployeeQuery, function (error, rows, fields) {
+        // Check to see if there was an error
+        if (error) {
+            // Log the error to the terminal, so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else {
+            res.redirect('/job_employees');
+        }
+    });
 })
 
 // WORKS - CREATE/INSERT Job_Employee SEARCH

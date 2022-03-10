@@ -71,7 +71,7 @@
                         <div class="col-md-3 mb-3">
                             <label for="customer_state_Select">State</label>
                             <select class="form-control"  id="customer_state_Select" name="customer_state_Select" required>
-                                <option selected disabled>Select State</option>
+                                <option hidden disabled selected value="">Select State</option>
                                 {{#each states}}
                                 <option>{{this}}</option>
                                 {{/each}}
@@ -93,7 +93,7 @@
     </div>
     <!-- END FORM -->
 
-    <!-- Editable CUSTOMER table -->
+    <!-- CUSTOMER table -->
     <div class="container-fluid">
         <div class="card text-center">
             <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">Customers Table</div>
@@ -127,9 +127,11 @@
                             <td class="pt-3-half">{{this.customer_city}}</td>
                             <td class="pt-3-half">{{this.customer_state}}</td>
                             <td class="pt-3-half">{{this.customer_zip_code}}</td>
-
                             <td>
-                                <button type="button" class="btn btn-dark btn-sm my-0"> Update</button>
+                                <form id='edit-customer-form' method='POST' action='/edit-customer-form'>
+                                    <button class="btn btn-dark btn-sm my-0" name="edit_customer_id"
+                                            id="edit_customer_id" value="{{this.customer_id}}">Update</button>
+                                </form>
                             </td>
                         </tr>
                         {{/each}}
