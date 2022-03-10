@@ -34,18 +34,13 @@
                     <div class="form-row">
                         <div class="col-md-8 mb-3">
                             <label for="job_id"></label>
-                            <select class="form-control" id="job_info" name="job_info" onchange="document.search_for_relationship.job_id.value=this.options[this.selectedIndex].value" required>
-                                <option selected disabled>Select an existing job</option>
+                            <select class="form-control" id="job_id" name="job_id" required>
+                                <option hidden disabled selected value="">Select an existing job</option>
                                 <option value="ALL">View All</option>
                                 {{#each job_data}}
-                                    <option value={{this.job_id}}>{{this.job_info}}</option>
+                                    <option value={{this.job_id}}>{{this.job_id}} - {{this.job_info}}</option>
                                 {{/each}}
                             </select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="job_info"></label>
-                            <input class="form-control" id="job_id" name="job_id" type="text"
-                                   value="Job ID read-only" readonly>
                         </div>
                     </div>
                     <div class="form-row text-center justify-content-center">

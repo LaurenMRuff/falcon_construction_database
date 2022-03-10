@@ -65,7 +65,7 @@
                         <div class="col-md-4">
                             <label for="job_status">Job Status: </label>
                             <select class="form-control" id="job_status_update" name="job_status_update" required>
-                                <option hidden disabled selected value="">Current Status: {{this.job_status}}</option>
+                                <option value="{{this.job_status}}">{{this.job_status}}</option>
                                 {{/each}}
                                 {{#each job_status}}
                                     <option>{{this}}</option>

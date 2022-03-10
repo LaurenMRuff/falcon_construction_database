@@ -57,13 +57,13 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="job_end_date">Job end date (optional)</label>
-                            <input type="date" class="form-control"id="job_end_date" name="job_end_date"
+                            <input type="date" class="form-control" id="job_end_date" name="job_end_date"
                                    min = "2015-01-01" max="2030-01-01">
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="job_status">Job status<sup>*</sup></label>
                             <select class="form-control" id="job_status" name="job_status" required>
-                                <option hidden disabled selected value=""->Select a job status</option>
+                                <option hidden disabled selected value="">Select a job status</option>
                                 {{#each job_status}}
                                 <option>{{this}}</option>
                                 {{/each}}

@@ -56,7 +56,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="employee_title_new">Title<sup>*</sup></label>
                             <select class="form-control" id="employee_title_new" name="employee_title_new" required>
-                                <option selected disabled>Select an employee title</option>
+                                <option hidden selected disabled value="">Select an employee title</option>
                                 {{#each employee_titles}}
                                     <option>{{this}}</option>
                                 {{/each}}
