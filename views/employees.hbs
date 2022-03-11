@@ -135,7 +135,6 @@
                             <th class="text-center">Last Name</th>
                             <th class="text-center">Email</th>
                             <th class="text-center">Job Title</th>
-                            <th class="text-center">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -147,12 +146,6 @@
                             <td class="pt-3-half">{{this.employee_last_name}}</td>
                             <td class="pt-3-half">{{this.employee_email}}</td>
                             <td class="pt-3-half">{{this.employee_job_title}}</td>
-                            <td>
-                                <form id='delete-employee' method='POST' action='/delete-employee'>
-                                    <button class="btn btn-dark btn-sm my-0" name="delete_employee_id"
-                                            id="delete_employee_id" value="{{this.employee_id}}">Delete</button>
-                                </form>
-                            </td>
                         </tr>
                         {{/each}}
                     </tbody>
