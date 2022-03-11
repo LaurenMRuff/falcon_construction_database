@@ -383,7 +383,6 @@ app.post('/update-category', function (req, res) {
     });
 });
 
-
 // WORKS - READ Employees
 app.get('/employees', function (req, res) {
     // dropdown populating lists
@@ -434,8 +433,7 @@ app.post('/add-employee', function (req, res) {
     })
 });
 
-
-//  Not working - Update Employee
+//  WORKS - Update Employee
 app.post('/update-employee', function (req, res) {
     let data = req.body;
     let updateEmployeeQuery =
@@ -458,8 +456,6 @@ app.post('/update-employee', function (req, res) {
         }
     });
 });
-
-
 
 // WORKS - READ Job_Employees
 app.get('/job_employees', function (req, res) {
@@ -511,9 +507,6 @@ app.post('/add-job-employee', function (req, res) {
         }
     })
 });
-
-
-
 
 // WORKS! DELETE Job_Employee
 app.post('/delete-job-employee', function (req, res, next) {
