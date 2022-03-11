@@ -3,8 +3,8 @@
 var express = require('express');
 var app = express();
 
-PORT = 5975;
-//PORT = 5981;
+//PORT = 5975;
+PORT = 5981;
 
 // Handlebars
 const { engine } = require('express-handlebars');
@@ -344,6 +344,45 @@ app.post('/add-category', function (req, res) {
         }
     })
 });
+
+//WORKING EDIT CATEGORY
+app.post('/edit-category-form', function (req, res) {
+    let data = req.body;
+    let update_category = parseInt(data.edit_category_id)
+
+
+    let categoryToUpdateQuery = 
+    `SELECT * FROM Categories WHERE category_id = ${update_category};`;
+
+    db.pool.query(categoryToUpdateQuery, function (err, rows, fields) {
+        res.render('update-category', {
+            title: "Update a Category Page", active: { Register: true }, category_to_update: rows
+        });
+    })
+});
+app.post('/update-category', function (req, res) {
+    let data = req.body;
+    let updateCategoryQuery =
+        `UPDATE Categories
+         SET 
+            category_name = '${data['category_name_update']}'
+        WHERE category_id = ${data['category_id']};`;
+
+    db.pool.query(updateCategoryQuery, function (error, rows, fields) {
+        // Check to see if there was an error
+        if (error) {
+            // Log the error to the terminal, so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else {
+            res.redirect('/categories');
+        }
+    });
+});
+
 
 // WORKS - READ Employees
 app.get('/employees', function (req, res) {
