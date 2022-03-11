@@ -348,7 +348,7 @@ app.post('/add-category', function (req, res) {
 //WORKING EDIT CATEGORY
 app.post('/edit-category-form', function (req, res) {
     let data = req.body;
-    let update_category = parseInt(data.edit_category_id)
+    let update_category = parseInt(data.edit_category_id_selected)
 
 
     let categoryToUpdateQuery =
@@ -433,6 +433,27 @@ app.post('/add-employee', function (req, res) {
         }
     })
 });
+
+// WORKS! DELETE Job_Employee
+app.post('/delete-employee', function (req, res, next){
+    let data = req.body;
+
+    let deleteJobEmployeeQuery = `DELETE FROM Employees WHERE employee_id = '${data['delete_employee_id']}';`
+
+    db.pool.query(deleteJobEmployeeQuery, function (error, rows, fields) {
+        // Check to see if there was an error
+        if (error) {
+            // Log the error to the terminal, so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else {
+            res.redirect('/employees');
+        }
+    });
+})
 
 
 //  Not working - Update Employee
