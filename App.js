@@ -49,24 +49,24 @@ app.get('/jobs', function (req, res) {
         db.pool.query(queryCategoryID, function (err, rows, fields) {
             let category_data = rows;
             db.pool.query(queryAllJobs, function (err, rows, fields) {
-                for(let i = 0; i < rows.length; i++){
-                    if(rows[i].job_start_date === 'NULL' || rows[i].job_start_date === '0000-00-00'){
+                for (let i = 0; i < rows.length; i++) {
+                    if (rows[i].job_start_date === 'NULL' || rows[i].job_start_date === '0000-00-00') {
                         rows[i].job_start_date = "";
                     }
-                    else{
+                    else {
                         rows[i].job_start_date = moment(rows[i].job_start_date).format("ll");
                     }
 
-                    if(rows[i].job_end_date === 'NULL' || rows[i].job_end_date === '0000-00-00'){
+                    if (rows[i].job_end_date === 'NULL' || rows[i].job_end_date === '0000-00-00') {
                         rows[i].job_end_date = "";
                     }
-                    else{
+                    else {
                         rows[i].job_end_date = moment(rows[i].job_end_date).format("ll");
                     }
                 }
                 res.render('jobs', {
                     title: "Jobs Page", active: { Register: true }, all_job_data: rows,
-                    customer_data: customer_data, category_data: category_data, job_status: job_status, todayDefault:todayDefault
+                    customer_data: customer_data, category_data: category_data, job_status: job_status, todayDefault: todayDefault
                 });
             })
         })
@@ -136,17 +136,17 @@ app.post('/edit-job-form', function (req, res) {
 
     db.pool.query(getJobToUpdateQuery, function (err, rows, fields) {
 
-        if(rows[0].job_start_date === 'NULL' || rows[0].job_start_date === '0000-00-00'){
+        if (rows[0].job_start_date === 'NULL' || rows[0].job_start_date === '0000-00-00') {
             rows[0].job_start_date = "";
         }
-        else{
+        else {
             rows[0].job_start_date = moment(rows[0].job_start_date).format("YYYY-MM-DD");
         }
 
-        if(rows[0].job_end_date === 'NULL' || rows[0].job_end_date === '0000-00-00'){
+        if (rows[0].job_end_date === 'NULL' || rows[0].job_end_date === '0000-00-00') {
             rows[0].job_end_date = "";
         }
-        else{
+        else {
             rows[0].job_end_date = moment(rows[0].job_end_date).format("YYYY-MM-DD");
         }
 
@@ -181,7 +181,7 @@ app.post('/update-job', function (req, res) {
             console.log(error)
             res.sendStatus(400);
         }
-            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
         // presents it on the screen
         else {
             res.redirect('/jobs');
@@ -305,7 +305,7 @@ app.post('/update-customer', function (req, res) {
             console.log(error)
             res.sendStatus(400);
         }
-            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
         // presents it on the screen
         else {
             res.redirect('/customers');
@@ -351,8 +351,8 @@ app.post('/edit-category-form', function (req, res) {
     let update_category = parseInt(data.edit_category_id)
 
 
-    let categoryToUpdateQuery = 
-    `SELECT * FROM Categories WHERE category_id = ${update_category};`;
+    let categoryToUpdateQuery =
+        `SELECT * FROM Categories WHERE category_id = ${update_category};`;
 
     db.pool.query(categoryToUpdateQuery, function (err, rows, fields) {
         res.render('update-category', {
@@ -375,7 +375,7 @@ app.post('/update-category', function (req, res) {
             console.log(error)
             res.sendStatus(400);
         }
-            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
         // presents it on the screen
         else {
             res.redirect('/categories');
@@ -434,6 +434,33 @@ app.post('/add-employee', function (req, res) {
     })
 });
 
+
+//  Not working - Update Employee
+app.post('/update-employee', function (req, res) {
+    let data = req.body;
+    let updateEmployeeQuery =
+        `UPDATE Employees
+         SET 
+            employee_job_title = '${data['employee_title_update']}' 
+        WHERE employee_id = ${data['employee_id']};`;
+
+    db.pool.query(updateEmployeeQuery, function (error, rows, fields) {
+        // Check to see if there was an error
+        if (error) {
+            // Log the error to the terminal, so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else {
+            res.redirect('/employees');
+        }
+    });
+});
+
+
+
 // WORKS - READ Job_Employees
 app.get('/job_employees', function (req, res) {
 
@@ -485,8 +512,11 @@ app.post('/add-job-employee', function (req, res) {
     })
 });
 
+
+
+
 // WORKS! DELETE Job_Employee
-app.post('/delete-job-employee', function (req, res, next){
+app.post('/delete-job-employee', function (req, res, next) {
     let data = req.body;
 
     let deleteJobEmployeeQuery = `DELETE FROM Job_Employees WHERE job_employee_id = '${data['delete_job_employee_id']}';`
@@ -498,7 +528,7 @@ app.post('/delete-job-employee', function (req, res, next){
             console.log(error)
             res.sendStatus(400);
         }
-            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
         // presents it on the screen
         else {
             res.redirect('/job_employees');
