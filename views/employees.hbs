@@ -1,21 +1,22 @@
 <!-- Need to use NVM 10.18.0-->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title> Falcon Construction Database Page </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap 5.1.3 CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title> Falcon Construction Database Page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- NEEDED FOR NAV BAR -->
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Bootstrap 5.1.3 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- NEEDED FOR NAV BAR -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-    </head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
 
 <body>
     <!--Navigation bar-->
@@ -36,12 +37,13 @@
                     <div class="form-row">
                         <div class="col-md-5 mb-3">
                             <label for="employee_first_name">First name<sup>*</sup></label>
-                            <input type="text" class="form-control" id="employee_first_name" name="employee_first_name" required>
+                            <input type="text" class="form-control" id="employee_first_name" name="employee_first_name"
+                                required>
                         </div>
                         <div class="col-md-5 mb-3">
                             <label for="employee_last_name">Last name<sup>*</sup></label>
                             <input type="text" class="form-control" id="employee_last_name" name="employee_last_name"
-                                   required>
+                                required>
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="employee_code">Employee Code<sup>*</sup></label>
@@ -58,14 +60,14 @@
                             <select class="form-control" id="employee_title_new" name="employee_title_new" required>
                                 <option hidden selected disabled value="">Select an employee title</option>
                                 {{#each employee_titles}}
-                                    <option>{{this}}</option>
+                                <option>{{this}}</option>
                                 {{/each}}
                             </select>
                         </div>
                     </div>
                     <div class="form-row text-center justify-content-center">
                         <button type="submit" class="btn btn-secondary" form="add-new-employee" formmethod="post"
-                                formaction="/add-employee">Submit</button>
+                            formaction="/add-employee">Submit</button>
                     </div>
                 </form>
             </div>
@@ -82,29 +84,37 @@
                     <div class="form-row">
                         <div class="col-md-5 mb-3">
                             <label for="employee_name"></label>
-                            <select class="form-control" id="employee_name" name="employee_name" onchange="document.update_employee.employee_id.value=this.options[this.selectedIndex].value" required>
+                            <select class="form-control" id="employee_name" name="employee_name"
+                                onchange="document.update_employee.employee_id.value=this.options[this.selectedIndex].value"
+                                required>
                                 <option selected>Select an existing employee</option>
                                 {{#each all_employee_data}}
-                                    <option value="{{this.employee_id}}">{{this.employee_first_name}} {{this.employee_last_name}}</option>
+                                <option value="{{this.employee_id}}">{{this.employee_first_name}}
+                                    {{this.employee_last_name}}</option>
                                 {{/each}}
                             </select>
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="employee_id"></label>
                             <input class="form-control" id="employee_id" name="employee_id" type="text"
-                                   value="employee_id will be read only" readonly>
+                                value="employee_id will be read only" readonly>
                         </div>
                         <div class="col-md-5 mb-3">
                             <label for="employee_title_update"></label>
-                            <select class="form-control" id="employee_title_update" name="employee_title_update" required>
+                            <select class="form-control" id="employee_title_update" name="employee_title_update"
+                                required>
                                 <option selected disabled>Select an employee title</option>
                                 {{#each employee_titles}}
-                                    <option>{{this}}</option>
+                                <option>{{this}}</option>
                                 {{/each}}
                             </select>
                         </div>
                     </div>
-                    <button onclick="getUpdatedEmployeeData()">Update</button>
+                    <div class="form-row text-center justify-content-center">
+                        <button type="submit" class="btn btn-secondary" form="update-employee-form" formmethod="post"
+                            formaction="/update-employee">Submit Changes</button>
+
+                    </div>
                 </form>
             </div>
         </div>
@@ -159,4 +169,5 @@
     <!-- END FOOTER -->
 
 </body>
+
 </html>
