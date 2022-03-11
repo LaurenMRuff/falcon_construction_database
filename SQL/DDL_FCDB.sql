@@ -232,10 +232,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `Job_Employees`;
 CREATE TABLE `Job_Employees` (
   `job_employee_id` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
-  `fk_employee_id` int(10),
-  `fk_job_id` int(10),
+  `fk_employee_id` int(10) NULL,
+  `fk_job_id` int(10) NOT NULL,
   PRIMARY KEY (`job_employee_id`),
-  FOREIGN KEY (`fk_employee_id`) REFERENCES `Employees` (`employee_id`),
+  FOREIGN KEY (`fk_employee_id`) REFERENCES `Employees` (`employee_id`) ON DELETE SET NULL,
   FOREIGN KEY (`fk_job_id`) REFERENCES `Jobs` (`job_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
