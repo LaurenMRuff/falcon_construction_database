@@ -1,0 +1,54 @@
+<!-- Need to use NVM 10.18.0-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Falcon Construction Database Page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap 5.1.3 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- NEEDED FOR NAV BAR -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+    <!--Navigation bar-->
+    <div id="nav_bar"></div>
+    <script>
+        $(function () {
+            $("#nav_bar").load("nav_bar.html");
+        });
+    </script>
+    <!--End Navigation bar-->
+
+    <!-- UPDATE JOB FORM -->
+    <!-- FORM -->
+    <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
+        <div class="card">
+            {{#each category_to_update}}
+            <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 30px">Update Category #
+                {{this.category_id}}</div>
+            <div class="card-body">
+                <form id="update-category-form">
+                    <div class="form-row">
+                        <input type="hidden" name="category_id" value="{{this.category_id}}" />
+                        <div class="col-md-6 mb-3">
+                            <label for="category_name_update">Category Name<sup>*</sup></label>
+                            <input type="text" class="form-control" id="category_name_update"
+                                name="category_name_update" value="{{this.category_name}}" required>
+                        </div>
+                    </div>
+                    <div class="form-row text-center justify-content-center">
+                        <button type="submit" class="btn btn-secondary" form="update-category-form" formmethod="post"
+                            formaction="/update-category">Submit Changes</button>
+                        {{/each}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
