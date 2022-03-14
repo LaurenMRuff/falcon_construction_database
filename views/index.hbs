@@ -1,122 +1,135 @@
 <!-- Need to use NVM 10.18.0-->
 <!Doctype>
-<html lang = "en">
+<html lang="en">
 
 <head>
-    <meta charset = "UTF-8">
+    <meta charset="UTF-8">
     <title> Falcon Construction Database Page </title>
-    <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap 5.1.3 CSS -->
-    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin = "anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- NEEDED FOR NAV BAR -->
-    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
 <body>
-<!--Navigation bar-->
-<div id = "nav_bar">
-    <script>
-        $(function () {
-            $("#nav_bar").load("nav_bar.html");
-        });
+    <!--Navigation bar-->
+    <div id="nav_bar">
+        <script>
+            $(function () {
+                $("#nav_bar").load("nav_bar.html");
+            });
 
-        $(document).ready(function () {
-            $("a[href='" + window.location.href + "']").addClass("active");
-        });
-    </script>
-</div>
-<!--End Navigation bar-->
+            $(document).ready(function () {
+                $("a[href='" + window.location.href + "']").addClass("active");
+            });
+        </script>
+    </div>
+    <!--End Navigation bar-->
 
-<!-- Welcome Page data and links -->
-<div style = "margin-top:50px; margin-bottom: 100px;">
-    <h1 style = "text-align: center; margin-bottom: 50px;"> Welcome to Falcon Construction </h1>
+    <!-- Welcome Page data and links -->
+    <div style="margin-top:50px; margin-bottom: 100px;">
+        <h1 style="text-align: center; margin-bottom: 50px;"> Welcome to Falcon Construction </h1>
+        <div class="container" style="padding: 10px">
+            <p "text-align: center; margin-bottom: 50px;">Falcon Construction company is a large heavy construction and
+                residential construction company with over 100 customers and more than 500 employees. Falcon Construction 
+                provides services to their customers, completing over 100 jobs per year. The company does a wide range of 
+                construction, including new builds and repairs. With all of this in mind, Falcon Construction would benefit
+                from a central database containing information on jobs performed, more accurate employee
+                tracking, and a central location for
+                customer information. More specifically, the purpose of this database-driven website is to record and track
+                the Jobs performed by Employees
+                of different Categories for Falcon Construction Customers. The company aims to better understand their
+                current
+                customer base and log which
+                employees worked on which jobs.</p>
+        </div>
+        <div class="container" style="padding: 10px">
+            <div class="card text-center">
+                <div class="card-header text-left"> Falcon Construction Jobs - View | Add | Update</div>
+                <div class="card-body">
+                    <p class="card-text">
+                        This page will allow the user to see all Jobs at Falcon Construction.<br>
+                        The user will have the ability to view/add/update entries within the data table.
+                    </p>
+                    <a href="/jobs" class="btn btn-primary">Go to Jobs</a>
+                </div>
+            </div>
+        </div>
 
-    <div class = "container" style = "padding: 10px">
-        <div class = "card text-center">
-            <div class = "card-header text-left"> Falcon Construction Jobs - View | Add | Update</div>
-            <div class = "card-body">
-                <p class = "card-text">
-                    This page will allow the user to see all Jobs at Falcon Construction.<br>
-                    The user will have the ability to view/add/update entries within the data table.
-                </p>
-                <a href = "/jobs" class = "btn btn-primary">Go to Jobs</a>
+        <div class="container" style="padding: 10px">
+            <div class="card text-center">
+                <div class="card-header text-left"> Falcon Construction Employees - View | Add | Update</div>
+                <div class="card-body">
+                    <p class="card-text">
+                        This page will allow the user to see all Employees at Falcon Construction.<br>
+                        The user will have the ability to view/add/update entries within the data table.
+                    </p>
+                    <a href="/employees" class="btn btn-primary">Go to Employees</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding: 10px">
+            <div class="card text-center">
+                <div class="card-header text-left"> Falcon Construction Customers - View | Add | Update</div>
+                <div class="card-body">
+                    <p class="card-text">
+                        This page will allow the user to see all Customers of Falcon Construction.<br>
+                        The user will have the ability to view/add/update entries within the data table.
+                    </p>
+                    <a href="/customers" class="btn btn-primary">Go to Customers</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding: 10px">
+            <div class="card text-center">
+                <div class="card-header text-left"> Falcon Construction Categories - View | Add | Update</div>
+                <div class="card-body">
+                    <p class="card-text">
+                        This page will allow the user to see all Categories at Falcon Construction.<br>
+                        The user will have the ability to view/add/update entries within the data table.
+                    </p>
+                    <a href="/categories" class="btn btn-primary"> Go to Categories </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding: 10px">
+            <div class="card text-center">
+                <div class="card-header text-left"> Falcon Construction Job_Employees - View | Add | Update | Delete
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        This page will allow the user to see all Employees working on Jobs at Falcon Construction.<br>
+                        The user will have the ability to view/add/update entries within the data table.
+                    </p>
+                    <a href="/job_employees" class="btn btn-primary"> Go to Job_Employees </a>
+                </div>
             </div>
         </div>
     </div>
+    <!-- End Welcome Page data and links -->
 
-    <div class = "container" style = "padding: 10px">
-        <div class = "card text-center">
-            <div class = "card-header text-left"> Falcon Construction Employees - View | Add | Update</div>
-            <div class = "card-body">
-                <p class = "card-text">
-                    This page will allow the user to see all Employees at Falcon Construction.<br>
-                    The user will have the ability to view/add/update entries within the data table.
-                </p>
-                <a href = "/employees" class = "btn btn-primary">Go to Employees</a>
-            </div>
-        </div>
+    <!-- FOOTER -->
+    <div id="footer">
+        <script>
+            $(function () {
+                $("#footer").load("footer.html");
+            });
+
+            $(document).ready(function () {
+                $("a[href='" + window.location.href + "']").addClass("active");
+            });
+        </script>
     </div>
-
-    <div class = "container" style = "padding: 10px">
-        <div class = "card text-center">
-            <div class = "card-header text-left"> Falcon Construction Customers - View | Add | Update</div>
-            <div class = "card-body">
-                <p class = "card-text">
-                    This page will allow the user to see all Customers of Falcon Construction.<br>
-                    The user will have the ability to view/add/update entries within the data table.
-                </p>
-                <a href = "/customers" class = "btn btn-primary">Go to Customers</a>
-            </div>
-        </div>
-    </div>
-
-    <div class = "container" style = "padding: 10px">
-        <div class = "card text-center">
-            <div class = "card-header text-left"> Falcon Construction Categories - View | Add | Update</div>
-            <div class = "card-body">
-                <p class = "card-text">
-                    This page will allow the user to see all Categories at Falcon Construction.<br>
-                    The user will have the ability to view/add/update entries within the data table.
-                </p>
-                <a href = "/categories" class = "btn btn-primary"> Go to Categories </a>
-            </div>
-        </div>
-    </div>
-
-    <div class = "container" style = "padding: 10px">
-        <div class = "card text-center">
-            <div class = "card-header text-left"> Falcon Construction Job_Employees - View | Add | Update | Delete</div>
-            <div class = "card-body">
-                <p class = "card-text">
-                    This page will allow the user to see all Employees working on Jobs at Falcon Construction.<br>
-                    The user will have the ability to view/add/update/delete entries within the data table.
-                </p>
-                <a href = "/job_employees" class = "btn btn-primary"> Go to Job_Employees </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Welcome Page data and links -->
-
-<!-- FOOTER -->
-<div id = "footer">
-    <script>
-        $(function () {
-            $("#footer").load("footer.html");
-        });
-
-        $(document).ready(function () {
-            $("a[href='" + window.location.href + "']").addClass("active");
-        });
-    </script>
-</div>
-<!-- END FOOTER -->
+    <!-- END FOOTER -->
 
 </body>
 

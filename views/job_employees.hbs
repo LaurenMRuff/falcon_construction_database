@@ -29,42 +29,58 @@
 
     </script>
     <!--End Navigation bar-->
-
+    <div class="container" style="padding: 10px">
+        <center>
+            <h4 "text-align: center; margin-bottom: 50px;">
+                <br>
+                This page will allow users to see all Job_Employees of Falcon Construction.
+                Users can view/add/update/delete entries within the data table.
+            </h4>
+        </center>
+    </div>
     <!-- ADD JOB_EMPLOYEES FORM -->
     <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
         <div class="card">
             <div class="card-body">
                 <h4>Add a new Job_Employee Relationship</h4>
                 <form id="add-job-employee" name="add_job_employee">
-                <div class="form-row">
-                    <div class="col-md-6 mb-3">
-                        <label for="employee_id"></label>
-                        <select class="form-control" id="employee_id" name="employee_id" required>
-                            <option hidden disabled selected value="">Select an existing employee</option>
-                            {{#each employee_data}}
-                                <option value="{{this.employee_id}}">{{this.employee_id}} - {{this.employee_name}}</option>
-                            {{/each}}
-                        </select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="job_id"></label>
-                        <select class="form-control" id="job_id" name="job_id" required>
-                            <option hidden disabled selected value="">Select an existing job</option>
-                            {{#each job_data}}
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="employee_id"></label>
+                            <select class="form-control" id="employee_id" name="employee_id" required>
+                                <option hidden disabled selected value="">Select an existing employee</option>
+                                {{#each employee_data}}
+                                <option value="{{this.employee_id}}">{{this.employee_id}} - {{this.employee_name}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="job_id"></label>
+                            <select class="form-control" id="job_id" name="job_id" required>
+                                <option hidden disabled selected value="">Select an existing job</option>
+                                {{#each job_data}}
                                 <option value="{{this.job_id}}">{{this.job_id}} - {{this.job_info}}</option>
-                            {{/each}}
-                        </select>
+                                {{/each}}
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-secondary" form="add-job-employee" formmethod="post"
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-secondary" form="add-job-employee" formmethod="post"
                             formaction="/add-job-employee">Submit</button>
-                </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
     <!-- END ADD JOB_EMPLOYEES FORM -->
+
+    <!-- Button Row -->
+    <div class="container text-center" style="margin-top:25px;">
+        <a href="/job_employees_search" class="btn btn-primary"> Search for Job_Employees Relationship</a>
+    </div>
+    <br>
+    <!-- Button Row -->
 
     <!-- JOB_EMPLOYEES table -->
     <div class="container-fluid">
@@ -72,7 +88,8 @@
             <div class="card-header font-weight-bold text-uppercase py-4" style="font-size: 26px">Job_Employees Table
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-responsive-md table-striped text-center" id="job-employee-table">
+                <table class="table table-bordered table-responsive-md table-striped text-center"
+                    id="job-employee-table">
                     <thead>
                         <tr>
                             <th class="text-center">Job_Employee ID</th>
@@ -90,7 +107,7 @@
                             <td>
                                 <form id='delete-job-employee' method='POST' action='/delete-job-employee'>
                                     <button class="btn btn-dark btn-sm my-0" name="delete_job_employee_id"
-                                            id="delete_job_employee_id" value="{{this.job_employee_id}}">Delete</button>
+                                        id="delete_job_employee_id" value="{{this.job_employee_id}}">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -102,11 +119,7 @@
     </div>
     <!-- END JOB_EMPLOYEES table -->
 
-    <!-- Button Row -->
-    <div class="container text-center" style="margin-top:25px;">
-        <a href="/job_employees_search" class="btn btn-primary"> Search for Job_Employees Relationship</a>
-    </div>
-    <!-- Button Row -->
+
 
     <!-- FOOTER -->
     <div id="footer"></div>

@@ -22,6 +22,13 @@
     </script>
     <!--End Navigation bar-->
 
+    <div class="container" style="padding: 10px">
+        <center><h4 "text-align: center; margin-bottom: 50px;">
+            <br>
+            This page will allow users to see all Customers of Falcon Construction. 
+            Users can view/add/update entries within the data table.
+        </h4></center>
+    </div>
     <!-- FORM -->
     <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
         <div class="card">
@@ -70,7 +77,8 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="customer_state_Select">State</label>
-                            <select class="form-control"  id="customer_state_Select" name="customer_state_Select" required>
+                            <select class="form-control" id="customer_state_Select" name="customer_state_Select"
+                                required>
                                 <option hidden disabled selected value="">Select State</option>
                                 {{#each states}}
                                 <option>{{this}}</option>
@@ -130,7 +138,7 @@
                             <td>
                                 <form id='edit-customer-form' method='POST' action='/edit-customer-form'>
                                     <button class="btn btn-dark btn-sm my-0" name="edit_customer_id"
-                                            id="edit_customer_id" value="{{this.customer_id}}">Update</button>
+                                        id="edit_customer_id" value="{{this.customer_id}}">Update</button>
                                 </form>
                             </td>
                         </tr>

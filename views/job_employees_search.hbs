@@ -27,8 +27,19 @@
     <!-- FORM -->
     <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
         <div class="card">
+
+
             <div class="card-header font-weight-bold text-uppercase py-4 text-center" style="font-size: 26px"> Search
                 for Employees Working on Jobs </div>
+            <div class="container" style="padding: 10px">
+                <center>
+                    <h4 "text-align: center; margin-bottom: 50px;">
+                        <br>
+                        This page will allow users to see all Customers of Falcon Construction.
+                        Users can view and search entries within the data table.
+                    </h4>
+                </center>
+            </div>
             <div class="card-body">
                 <form id="search-for-relationship" name="search_for_relationship">
                     <div class="form-row">
@@ -38,13 +49,14 @@
                                 <option hidden disabled selected value="">Select an existing job</option>
                                 <option value="ALL">View All</option>
                                 {{#each job_data}}
-                                    <option value={{this.job_id}}>{{this.job_id}} - {{this.job_info}}</option>
+                                <option value={{this.job_id}}>{{this.job_id}} - {{this.job_info}}</option>
                                 {{/each}}
                             </select>
                         </div>
                     </div>
                     <div class="form-row text-center justify-content-center">
-                        <a href="/"><button type="submit" class="btn btn-secondary" form="search-for-relationship">Submit</button></a>
+                        <a href="/"><button type="submit" class="btn btn-secondary"
+                                form="search-for-relationship">Submit</button></a>
                     </div>
                 </form>
             </div>
@@ -103,4 +115,5 @@
     <!-- END FOOTER -->
 
 </body>
+
 </html>
