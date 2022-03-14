@@ -416,7 +416,7 @@ app.post('/add-employee', function (req, res) {
         '${data['employee_first_name']}',
         '${data['employee_last_name']}',
         '${data['employee_email']}',
-        '${data['employee_title']}')`;
+        '${data['employee_title_new']}')`;
 
     db.pool.query(queryAddEmployee, function (error, rows, fields) {
         // Check to see if there was an error
