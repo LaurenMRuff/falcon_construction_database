@@ -28,12 +28,10 @@
     </script>
     <!--End Navigation bar-->
 
- <div class="container" style="padding: 10px">
-        <center><h4 "text-align: center; margin-bottom: 50px;">
-            <br>
-            This page will allow users to see all Emplpyees of Falcon Construction. 
-            Users can view/add/update entries within the data table.
-        </h4></center>
+    <div class="container" style="margin-top: 25px">
+        <h4 style="text-align: center; margin-top:25px;">
+            This page allow users to view/add/update/delete Employees at Falcon Construction.
+        </h4>
     </div>
 
     <!-- ADD EMPLOYEE FORM -->
@@ -64,8 +62,8 @@
                             <input type="text" class="form-control" id="employee_email" name="employee_email" required>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="employee_title_new">Title<sup>*</sup></label>
-                            <select class="form-control" id="employee_title_new" name="employee_title_new" required>
+                            <label for="employee_title">Title<sup>*</sup></label>
+                            <select class="form-control" id="employee_title" name="employee_title" required>
                                 <option hidden selected disabled value="">Select an employee title</option>
                                 {{#each employee_titles}}
                                 <option>{{this}}</option>
@@ -89,28 +87,19 @@
             <div class="card-body">
                 <h4>Update an existing Employee's position</h4>
                 <form id="update-employee-form" name="update_employee">
-                    <div class="form-row">
+                    <div class="form-row justify-content-md-center">
                         <div class="col-md-5 mb-3">
-                            <label for="employee_name"></label>
-                            <select class="form-control" id="employee_name" name="employee_name"
-                                onchange="document.update_employee.employee_id.value=this.options[this.selectedIndex].value"
-                                required>
+                            <label for="employee_id"></label>
+                            <select class="form-control" id="employee_id" name="employee_id" required>
                                 <option selected>Select an existing employee</option>
                                 {{#each all_employee_data}}
-                                <option value="{{this.employee_id}}">{{this.employee_first_name}}
-                                    {{this.employee_last_name}}</option>
+                                <option value="{{this.employee_id}}">{{this.employee_id}} - {{this.employee_first_name}} {{this.employee_last_name}}</option>
                                 {{/each}}
                             </select>
                         </div>
-                        <div class="col-md-2 mb-3">
-                            <label for="employee_id"></label>
-                            <input class="form-control" id="employee_id" name="employee_id" type="text"
-                                value="employee_id will be read only" readonly>
-                        </div>
-                        <div class="col-md-5 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="employee_title_update"></label>
-                            <select class="form-control" id="employee_title_update" name="employee_title_update"
-                                required>
+                            <select class="form-control" id="employee_title_update" name="employee_title_update" required>
                                 <option selected disabled>Select an employee title</option>
                                 {{#each employee_titles}}
                                 <option>{{this}}</option>
@@ -143,6 +132,7 @@
                             <th class="text-center">Last Name</th>
                             <th class="text-center">Email</th>
                             <th class="text-center">Job Title</th>
+                            <th class="text-center">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -154,6 +144,12 @@
                             <td class="pt-3-half">{{this.employee_last_name}}</td>
                             <td class="pt-3-half">{{this.employee_email}}</td>
                             <td class="pt-3-half">{{this.employee_job_title}}</td>
+                            <td>
+                                <form id='delete-employee' method='POST' action='/delete-employee'>
+                                    <button class="btn btn-dark btn-sm my-0" name="delete_employee_id"
+                                            id="delete_employee_id" value="{{this.employee_id}}">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                         {{/each}}
                     </tbody>

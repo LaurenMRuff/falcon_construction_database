@@ -24,25 +24,20 @@
     </script>
     <!--End Navigation bar-->
 
+    <div class="container" style="margin-top: 25px">
+        <h4 style="text-align: center; margin-top:25px;">
+            This page allow users to search for more information on Job_Employees relationships at<br>Falcon Construction.
+        </h4>
+    </div>
+
     <!-- FORM -->
     <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
         <div class="card">
-
-
             <div class="card-header font-weight-bold text-uppercase py-4 text-center" style="font-size: 26px"> Search
                 for Employees Working on Jobs </div>
-            <div class="container" style="padding: 10px">
-                <center>
-                    <h4 "text-align: center; margin-bottom: 50px;">
-                        <br>
-                        This page will allow users to see all Customers of Falcon Construction.
-                        Users can view and search entries within the data table.
-                    </h4>
-                </center>
-            </div>
             <div class="card-body">
                 <form id="search-for-relationship" name="search_for_relationship">
-                    <div class="form-row">
+                    <div class="form-row justify-content-md-center">
                         <div class="col-md-8 mb-3">
                             <label for="job_id"></label>
                             <select class="form-control" id="job_id" name="job_id" required>
@@ -82,7 +77,7 @@
                             <td class="pt-3-half">{{this.job_id}}</td>
                             <td class="pt-3-half">{{this.job_description}}</td>
                             <td class="pt-3-half">{{this.employee_id}}</td>
-                            <td class="pt-3-half">{{this.name}}</td>
+                            <td class="pt-3-half">{{this.employee_name}}</td>
                             <td class="pt-3-half">{{this.title}}</td>
                             <td class="pt-3-half">{{this.category_id}}</td>
                             <td class="pt-3-half">{{this.category_name}}</td>

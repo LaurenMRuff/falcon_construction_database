@@ -29,15 +29,13 @@
 
     </script>
     <!--End Navigation bar-->
-    <div class="container" style="padding: 10px">
-        <center>
-            <h4 "text-align: center; margin-bottom: 50px;">
-                <br>
-                This page will allow users to see all Job_Employees of Falcon Construction.
-                Users can view/add/update/delete entries within the data table.
-            </h4>
-        </center>
+
+    <div class="container" style="margin-top: 25px">
+        <h4 style="text-align: center; margin-top:25px;">
+            This page allow users to view/add/delete Job_Employees at Falcon Construction.
+        </h4>
     </div>
+
     <!-- ADD JOB_EMPLOYEES FORM -->
     <div class="container-fluid" style="margin-top:50px; margin-bottom: 50px;">
         <div class="card">
@@ -94,7 +92,9 @@
                         <tr>
                             <th class="text-center">Job_Employee ID</th>
                             <th class="text-center">Employee ID</th>
+                            <th class="text-center">Employee Name</th>
                             <th class="text-center">Job ID</th>
+                            <th class="text-center">Job Description</th>
                             <th class="text-center">Delete</th>
                         </tr>
                     </thead>
@@ -103,7 +103,9 @@
                         <tr>
                             <td class="pt-3-half">{{this.job_employee_id}}</td>
                             <td class="pt-3-half">{{this.fk_employee_id}}</td>
+                            <td class="pt-3-half">{{this.employee_name}}</td>
                             <td class="pt-3-half">{{this.fk_job_id}}</td>
+                            <td class="pt-3-half">{{this.job_info}}</td>
                             <td>
                                 <form id='delete-job-employee' method='POST' action='/delete-job-employee'>
                                     <button class="btn btn-dark btn-sm my-0" name="delete_job_employee_id"

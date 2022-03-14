@@ -457,6 +457,27 @@ app.post('/update-employee', function (req, res) {
     });
 });
 
+// DELETE Employee
+app.post('/delete-employee', function (req, res, next) {
+    let data = req.body;
+
+    let deleteEmployeeQuery = `DELETE FROM Employees WHERE employee_id = '${data['delete_employee_id']}';`
+
+    db.pool.query(deleteEmployeeQuery, function (error, rows, fields) {
+        // Check to see if there was an error
+        if (error) {
+            // Log the error to the terminal, so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else {
+            res.redirect('/employees');
+        }
+    });
+})
+
 // WORKS - READ Job_Employees
 app.get('/job_employees', function (req, res) {
 
@@ -467,7 +488,18 @@ app.get('/job_employees', function (req, res) {
         let employee_data = rows;
         db.pool.query(queryJobID, function (err, rows, fields) {
             let job_data = rows;
-            let queryJobEmployees = `SELECT * FROM Job_Employees ORDER BY job_employee_id;`;
+            let queryJobEmployees =
+                `SELECT
+                     Job_Employees.job_employee_id AS job_employee_id,
+                     Job_Employees.fk_employee_id AS fk_employee_id,
+                     CONCAT(Employees.employee_first_name, ' ', Employees.employee_last_name) AS employee_name,
+                     Job_Employees.fk_job_id AS fk_job_id,
+                     CONCAT(Jobs.job_code, ' - ', Jobs.job_description) AS job_info
+                 FROM Job_Employees
+                      INNER JOIN Employees ON Employees.employee_id = Job_Employees.fk_employee_id
+                      INNER JOIN Jobs ON Jobs.job_id = Job_Employees.fk_job_id
+                 ORDER BY Job_Employees.job_employee_id;`;
+
             db.pool.query(queryJobEmployees, function (err, rows, fields) {
                 res.render('job_employees', {
                     title: "Job_Employees Page", active: { Register: true }, all_job_employee_data: rows,
@@ -541,7 +573,7 @@ app.get('/job_employees_search', function (req, res) {
             Jobs.job_id AS job_id, 
             Jobs.job_description AS job_description, 
             Employees.employee_id AS employee_id, 
-            CONCAT(Employees.employee_first_name, ' ', Employees.employee_last_name) AS name, 
+            CONCAT(Employees.employee_first_name, ' ', Employees.employee_last_name) AS employee_name, 
             Employees.employee_job_title AS title, 
             Categories.category_id AS category_id, 
             Categories.category_name AS category_name 

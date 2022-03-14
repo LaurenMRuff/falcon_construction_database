@@ -65,7 +65,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Categories`;
 CREATE TABLE `Categories` (
-                              `category_id` int(10) NOT NULL AUTO_INCREMENT,
+                              `category_id` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
                               `category_name` varchar(255) NOT NULL UNIQUE,
                               PRIMARY KEY (`category_id`)
 )ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
