@@ -410,13 +410,12 @@ app.post('/add-employee', function (req, res) {
         employee_email,
         employee_job_title
         )
-        
     VALUES(
         '${data['employee_code']}',
         '${data['employee_first_name']}',
         '${data['employee_last_name']}',
         '${data['employee_email']}',
-        '${data['employee_title_new']}')`;
+        '${data['employee_title']}')`;
 
     db.pool.query(queryAddEmployee, function (error, rows, fields) {
         // Check to see if there was an error
@@ -438,9 +437,8 @@ app.post('/update-employee', function (req, res) {
     let data = req.body;
     let updateEmployeeQuery =
         `UPDATE Employees
-         SET 
-            employee_job_title = '${data['employee_title_update']}' 
-        WHERE employee_id = ${data['employee_id']};`;
+         SET employee_job_title = '${data['employee_title_update']}' 
+         WHERE employee_id = ${data['employee_id']};`;
 
     db.pool.query(updateEmployeeQuery, function (error, rows, fields) {
         // Check to see if there was an error
