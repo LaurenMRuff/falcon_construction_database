@@ -234,7 +234,7 @@ app.post('/add-customer', function (req, res) {
     '${data['customer_last_name']}',
     '${data['customer_email']}',
     '${data['customer_phone']}',
-    '${customer_company}',
+     ${customer_company},
     '${data['customer_address']}',
     '${data['customer_city']}',
     '${data['customer_state_Select']}',
@@ -470,7 +470,7 @@ app.post('/delete-employee', function (req, res, next) {
             console.log(error)
             res.sendStatus(400);
         }
-            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
         // presents it on the screen
         else {
             res.redirect('/employees');
