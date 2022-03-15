@@ -234,7 +234,7 @@ app.post('/add-customer', function (req, res) {
     '${data['customer_last_name']}',
     '${data['customer_email']}',
     '${data['customer_phone']}',
-     ${customer_company},
+    '${data['customer_company']}',
     '${data['customer_address']}',
     '${data['customer_city']}',
     '${data['customer_state_Select']}',
